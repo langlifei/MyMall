@@ -1,0 +1,73 @@
+.header-top ul span {
+  color: #666666;
+}
+.header-top ul > li > a, .header-top-right ul > li > a,.header-bottom-list > li > a {
+  color: #2c2c2c;
+}
+.header-bottom-list > li.active > a,.header-bottom-list > li:hover > a{
+    color:#E62E04;
+    background: transparent;
+}
+.header-top > ul > li:first-child > a::after {
+  background: rgba(44, 44, 44, 0.4);
+}
+.header-top-right ul > li > a{
+    border-right: 1px solid rgba(44, 44, 44, 0.4);
+}
+.categorie-search-box input{
+    border: 1px solid #e8e8e8;
+}
+.categorie-search-box button {
+  background: #2c2c2c none repeat scroll 0 0;
+}
+.categorie-search-box button:hover {
+  background: #1b81c5  none repeat scroll 0 0;
+  cursor: pointer;
+}
+.cart-box > ul > li > a {
+  color: #2c2c2c;
+}
+.total-pro {
+  background: #1b81c5  none repeat scroll 0 0;
+  color: #fff;
+}
+.my-cart{
+    color: #2c2c2c;
+}
+.wish-list-item::after{
+    background: rgba(44, 44, 44, 0.4);
+}
+.header-top-right ul > li > a:hover,.header-top ul > li ul.ht-dropdown li a:hover,.header-bottom-list > li > ul.ht-dropdown li:hover a,.vertical-menu-list li:hover > a,.del-icone:hover, .cart-content h6 a:hover,.price-content li span, .cart-content span.cart-price,.footer-list li a:hover,.social-footer-list a:hover,.footer-bottom-content p a,.footer-nav-list li a:hover {
+    color: #1b81c5 ;
+}
+.pro-quantity,.cart-actions a:hover {
+  background: #1b81c5 ;
+}
+.vertical-menu > span,.nivo-controlNav a.active {
+  background: #E62E04;
+}
+.actions-primary a{
+    background: #1b81c5 ;
+} 
+.actions-primary a:hover{
+    background: #1b81c5;
+}
+.actions-secondary a {
+  border: 1px solid #1b81c5 ;
+  color: #1b81c5 ;
+}
+.support-desc h6 {
+  color: #2c2c2c;
+}
+.newsletter-box .submit {
+  background: #333333 none repeat scroll 0 0;
+}
+.newsletter-box .submit:hover{
+    opacity: .9;
+}
+.owl-nav div:hover {
+  background: #1b81c5  none repeat scroll 0 0;
+}
+.support-icon i {
+  color: #1b81c5;
+}

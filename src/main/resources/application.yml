@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/bromall?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat

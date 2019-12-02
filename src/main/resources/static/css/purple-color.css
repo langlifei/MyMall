@@ -1,0 +1,90 @@
+.header-top ul span {
+    color: #ddd;
+}
+
+.categorie-search-box input {
+    border: 1px solid #e8e8e8;
+}
+
+.categorie-search-box button {
+    background: #fdda1b none repeat scroll 0 0;
+    color: #2c2c2c;
+    cursor: pointer;
+}
+
+.categorie-search-box button:hover {
+    background: #fdda1b none repeat scroll 0 0;
+    color: #fff;
+}
+
+.total-pro {
+    background: #fdda1b none repeat scroll 0 0;
+    color: #333;
+}
+
+.header-top ul > li ul.ht-dropdown li a:hover,
+.vertical-menu-list li:hover > a,
+.del-icone:hover,
+.cart-content h6 a:hover,
+.price-content li span,
+.cart-content span.cart-price,
+.footer-list li a:hover,
+.social-footer-list a:hover,
+.footer-bottom-content p a,
+.footer-nav-list li a:hover,
+.header-bottom-list > li > ul.ht-dropdown > li a:hover {
+    color: #fdda1b;
+}
+
+.pro-quantity,
+.cart-actions a:hover {
+    background: #fdda1b;
+}
+
+.nivo-controlNav a.active {
+    background: #fdda1b;
+}
+
+.vertical-menu > span {
+    background: #4c5374;
+}
+
+.owl-nav div:hover {
+    background: #fdda1b none repeat scroll 0 0;
+}
+
+.actions-primary a {
+    background: #4c5374;
+}
+
+.actions-primary a:hover {
+    background: #fdda1b;
+    color: #444;
+}
+
+.actions-secondary a {
+    border: 1px solid #4c5374;
+    color: #4c5374;
+}
+
+.actions-secondary a:hover {
+    background: #4c5374;
+    border: 1px solid #4c5374;
+}
+
+.support-desc h6 {
+    color: #2c2c2c;
+}
+
+.newsletter-box .submit {
+    background: #fdda1b none repeat scroll 0 0;
+    color: #333;
+}
+
+.newsletter-box .submit:hover {
+    color: #fff;
+}
+
+.support-icon i {
+    color: #fdda1b;
+}
