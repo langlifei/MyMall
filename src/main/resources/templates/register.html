@@ -68,34 +68,49 @@
                         </div>
                     </div>
                 </div>
-                <!-- Row End -->
+                <!-- Row start -->
                 <div class="row">
                     <div class="col-sm-12">
                         <form class="form-register" action="#">
                             <fieldset>
                                 <legend>Your Personal Details</legend>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="f-name"><span class="require">*</span>First Name</label>
+                                    <label class="control-label col-md-2" for="f-name"><span class="require">*</span>User Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="f-name" placeholder="First Name">
+                                        <input type="text" class="form-control" name="username" id="f-name" placeholder="User Name" required="required">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="l-name"><span class="require">*</span>Last Name</label>
+                                    <label class="control-label col-md-2" for="l-name"><span class="require">*</span>Nick Name</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="l-name" placeholder="Last Name">
+                                        <input type="text" class="form-control" name="nickname" id="l-name" placeholder="Nick Name" required="required">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
-                                    <label class="control-label col-md-2" for="email"><span class="require">*</span>Enter you email address here...</label>
+                                    <label class="control-label col-md-2" for="city"><span class="require">*</span>Enter your birthed address here...</label>
                                     <div class="col-md-10">
-                                        <input type="email" class="form-control" id="email" placeholder="Enter you email address here...">
+                                        <input type="text" id = "city" class="form-control" id="email" name="city" placeholder="Enter your birthed address here..." required="required">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
                                     <label class="control-label col-md-2" for="number"><span class="require">*</span>Telephone</label>
                                     <div class="col-md-10">
-                                        <input type="email" class="form-control" id="number" placeholder="Telephone">
+                                        <input type="tel" class="form-control" id="number" placeholder="Telephone" required="required">
+                                    </div>
+                                </div>
+                                <div class="form-group d-md-flex align-items-md-center">
+                                    <label class="control-label col-md-2" for="sex"><span class="require">*</span>Sex</label>
+                                    <div class="col-md-10">
+                                        <select id = "sex">
+                                            <option value="0">男</option>
+                                            <option value="1">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group d-md-flex align-items-md-center">
+                                    <label class="control-label col-md-2" for="number"><span class="require">*</span>Birthday</label>
+                                    <div class="col-md-10">
+                                        <input type="date" class="form-control" id="birthday" placeholder="Birthday" required="required">
                                     </div>
                                 </div>
                             </fieldset>
@@ -104,13 +119,13 @@
                                 <div class="form-group d-md-flex align-items-md-center">
                                     <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Password:</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control" id="pwd" placeholder="Password">
+                                        <input type="password" name = "password" class="form-control" id="pwd" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
                                     <label class="control-label col-md-2" for="pwd-confirm"><span class="require">*</span>Confirm Password</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control" id="pwd-confirm" placeholder="Confirm password">
+                                        <input type="password" name="repassword" class="form-control" id="pwd-confirm" placeholder="Confirm password">
                                     </div>
                                 </div>
                             </fieldset>
@@ -119,8 +134,8 @@
                                 <div class="form-group d-md-flex align-items-md-center">
                                     <label class="col-md-2 control-label">Subscribe</label>
                                     <div class="col-md-10 radio-button">
-                                         <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-                                         <label class="radio-inline"><input type="radio" name="optradio">No</label>
+                                        <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+                                        <label class="radio-inline"><input type="radio" name="optradio">No</label>
                                     </div>
                                 </div>
                             </fieldset>
@@ -134,7 +149,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- Row End -->
+                <!-- Row end-->
             </div>
             <!-- Container End -->
         </div>

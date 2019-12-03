@@ -151,7 +151,15 @@
                                     </li>
                                     <li><a href="#"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (0)</span></span></a>
                                     </li>
-                                    <li><a href="login.html"><i class="lnr lnr-user"></i><span class="my-cart"><span> <strong>Sign in</strong> Or</span><span> Join My Site</span></span></a>
+                                    <li>
+                                        <a href="login.html">
+                                            <i class="lnr lnr-user"></i>
+                                            <span class="my-cart">
+                                                <span style="font-size:22px;font-family: 'Lato', sans-serif;padding-top: 11px" th:text="${session.user.getUsername()}" th:if="${session.user} ne null">
+                                                </span>
+                                                <span th:if="${session.user} eq null">Sign in Or </br> Join My Site</span>
+                                            </span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -176,10 +184,10 @@
                                     <li class="active"><a href="index.html">home<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown">
-                                            <li><a href="index.html">Home Version 1</a></li>
-                                            <li><a href="index-2.html">Home Version 2</a></li>
-                                            <li><a href="index-3.html">Home Version 3</a></li>
-                                            <li><a href="index-4.html">Home Version 4</a></li>
+                                            <li><a href="index.html">Home Version</a></li>
+                                            <li><a href="index.html">Home Version</a></li>
+                                            <li><a href="index.html">Home Version</a></li>
+                                            <li><a href="index.html">Home Version</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
@@ -194,10 +202,10 @@
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
-                                    <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="index.html">blog<i class="fa fa-angle-down"></i></a>
                                         <!-- Home Version Dropdown Start -->
                                         <ul class="ht-dropdown dropdown-style-two">
-                                            <li><a href="single-blog.html">blog details</a></li>
+                                            <li><a href="index.html">blog details</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>
@@ -604,5 +612,4 @@
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
 </body>
-
 </html>
