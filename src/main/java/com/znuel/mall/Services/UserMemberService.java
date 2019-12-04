@@ -1,6 +1,6 @@
 package com.znuel.mall.Services;
 
-import com.znuel.mall.Entities.UmsMember;
+import com.znuel.mall.Entities.UserMember;
 import com.znuel.mall.Util.CommonResult;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,22 +8,21 @@ import org.springframework.transaction.annotation.Transactional;
  * 会员管理Service
  * Created by macro on 2018/8/3.
  */
-public interface UmsMemberService {
+public interface UserMemberService {
     /**
      * 根据用户名获取会员
      */
-    UmsMember getByUsername(String username);
+    UserMember getByUsername(String username);
 
     /**
      * 根据会员编号获取会员
      */
-    UmsMember getById(Long id);
+    UserMember getById(Long id);
 
     /**
      * 用户注册
      */
-    @Transactional
-    CommonResult register(String username, String password, String telephone, String authCode);
+    boolean register(UserMember userMember);
 
     /**
      * 生成验证码
@@ -39,21 +38,16 @@ public interface UmsMemberService {
     /**
      * 获取当前登录会员
      */
-    UmsMember getCurrentMember();
-
-    /**
-     * 根据会员id修改会员积分
-     */
-    void updateIntegration(Long id, Integer integration);
+    UserMember getCurrentMember();
 
 
     /**
      * 获取用户信息
      */
-    UmsMember loadUserByUsername(String username);
+    UserMember loadUserByUsername(String username);
 
     /**
      * 登录后获取token
      */
-    UmsMember login(String username, String password);
+    UserMember login(String username, String password);
 }

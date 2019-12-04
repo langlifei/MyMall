@@ -4,7 +4,7 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bromall?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/bromall?serverTimezone=GMT%2B8
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
     initialSize: 5
@@ -18,3 +18,6 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
+mybatis:
+  mapper-locations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.znuel.mall.Entities
