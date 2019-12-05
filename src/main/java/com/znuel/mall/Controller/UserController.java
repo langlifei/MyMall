@@ -31,7 +31,7 @@ public class UserController {
         }else {
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
-            return "index";
+            return "redirect:content.do";
         }
 //        Map<String, String> tokenMap = new HashMap<>();
 //        tokenMap.put("token", token);

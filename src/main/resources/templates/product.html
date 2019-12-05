@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -68,7 +68,7 @@
                             <!-- Thumbnail Large Image start -->
                             <div class="tab-content">
                                 <div id="thumb1" class="tab-pane fade show active">
-                                    <a data-fancybox="images" href="img/products/35.jpg"><img src="img/products/35.jpg" alt="product-view"></a>
+                                    <a data-fancybox="images" th:href="${productDetail.getPic()}"><img src="img/products/35.jpg" th:src="${productDetail.getPic()}" alt="product-view"></a>
                                 </div>
                                 <div id="thumb2" class="tab-pane fade">
                                     <a data-fancybox="images" href="img/products/13.jpg"><img src="img/products/13.jpg" alt="product-view"></a>
@@ -100,7 +100,7 @@
                         <!-- Thumbnail Description Start -->
                         <div class="col-lg-7">
                             <div class="thubnail-desc fix">
-                                <h3 class="product-header">Faded Short Sleeves T-shirt</h3>
+                                <h3 class="product-header" th:text="${productDetail.getPName()}">Faded Short Sleeves T-shirt</h3>
                                 <div class="rating-summary fix mtb-10">
                                     <div class="rating">
                                         <i class="fa fa-star"></i>
@@ -115,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="pro-price mtb-30">
-                                    <p class="d-flex align-items-center"><span class="prev-price">16.51</span><span class="price">$15.19</span><span class="saving-price">save 8%</span></p>
+                                    <p class="d-flex align-items-center"><span class="prev-price" th:text="'¥'+${productDetail.getPrice()}"></span><span class="price" th:text="'¥'+${productDetail.getPromotion_price()}"></span><span class="saving-price" th:text="'save '+${#numbers.formatDecimal((1 - productDetail.getPromotion_price()/productDetail.getPrice())*100,0,0)+'%'}"></span></p>
                                 </div>
                                 <p class="mb-20 pro-desc-details">Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
                                 <div class="product-size mb-20 clearfix">
