@@ -1,38 +1,28 @@
 package com.znuel.mall.Vo;
 
 
-import com.znuel.mall.Entities.PmsBrand;
-import com.znuel.mall.Entities.PmsProduct;
-import com.znuel.mall.Entities.SmsHomeAdvertise;
+import com.znuel.mall.Entities.*;
 
 import java.util.List;
 
 public class HomeContentResult {
     //轮播广告
-    private List<SmsHomeAdvertise> advertiseList;
-    //推荐品牌
-    private List<PmsBrand> brandList;
+    private List<Advertise> advertiseList;
+//    //推荐品牌
+//    private List<PmsBrand> brandList;
     //当前秒杀场次
     private HomeFlashPromotion homeFlashPromotion;
     //新品推荐
-    private List<PmsProduct> newProductList;
+    private List<Product> newProductList;
     //人气推荐
-    private List<PmsProduct> hotProductList;
+    private List<Product> hotProductList;
 
-    public List<SmsHomeAdvertise> getAdvertiseList() {
+    public List<Advertise> getAdvertiseList() {
         return advertiseList;
     }
 
-    public void setAdvertiseList(List<SmsHomeAdvertise> advertiseList) {
+    public void setAdvertiseList(List<Advertise> advertiseList) {
         this.advertiseList = advertiseList;
-    }
-
-    public List<PmsBrand> getBrandList() {
-        return brandList;
-    }
-
-    public void setBrandList(List<PmsBrand> brandList) {
-        this.brandList = brandList;
     }
 
     public HomeFlashPromotion getHomeFlashPromotion() {
@@ -43,19 +33,19 @@ public class HomeContentResult {
         this.homeFlashPromotion = homeFlashPromotion;
     }
 
-    public List<PmsProduct> getNewProductList() {
+    public List<Product> getNewProductList() {
         return newProductList;
     }
 
-    public void setNewProductList(List<PmsProduct> newProductList) {
+    public void setNewProductList(List<Product> newProductList) {
         this.newProductList = newProductList;
     }
 
-    public List<PmsProduct> getHotProductList() {
+    public List<Product> getHotProductList() {
         return hotProductList;
     }
 
-    public void setHotProductList(List<PmsProduct> hotProductList) {
+    public void setHotProductList(List<Product> hotProductList) {
         this.hotProductList = hotProductList;
     }
 

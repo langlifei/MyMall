@@ -1,8 +1,7 @@
 package com.znuel.mall.Services;
 
+import com.znuel.mall.Entities.Product;
 import com.znuel.mall.Vo.HomeContentResult;
-import com.znuel.mall.Entities.PmsProduct;
-
 import java.util.List;
 
 public interface HomeService {
@@ -14,7 +13,7 @@ public interface HomeService {
     /**
      * 首页商品推荐
      */
-    List<PmsProduct> recommendProductList(Integer pageSize, Integer pageNum);
+    List<Product> recommendProductList(Integer pageSize, Integer pageNum);
 
     /**
      * 获取商品分类

@@ -1,11 +1,11 @@
 package com.znuel.mall.Services.Imp;
 
-import com.znuel.mall.Entities.SmsHomeAdvertise;
+import com.znuel.mall.Dao.AdvertiseMapper;
+import com.znuel.mall.Entities.Advertise;
+import com.znuel.mall.Entities.Product;
 import com.znuel.mall.Dao.HomeMapper;
-import com.znuel.mall.Dao.SmsHomeAdvertiseMapper;
 import com.znuel.mall.Services.HomeService;
 import com.znuel.mall.Vo.HomeContentResult;
-import com.znuel.mall.Entities.PmsProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class HomeServiceImp implements HomeService {
 
     @Autowired
-    private SmsHomeAdvertiseMapper advertiseMapper;
+    private AdvertiseMapper advertiseMapper;
     @Autowired
     private HomeMapper homeDao;
 //    @Autowired
@@ -43,12 +43,12 @@ public class HomeServiceImp implements HomeService {
         //获取新品推荐
         result.setNewProductList(homeDao.getNewProductList(0,8));
         //获取人气推荐
-        result.setHotProductList(homeDao.getHotProductList(0,5));
+        //result.setHotProductList(homeDao.getHotProductList(0,5));
         return result;
     }
 
     @Override
-    public List<PmsProduct> recommendProductList(Integer pageSize, Integer pageNum) {
+    public List<Product> recommendProductList(Integer pageSize, Integer pageNum) {
         return null;
     }
 
@@ -90,9 +90,9 @@ public class HomeServiceImp implements HomeService {
 //        return null;
 //    }
 
-    private List<SmsHomeAdvertise> getHomeAdvertiseList() {
-        List<SmsHomeAdvertise> removedList = new ArrayList<>();
-        List<SmsHomeAdvertise> list = advertiseMapper.getAllSmsHomeAdvertise();
+    private List<Advertise> getHomeAdvertiseList() {
+        List<Advertise> removedList = new ArrayList<>();
+        List<Advertise> list = advertiseMapper.getAllHomeAdvertise();
         //移除所有状态为0的广告
         for (int i = 0 ; i < list.size();i++){
             if(list.get(i).getStatus() == 1)

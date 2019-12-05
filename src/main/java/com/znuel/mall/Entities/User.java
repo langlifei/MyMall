@@ -1,48 +1,34 @@
 package com.znuel.mall.Entities;
 
-import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 
-public class UserMember {
+public class User {
+    private Integer ID;
 
-    private Integer id;
-
-    @ApiModelProperty(value = "用户名")
     private String username;
 
-    @ApiModelProperty(value = "密码")
     private String password;
 
-    @ApiModelProperty(value = "昵称")
     private String nickname;
 
-    @ApiModelProperty(value = "手机号码")
     private String phone;
 
-    @ApiModelProperty(value = "注册时间")
-    private Date createTime;
+    private Date create_time;
 
-    @ApiModelProperty(value = "头像")
-    private String icon;
-
-    @ApiModelProperty(value = "性别：0->未知；1->男；2->女")
     private Integer gender;
 
-    @ApiModelProperty(value = "生日")
     private Date birthday;
 
-    @ApiModelProperty(value = "所在城市")
     private String city;
 
-    @ApiModelProperty(value = "职业")
     private String job;
 
-    public Integer getId() {
-        return id;
+    public Integer getID() {
+        return ID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setID(Integer ID) {
+        this.ID = ID;
     }
 
     public String getUsername() {
@@ -50,7 +36,7 @@ public class UserMember {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -58,7 +44,7 @@ public class UserMember {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public String getNickname() {
@@ -66,7 +52,7 @@ public class UserMember {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public String getPhone() {
@@ -74,23 +60,15 @@ public class UserMember {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
     public Integer getGender() {
@@ -114,7 +92,7 @@ public class UserMember {
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.city = city == null ? null : city.trim();
     }
 
     public String getJob() {
@@ -122,6 +100,6 @@ public class UserMember {
     }
 
     public void setJob(String job) {
-        this.job = job;
+        this.job = job == null ? null : job.trim();
     }
 }

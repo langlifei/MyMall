@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.znuel.mall.Dao.AdvertiseMapper" >
+  <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Advertise" >
+    <id column="AID" property="AID" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="start_time" property="start_time" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="end_time" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="note" property="note" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    AID, name, pic, start_time, end_time, status, note
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from advertise
+    where AID = #{AID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from advertise
+    where AID = #{AID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.znuel.mall.Entities.Advertise" >
+    insert into advertise (AID, name, pic, 
+      start_time, end_time, status, 
+      note)
+    values (#{AID,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{start_time,jdbcType=TIMESTAMP}, #{end_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Advertise" >
+    insert into advertise
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="AID != null" >
+        AID,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="start_time != null" >
+        start_time,
+      </if>
+      <if test="end_time != null" >
+        end_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="note != null" >
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="AID != null" >
+        #{AID,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null" >
+        #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null" >
+        #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Advertise" >
+    update advertise
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="start_time != null" >
+        start_time = #{start_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="end_time != null" >
+        end_time = #{end_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AID = #{AID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Advertise" >
+    update advertise
+    set name = #{name,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      start_time = #{start_time,jdbcType=TIMESTAMP},
+      end_time = #{end_time,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where AID = #{AID,jdbcType=INTEGER}
+  </update>
+</mapper>

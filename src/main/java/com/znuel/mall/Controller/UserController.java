@@ -1,14 +1,13 @@
 package com.znuel.mall.Controller;
 
-import com.znuel.mall.Entities.UserMember;
-import com.znuel.mall.Services.UserMemberService;
+import com.znuel.mall.Entities.User;
+import com.znuel.mall.Services.UserService;
 import com.znuel.mall.Util.CommonResult;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
@@ -18,14 +17,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class UserMemberController {
+public class UserController {
     @Autowired
-    private UserMemberService memberService;
+    private UserService Service;
 
     @ApiOperation("会员登录")
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
     public String login(String username,String password, Model model, HttpServletRequest request) {
-        UserMember user = memberService.login(username, password);
+        User user = Service.login(username, password);
         if (user == null) {
             model.addAttribute("info","您输入的用户名或密码错误！");
             return "login";
@@ -42,12 +41,12 @@ public class UserMemberController {
 
     @ApiOperation("会员注册")
     @RequestMapping(value = "/register.do", method = RequestMethod.POST)
-    public String register(UserMember userMember,HttpServletRequest request,Model model) throws ParseException {
+    public String register(User user,HttpServletRequest request,Model model) throws ParseException {
         //设置时间日期
         String birthday = request.getParameter("birthDay");
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
-        userMember.setBirthday(date);
-        if(memberService.register(userMember)){
+        user.setBirthday(date);
+        if(Service.register(user)){
             model.addAttribute("info","恭喜您,注册成功!");
         }else
             model.addAttribute("info","注册失败!");
@@ -60,7 +59,7 @@ public class UserMemberController {
     public CommonResult updatePassword(@RequestParam String telephone,
                                        @RequestParam String password,
                                        @RequestParam String authCode) {
-        return memberService.updatePassword(telephone,password,authCode);
+        return Service.updatePassword(telephone,password,authCode);
     }
 
     @ApiOperation("是否存在相同用户名")
@@ -68,7 +67,7 @@ public class UserMemberController {
     @ResponseBody
     public Map<String,String> isExistUserName(String username){
         Map<String,String> map = new HashMap<>();
-       if(memberService.getByUsername(username)!=null){
+       if(Service.getByUsername(username)!=null){
            map.put("flag","1");
        }else
            map.put("flag","0");

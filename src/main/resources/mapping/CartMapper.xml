@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.znuel.mall.Dao.CartMapper" >
+  <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Cart" >
+    <id column="ID" property="ID" jdbcType="INTEGER" />
+    <result column="PID" property="PID" jdbcType="INTEGER" />
+    <result column="UID" property="UID" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="product_attr" property="product_attr" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PID, UID, quantity, price, create_time, product_attr, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cart
+    where ID = #{ID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cart
+    where ID = #{ID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.znuel.mall.Entities.Cart" >
+    insert into cart (ID, PID, UID, 
+      quantity, price, create_time, 
+      product_attr, status)
+    values (#{ID,jdbcType=INTEGER}, #{PID,jdbcType=INTEGER}, #{UID,jdbcType=INTEGER}, 
+      #{quantity,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{product_attr,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Cart" >
+    insert into cart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        ID,
+      </if>
+      <if test="PID != null" >
+        PID,
+      </if>
+      <if test="UID != null" >
+        UID,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="create_time != null" >
+        create_time,
+      </if>
+      <if test="product_attr != null" >
+        product_attr,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ID != null" >
+        #{ID,jdbcType=INTEGER},
+      </if>
+      <if test="PID != null" >
+        #{PID,jdbcType=INTEGER},
+      </if>
+      <if test="UID != null" >
+        #{UID,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="product_attr != null" >
+        #{product_attr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Cart" >
+    update cart
+    <set >
+      <if test="PID != null" >
+        PID = #{PID,jdbcType=INTEGER},
+      </if>
+      <if test="UID != null" >
+        UID = #{UID,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="product_attr != null" >
+        product_attr = #{product_attr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Cart" >
+    update cart
+    set PID = #{PID,jdbcType=INTEGER},
+      UID = #{UID,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      product_attr = #{product_attr,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where ID = #{ID,jdbcType=INTEGER}
+  </update>
+</mapper>

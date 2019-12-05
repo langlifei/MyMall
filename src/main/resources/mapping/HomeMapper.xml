@@ -2,27 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.znuel.mall.Dao.HomeMapper">
 
-    <select id="getNewProductList" resultType="PmsProduct">
-        SELECT p.*
+    <select id="getNewProductList" resultType="Product">
+        SELECT *
         FROM
-            sms_home_new_product hp
-            LEFT JOIN pms_product p ON hp.product_id = p.id
+            product
         WHERE
-            hp.recommend_status = 1
-            AND p.publish_status = 1
+            status = 1
         ORDER BY
-            hp.sort DESC
+            product.create_time DESC
         LIMIT #{offset}, #{limit};
     </select>
 
-    <select id="getHotProductList" resultType="PmsProduct">
+    <select id="getHotProductList" resultType="Product">
         SELECT p.*
         FROM
-            sms_home_recommend_product hp
-            LEFT JOIN pms_product p ON hp.product_id = p.id
-        WHERE
-            hp.recommend_status = 1
-            AND p.publish_status = 1
+            product p
+            RIGHT JOIN order_item o ON p.PID = o.PID
         ORDER BY
             hp.sort DESC
         LIMIT #{offset}, #{limit};
