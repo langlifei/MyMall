@@ -56,10 +56,10 @@ public class PageController {
     }
     @RequestMapping("/wishlist.html")
     public String wishlist(){
-        return "wishlist";
+        return "forward:/getWishList.do";
     }
     @RequestMapping("/cart.html")
     public String cart(){
-        return "cart";
+        return "forward:/getCart.do";
     }
 }

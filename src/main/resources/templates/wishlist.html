@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -78,25 +78,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                                        <tr th:each="obj,objStar:${products}">
+                                            <td class="product-remove"> <a th:href="${'/delProductFromWish.do?id='+obj.getwId()}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="img/products/6.jpg" alt="cart-image" /></a>
+                                                <a href="#"><img th:src="${obj.getPic()}" alt="cart-image" /></a>
                                             </td>
-                                            <td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-stock-status"><span>in stock</span></td>
-                                            <td class="product-add-to-cart"><a href="#">add to cart</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                            <td class="product-thumbnail">
-                                               <a href="#"><img src="img/products/22.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-stock-status"><span>in stock</span></td>
-                                            <td class="product-add-to-cart"><a href="#">add to cart</a></td>
+                                            <td class="product-name"><a th:href="${'product.do?id='+obj.getpId()}" th:text="${obj.getProductName()}"></a></td>
+                                            <td class="product-price"><span class="amount" th:text="${'¥'+obj.getPrice()}"></span></td>
+                                            <td class="product-stock-status"><span th:if="${obj.getStatus() == 1}">in stock</span><span th:if="${obj.getStatus() == 0}">sold out</span></td>
+                                            <td class="product-add-to-cart"><a href="javascript:void(0);" onclick="addToCart(this)" th:name="${obj.getpId()}">add to cart</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -140,5 +130,18 @@
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
 </body>
+    <script>
+        function addToCart(elem) {
+            var cart  = new Object();
+            cart.PID = parseInt(elem.name);
+            cart.quantity = 1;
+            cart.price = $(elem).parent().prev().prev().find("span").eq(0).text().substring(1);
+            cart.price = parseFloat(cart.price);
+            cart.product_attr=cart.PID+"-";
+            sendAjaxRequest("/addProduct.do",cart);
+            window.location.href="/getCart.do";
+        }
+
+    </script>
 
 </html>

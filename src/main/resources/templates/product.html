@@ -121,9 +121,9 @@
                                 <div class="product-size mb-20 clearfix">
                                     <label>Size</label>
                                     <select class="">
-                                      <option>S</option>
-                                      <option>M</option>
-                                      <option>L</option>
+                                      <option value="S">S</option>
+                                      <option value="M">M</option>
+                                      <option value="L">L</option>
                                     </select>
                                 </div>
                                 <div class="color clearfix mb-20">
@@ -143,11 +143,11 @@
                                     </form>
                                     <div class="pro-actions">
                                         <div class="actions-primary">
-                                            <a href="cart.html" title="" data-original-title="Add to Cart"> + Add To Cart</a>
+                                            <a th:name="${productDetail.getPID()}" href="#" title="" data-original-title="Add to Cart" onclick="addToCart(this)"> + Add To Cart</a>
                                         </div>
                                         <div class="actions-secondary">
                                             <a href="compare.html" title="" data-original-title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                            <a href="wishlist.html" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                            <a href="javascript:void(0);" onclick="addToWishList(this)" th:name="${productDetail.getPID()}" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
                                         </div>
                                     </div>
                                 </div>
@@ -590,5 +590,24 @@
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
 </body>
+    <script>
+        function addToCart(elem) {
+            var cart  = new Object();
+            cart.PID = parseInt(elem.name);
+            cart.quantity = parseInt($(elem).parent().parent().prev().find("input").eq(0).val());
+            cart.price = $(elem).parent().parent().parent().prev().prev().prev().prev().find("span").eq(1).text().substring(1);
+            cart.price = parseFloat(cart.price);
+            cart.product_attr=cart.PID+"-";
+            debugger
+            sendAjaxRequest("/addProduct.do",cart);
+            window.location.href="/getCart.do";
+        }
+
+        function addToWishList(elem) {
+            var url ='/addToWishList.do?id='+elem.name;
+            sendAjaxRequest(url,null);
+            window.location.href="/getWishList.do";
+        }
+    </script>
 
 </html>

@@ -555,11 +555,11 @@
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
-                                                    <a title="Add to Cart" onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To Cart</a>
+                                                    <a title="Add to Cart" href="#" onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To Cart</a>
                                                 </div>
                                                 <div class="actions-secondary">
                                                     <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                    <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                    <a onclick="addToWishList(this)" title="WishList" th:name="${obj.getPID()}" href="#"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -571,7 +571,7 @@
                                     <div class="single-product">
                                         <!-- Product Image Start -->
                                         <div class="pro-img">
-                                            <a href="product.html" th:href="${'product.do?id='+homeContent.getNewProductList().get(objStar.index + 4).getPID()}">
+                                            <a th:href="${'product.do?id='+homeContent.getNewProductList().get(objStar.index + 4).getPID()}">
                                                 <img class="primary-img" th:src="${homeContent.getNewProductList().get(objStar.index + 4).getPic()}" alt="single-product">
                                                 <img class="secondary-img" th:src="${homeContent.getNewProductList().get(objStar.index + 4).getPic()}" alt="single-product">
                                             </a>
@@ -587,11 +587,11 @@
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
-                                                    <a th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}" title="Add to Cart" onclick="addToCart(this)"> + Add To Cart</a>
+                                                    <a href="javascript:void(0);" th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}" title="Add to Cart" onclick="addToCart(this)"> + Add To Cart</a>
                                                 </div>
                                                 <div class="actions-secondary">
                                                     <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                    <a href="wishlist.html" title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                    <a title="WishList" href="javascript:void(0);" onclick="addToWishList(this)" th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1303,22 +1303,14 @@
             cart.quantity = 1;
             cart.price = $(elem).parent().parent().prev().find("span").eq(0).text().substring(1);
             cart.price = parseFloat(cart.price);
-            cart.product_attr="";
-            $.ajax({
-                    type:"POST",
-                    url:"/addProduct.do",
-                    dataType:"json",
-                    contentType: "application/json",
-                    data:JSON.stringify(cart),
-                    success:function(data){
-                        debugger
-                        alert(data.info);
-                    },
-                    error:function(){
-                        alert("错误!");
-                    }
-                });
+            cart.product_attr=cart.PID+"-";
+            sendAjaxRequest("/addProduct.do",cart);
         }
 
+        function addToWishList(elem) {
+            var url ='/addToWishList.do?id='+elem.name;
+            debugger;
+            sendAjaxRequest(url,null);
+        }
     </script>
 </html>

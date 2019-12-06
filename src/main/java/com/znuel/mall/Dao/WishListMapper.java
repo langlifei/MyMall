@@ -1,6 +1,11 @@
 package com.znuel.mall.Dao;
 
+import com.znuel.mall.Entities.Product;
 import com.znuel.mall.Entities.WishList;
+import com.znuel.mall.Vo.WishListContent;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 public interface WishListMapper {
     int deleteByPrimaryKey(Integer WID);
@@ -14,4 +19,11 @@ public interface WishListMapper {
     int updateByPrimaryKeySelective(WishList record);
 
     int updateByPrimaryKey(WishList record);
+
+    @Select("select p.PID AS pId,wishlist.WID as wId,p.pic,p.PName as productName,p.price,p.`status` from product p left join wishlist on p.PID = wishlist.PID where wishlist.UID = #{userId}")
+    List<WishListContent> getWishList(Integer userId);
+
+    //统计用户的收藏商品个数
+    @Select("select count(*) from wishlist where UID = #{userId}")
+    int getCount(Integer userId);
 }

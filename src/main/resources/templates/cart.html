@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -78,25 +78,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr th:each="obj,objStar:${cartContents}" th:if="${objStar.index < 5}">
                                             <td class="product-thumbnail">
-                                                <a href="#"><img src="img/products/13.jpg" alt="cart-image" /></a>
+                                                <a href="#"><img th:src="${obj.getPic()}" alt="cart-image" /></a>
                                             </td>
-                                            <td class="product-name"><a href="#">dictum idrisus</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="img/products/23.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a href="#">Carte Postal Clock</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                                            <td class="product-name"><a th:href="${'product.do?id='+obj.getpId()}" th:text="${obj.getProductName()}"></a></td>
+                                            <td class="product-price"><span class="amount" th:text="${'¥'+obj.getPromotion_price()}"></span></td>
+                                            <td class="product-quantity"><input type="number" th:value="${obj.getQuantity()}" value="1" min="1"/></td>
+                                            <td class="product-subtotal" th:text="${obj.getTotalAmount()}"></td>
+                                            <td class="product-remove"> <a th:href="${'/delProductFromCart.do?id='+obj.getId()}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -107,7 +97,7 @@
                                 <div class="col-md-8 col-sm-12">
                                     <div class="buttons-cart">
                                         <input type="submit" value="Update Cart" />
-                                        <a href="#">Continue Shopping</a>
+                                        <a href="/index.html">Continue Shopping</a>
                                     </div>
                                 </div>
                                 <!-- Cart Button Start -->
@@ -120,12 +110,12 @@
                                             <tbody>
                                                 <tr class="cart-subtotal">
                                                     <th>Subtotal</th>
-                                                    <td><span class="amount">$215.00</span></td>
+                                                    <td><span class="amount" th:text="${'¥'+amount}"></span></td>
                                                 </tr>
                                                 <tr class="order-total">
                                                     <th>Total</th>
                                                     <td>
-                                                        <strong><span class="amount">$215.00</span></strong>
+                                                        <strong><span class="amount" th:text="${'¥'+amount}"></span></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>

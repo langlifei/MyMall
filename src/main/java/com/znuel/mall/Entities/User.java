@@ -3,6 +3,10 @@ package com.znuel.mall.Entities;
 import java.util.Date;
 
 public class User {
+    private Integer wishCount;
+
+    private Integer cartCount;
+
     private Integer ID;
 
     private String username;
@@ -101,5 +105,23 @@ public class User {
 
     public void setJob(String job) {
         this.job = job == null ? null : job.trim();
+    }
+
+    public Integer getWishCount() {
+        return wishCount;
+    }
+
+    public void setWishCount(Integer wishCount) {
+        if(wishCount >= 0)
+            this.wishCount = wishCount;
+    }
+
+    public Integer getCartCount() {
+        return cartCount;
+    }
+
+    public void setCartCount(Integer cartCount) {
+        if(cartCount >= 0)
+            this.cartCount = cartCount;
     }
 }

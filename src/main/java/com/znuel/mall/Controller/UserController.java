@@ -1,7 +1,9 @@
 package com.znuel.mall.Controller;
 
 import com.znuel.mall.Entities.User;
+import com.znuel.mall.Services.CartService;
 import com.znuel.mall.Services.UserService;
+import com.znuel.mall.Services.WishListServer;
 import com.znuel.mall.Util.CommonResult;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService Service;
+    @Autowired
+    private CartService cartService;
+    @Autowired
+    private WishListServer wishListServer;
 
     @ApiOperation("会员登录")
     @RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -29,6 +35,10 @@ public class UserController {
             model.addAttribute("info","您输入的用户名或密码错误！");
             return "login";
         }else {
+            //设置收藏中商品的个数
+            user.setWishCount(wishListServer.getCount(user.getID()));
+            //设置购物车中商品的个数
+            user.setCartCount(cartService.getCount(user.getID()));
             HttpSession session = request.getSession();
             session.setAttribute("user",user);
             return "redirect:content.do";

@@ -575,3 +575,22 @@ NOTE: main.js, All custom script and plugin activation script in this file.
         })
 
 })(jQuery);
+
+/*----------------发送通用ajax请求------------*/
+function sendAjaxRequest(url,obj) {
+    $.ajax({
+        type:"POST",
+        url:url,
+        dataType:"json",
+        contentType: "application/json",
+        data:JSON.stringify(obj),
+        success:function(data){
+        debugger
+            alert(data.info);
+        },
+        error:function(){
+            alert("您还没登录,请先登录...");
+            window.location.href="/login.html";
+        }
+    });
+}
