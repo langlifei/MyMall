@@ -100,56 +100,9 @@
                         <div class="col-lg-4 col-md-12">
                             <div class="cart-box mt-all-30">
                                 <ul class="d-flex justify-content-lg-end justify-content-center align-items-center">
-                                    <li><a href="/cart.html"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro" th:if="${session.user} eq null">2</span><span class="total-pro" th:text="${session.user.getCartCount()}" th:if="${session.user} ne null"></span><span>cart</span></span></a>
-                                        <ul class="ht-dropdown cart-box-width">
-                                            <li>
-                                                <!-- Cart Box Start -->
-                                                <div class="single-cart-box">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="img/products/1.jpg" alt="cart-image"></a>
-                                                        <span class="pro-quantity">1X</span>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h6><a href="product.html">Printed Summer Red </a></h6>
-                                                        <span class="cart-price">27.45</span>
-                                                        <span>Size: S</span>
-                                                        <span>Color: Yellow</span>
-                                                    </div>
-                                                    <a class="del-icone" href="#"><i class="ion-close"></i></a>
-                                                </div>
-                                                <!-- Cart Box End -->
-                                                <!-- Cart Box Start -->
-                                                <div class="single-cart-box">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="img/products/2.jpg" alt="cart-image"></a>
-                                                        <span class="pro-quantity">1X</span>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h6><a href="product.html">Printed Round Neck</a></h6>
-                                                        <span class="cart-price">45.00</span>
-                                                        <span>Size: XL</span>
-                                                        <span>Color: Green</span>
-                                                    </div>
-                                                    <a class="del-icone" href="#"><i class="ion-close"></i></a>
-                                                </div>
-                                                <!-- Cart Box End -->
-                                                <!-- Cart Footer Inner Start -->
-                                                <div class="cart-footer">
-                                                   <ul class="price-content">
-                                                       <li>Subtotal <span>$57.95</span></li>
-                                                       <li>Shipping <span>$7.00</span></li>
-                                                       <li>Taxes <span>$0.00</span></li>
-                                                       <li>Total <span>$64.95</span></li>
-                                                   </ul>
-                                                    <div class="cart-actions text-center">
-                                                        <a class="cart-checkout" href="checkout.html">Checkout</a>
-                                                    </div>
-                                                </div>
-                                                <!-- Cart Footer Inner End -->
-                                            </li>
-                                        </ul>
+                                    <li><a href="/cart.html"><i class="lnr lnr-cart"></i><span class="my-cart"><span class="total-pro" th:if="${session.user} eq null">0</span><span class="total-pro" id = "cartCount" th:text="${session.user.getCartCount()}" th:if="${session.user} ne null"></span><span>cart</span></span></a>
                                     </li>
-                                    <li><a href="/wishlist.html"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span th:if="${session.user} eq null">list (0)</span><span th:text="${'list('+session.user.getWishCount()+')'}" th:if="${session.user} ne null"></span></span></a>
+                                    <li><a href="/wishlist.html"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (<span th:if="${session.user} eq null">0</span><span id="wishCount" th:text="${session.user.getWishCount()}" th:if="${session.user} ne null"></span>)</span></span></a>
                                     </li>
                                     <li>
                                         <a href="login.html">
@@ -216,7 +169,7 @@
                                             <li><a href="register.html">register</a></li>
                                             <li><a href="login.html">sign in</a></li>
                                             <li><a href="forgot-password.html">forgot password</a></li>
-                                            <li><a href="404.html">404</a></li>
+                                            <li><a href="error.html">error</a></li>
                                         </ul>
                                         <!-- Home Version Dropdown End -->
                                     </li>

@@ -41,7 +41,7 @@ public class HomeServiceImp implements HomeService {
         //获取秒杀信息
         //result.setHomeFlashPromotion(getHomeFlashPromotion());
         //获取新品推荐
-        result.setNewProductList(homeDao.getNewProductList(0,8));
+        result.setNewProductList(homeDao.getNewProductList(8));
         //获取人气推荐
         //result.setHotProductList(homeDao.getHotProductList(0,5));
         return result;

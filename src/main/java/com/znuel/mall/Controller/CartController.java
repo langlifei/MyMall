@@ -4,6 +4,8 @@ import com.znuel.mall.Entities.Cart;
 import com.znuel.mall.Entities.User;
 import com.znuel.mall.Services.CartService;
 import com.znuel.mall.Vo.CartContent;
+import com.znuel.mall.Vo.CheckOutContent;
+import com.znuel.mall.Vo.CheckOutItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +39,7 @@ public class CartController {
         if(cartService.addProductToCart(cart)){
             map.put("info","添加成功!");
             user.setCartCount(user.getCartCount()+1);
+            map.put("cartCount",user.getCartCount()+"");
         }else
             map.put("info","添加失败!");
         return map;
@@ -64,5 +67,11 @@ public class CartController {
             user.setCartCount(user.getCartCount()-1);
         }
         return "forward:/getCart.do";
+    }
+
+    //提交购物车商品去结账
+    @RequestMapping(value = "/checkOut.do",method = RequestMethod.POST)
+    public String toCheckOut(@RequestBody CheckOutContent checkOutContent, HttpServletRequest request){
+        return "checkOut";
     }
 }

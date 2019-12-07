@@ -505,25 +505,25 @@
                         <!-- Nav tabs -->
                         <ul class="nav tabs-area" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#fshion">Fashion</a>
+                                <a class="nav-link active" data-toggle="tab" href="javascript:void(0);" onclick="changeType(1)">Fashion</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#beauty">Beauty</a>
+                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(2)">Beauty</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#electronics">Sport/Outdoor</a>
+                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(3)">Sport/Outdoor</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#kids">Living</a>
+                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(4)">Living</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#beauty">Food</a>
+                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(5)">Food</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#kids">Baby/Kids</a>
+                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(6)">Baby/Kids</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#electronics">Electronics </a>
+                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(7)">Electronics </a>
                             </li>
                         </ul>                       
 
@@ -555,11 +555,11 @@
                                             </div>
                                             <div class="pro-actions">
                                                 <div class="actions-primary">
-                                                    <a title="Add to Cart" href="#" onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To Cart</a>
+                                                    <a title="Add to Cart" href="javascript:void(0);" onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To Cart</a>
                                                 </div>
                                                 <div class="actions-secondary">
-                                                    <a href="compare.html" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                    <a onclick="addToWishList(this)" title="WishList" th:name="${obj.getPID()}" href="#"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                                    <a href="compare.html" title="Compare" ><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
+                                                    <a onclick="addToWishList(this)" title="WishList" th:name="${obj.getPID()}" href="javascript:void(0);"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1311,6 +1311,26 @@
             var url ='/addToWishList.do?id='+elem.name;
             debugger;
             sendAjaxRequest(url,null);
+        }
+    </script>
+    <script th:inline="javascript">
+        var products = [[${homeContent.newProductList}]];
+        function changeType(Number) {
+            var CID = parseInt(Number);
+            $("#kids").find(".single-product").each(function (index,element) {
+                var obj = new Object();
+                obj = products[(CID-1)*8+index];
+                debugger;
+                $(element).find('a').eq(0).attr("href","/product.do?id="+obj.pid);
+                $(element).find('img').eq(0).attr("src",obj.pic);
+                $(element).find('img').eq(1).attr("src",obj.pic);
+                $(element).find('a').eq(2).text(obj.pname);
+                $(element).find("span").eq(0).text("¥"+obj.promotion_price);
+                $(element).find("del").eq(0).text("¥"+obj.price);
+                $(element).find("span").eq(1).text('↓ '+(1 - obj.promotion_price/obj.price).toFixed(2)*100);
+                $(element).find('a').eq(3).attr("name",obj.pid);
+                $(element).find('a').eq(5).attr("name",obj.pid);
+            })
         }
     </script>
 </html>

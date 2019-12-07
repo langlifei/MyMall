@@ -132,7 +132,7 @@
     <script src="js/plugins.js"></script>
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
-    <script>
+    <script th:inline="javascript">
             // function userLogin(url){
             //     var user = new Object();
             //     user.username=$("input[name=username]").val();
@@ -152,7 +152,10 @@
             //         }
             //     });
             // }
-
+        var info = [[${info}]];
+        if( (info != null) && (info != "")){
+            alert(info)
+        }
 
     </script>
 </body>

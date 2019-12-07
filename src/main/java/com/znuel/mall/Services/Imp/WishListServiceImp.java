@@ -23,10 +23,12 @@ public class WishListServiceImp implements WishListServer {
 
     @Override
     public boolean addToWishList(WishList wishList) {
-        if(wishListMapper.insertSelective(wishList)>0)
+        //判断商品在用户收藏中是否存在
+        if(wishListMapper.selectByUIdAndPID(wishList.getUID(),wishList.getPID()) == null){
+            wishListMapper.insertSelective(wishList);
             return true;
-        else
-            return false;
+        }else
+            return  false;
     }
 
     @Override

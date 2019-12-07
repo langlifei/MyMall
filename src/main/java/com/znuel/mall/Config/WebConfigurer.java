@@ -25,6 +25,6 @@ public class WebConfigurer implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login**","/register**","/content.do")
                 .excludePathPatterns("/css/**","/js/**","/img/**","/index.html","/")
-                .excludePathPatterns("/fonts/**","/plugins/**");
+                .excludePathPatterns("/fonts/**","/plugins/**","/checkUserName.do");
     }
 }

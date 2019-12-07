@@ -37,8 +37,9 @@ public class WishListController {
         if(wishListServer.addToWishList(wishList)){
             map.put("info","添加成功!");
             user.setWishCount(user.getWishCount()+1);
+            map.put("wishCount",user.getWishCount()+"");
         }else
-            map.put("info","添加失败!");
+            map.put("info","您已添加过此商品!");
         return map;
     }
 

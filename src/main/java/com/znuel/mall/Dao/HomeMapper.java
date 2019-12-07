@@ -2,6 +2,7 @@ package com.znuel.mall.Dao;
 
 import com.znuel.mall.Entities.Product;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -22,9 +23,10 @@ public interface HomeMapper {
 //    List<FlashPromotionProduct> getFlashProductList(@Param("flashPromotionId") Long flashPromotionId, @Param("sessionId") Long sessionId);
 
     /**
-     * 获取新品推荐
+     * 获取新品推荐,number为每个类别的个数.
      */
-    List<Product> getNewProductList(@Param("offset") Integer offset, @Param("limit") Integer limit);
+    @Select("select a.* from product a where (select count(*) from product b where a.CID = b.CID and unix_timestamp(b.create_time) > unix_timestamp(a.create_time)) < #{number} order by CID,create_time desc")
+    List<Product> getNewProductList(Integer number);
     /**
      * 获取人气推荐
      */

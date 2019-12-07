@@ -59,9 +59,12 @@ public class UserServiceImp implements UserService {
     @Override
     public User login(String username, String password) {
         User user = userMapper.selectByUsername(username);
-        if(user.getPassword().equals(password))
-            return user;
-        else
+        if(user != null){
+            if(user.getPassword().equals(password))
+                return user;
+            else
+                return null;
+        }else
             return null;
     }
 }

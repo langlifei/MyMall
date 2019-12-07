@@ -2,6 +2,8 @@ package com.znuel.mall.Vo;
 
 import io.swagger.models.auth.In;
 
+import java.text.DecimalFormat;
+
 public class CartContent {
 
 
@@ -26,6 +28,8 @@ public class CartContent {
 
     private String product_attr;
 
+    DecimalFormat df = new DecimalFormat( "0.00 ");
+
     public String getPic() {
         return pic;
     }
@@ -47,8 +51,8 @@ public class CartContent {
     }
 
     public void setPromotion_price(double promotion_price) {
-        if(promotion_price >= 0)
-            this.promotion_price = promotion_price;
+        if(promotion_price >=0)
+            this.promotion_price = new Double(df.format(promotion_price));
     }
 
     public Integer getQuantity() {
@@ -65,8 +69,8 @@ public class CartContent {
     }
 
     public void setTotalAmount(double totalAmount) {
-        if(totalAmount >= 0 )
-            this.totalAmount = totalAmount;
+        if(totalAmount >=0)
+            this.totalAmount = new Double(df.format(totalAmount));
     }
 
     public String getProduct_attr() {
@@ -98,7 +102,7 @@ public class CartContent {
     }
 
     public void setTotal(double total) {
-        if(total >= 0 )
-            this.total = total;
+        if(total >=0)
+            this.total = new Double(df.format(total));
     }
 }

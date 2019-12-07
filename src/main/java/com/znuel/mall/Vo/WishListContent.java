@@ -1,5 +1,7 @@
 package com.znuel.mall.Vo;
 
+import java.text.DecimalFormat;
+
 public class WishListContent {
     private Integer pId;
 
@@ -12,6 +14,8 @@ public class WishListContent {
     private double price;
 
     private Integer status;
+
+    DecimalFormat df = new DecimalFormat( "0.00 ");
 
     public Integer getpId() {
         return pId;
@@ -51,7 +55,7 @@ public class WishListContent {
 
     public void setPrice(double price) {
         if(price >=0)
-            this.price = price;
+            this.price = new Double(df.format(price));
     }
 
     public Integer getStatus() {

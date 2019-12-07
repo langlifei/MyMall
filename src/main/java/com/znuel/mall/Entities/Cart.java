@@ -1,5 +1,6 @@
 package com.znuel.mall.Entities;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 public class Cart {
@@ -18,6 +19,8 @@ public class Cart {
     private String product_attr;
 
     private Integer status;
+
+    DecimalFormat df = new DecimalFormat( "0.00 ");
 
     public Integer getID() {
         return ID;
@@ -56,7 +59,8 @@ public class Cart {
     }
 
     public void setPrice(Double price) {
-        this.price = price;
+        if(price >=0)
+            this.price = new Double(df.format(price));
     }
 
     public Date getCreate_time() {

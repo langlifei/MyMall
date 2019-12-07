@@ -57,9 +57,10 @@ public class CartServiceImp implements CartService {
                 list.add(cartList.get(i));
             }
         }
-        //更新不同商品的数量.
+        //更新不同商品的数量和价格.
         for (int i = 0 ; i < list.size();i++){
             list.get(i).setQuantity(map.get(list.get(i).getpId()));
+            list.get(i).setTotalAmount(list.get(i).getQuantity()*list.get(i).getPromotion_price());
         }
         return list;
     }

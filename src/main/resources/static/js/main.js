@@ -585,7 +585,9 @@ function sendAjaxRequest(url,obj) {
         contentType: "application/json",
         data:JSON.stringify(obj),
         success:function(data){
-        debugger
+            debugger;
+            $("#cartCount").text(data.cartCount);
+            $("#wishCount").text(data.wishCount);
             alert(data.info);
         },
         error:function(){

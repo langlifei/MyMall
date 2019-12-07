@@ -19,9 +19,9 @@ public class PageController {
     public String index(){
         return "forward:/content.do";
     }
-    @RequestMapping("/404.html")
+    @RequestMapping("/error.html")
     public String error(){
-        return "404";
+        return "error";
     }
 
     @RequestMapping("/about.html")
