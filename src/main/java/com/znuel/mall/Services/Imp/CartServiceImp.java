@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.znuel.mall.Dao.CartMapper;
 import com.znuel.mall.Entities.Cart;
+import com.znuel.mall.Entities.User;
 import com.znuel.mall.Services.CartService;
 import com.znuel.mall.Vo.CartContent;
 import com.znuel.mall.Vo.CheckOutContent;
@@ -12,6 +13,7 @@ import com.znuel.mall.Vo.CheckOutItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Service
@@ -118,5 +120,16 @@ public class CartServiceImp implements CartService {
         checkOutContent.setItems(checkOutItems);
         checkOutContent.setAmount(amount);
         return checkOutContent;
+    }
+
+    @Override
+    public void removeProductAfterPO(HttpServletRequest request) {
+        User user = (User)request.getSession().getAttribute("user");
+        List<CheckOutItem> checkOutItems = user.getCheckOutContent().getItems();
+        List list = new ArrayList();
+        for(CheckOutItem item:checkOutItems){
+            list.add(item.getId());
+        }
+        cartMapper.removeProduct(list);
     }
 }

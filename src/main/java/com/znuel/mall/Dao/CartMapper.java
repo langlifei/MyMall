@@ -3,6 +3,7 @@ package com.znuel.mall.Dao;
 import com.znuel.mall.Entities.Cart;
 import com.znuel.mall.Vo.CartContent;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -31,4 +32,7 @@ public interface CartMapper {
     //统计用户在购物车中商品个数
     @Select("select count(*) from cart where UID = #{userId} and status = 1")
     int getCount(Integer userId);
+
+    //设置购买后的商品状态为2
+    int removeProduct(List list);
 }

@@ -13,7 +13,7 @@ public class Order {
 
     private Double promotion_amount;
 
-    private Integer status;
+    private Integer order_status;
 
     private String delivery_company;
 
@@ -26,14 +26,6 @@ public class Order {
     private String receiver_address;
 
     private String notes;
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
 
     public Integer getOID() {
         return OID;
@@ -75,12 +67,12 @@ public class Order {
         this.promotion_amount = promotion_amount;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Integer getOrder_status() {
+        return order_status;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setOrder_status(Integer order_status) {
+        this.order_status = order_status;
     }
 
     public String getDelivery_company() {
@@ -121,5 +113,13 @@ public class Order {
 
     public void setReceiver_address(String receiver_address) {
         this.receiver_address = receiver_address == null ? null : receiver_address.trim();
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes == null ? null : notes.trim();
     }
 }

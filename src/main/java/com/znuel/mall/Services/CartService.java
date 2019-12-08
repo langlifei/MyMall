@@ -4,6 +4,7 @@ import com.znuel.mall.Entities.Cart;
 import com.znuel.mall.Vo.CartContent;
 import com.znuel.mall.Vo.CheckOutContent;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface CartService {
@@ -27,4 +28,7 @@ public interface CartService {
 
     //将购物车被选中的商品送去结账...
     public CheckOutContent toCheckOut(String jsonStr);
+
+    //下单后移除购物车中已下单的商品
+    public void removeProductAfterPO(HttpServletRequest request);
 }

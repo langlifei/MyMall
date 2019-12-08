@@ -34,7 +34,7 @@ public class OrderServiceImp implements OrderService {
         order.setUsername(user.getUsername());
         Date date = new Date();
         order.setCreate_time(date);
-        order.setStatus(1);
+        order.setOrder_status(1);
         order.setDelivery_company("顺丰快递");
         //生成唯一标识符
         String id= UUID.randomUUID().toString();
@@ -42,7 +42,7 @@ public class OrderServiceImp implements OrderService {
         order.setDelivery_sn(id);
         CheckOutContent checkOutContent = user.getCheckOutContent();
         order.setPromotion_amount(checkOutContent.getAmount());
-        return orderMapper.insertOrder(order);
+        return orderMapper.insertSelective(order);
     }
 
     @Override
@@ -51,19 +51,17 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public boolean insertProductToOrderItem(Integer orderId, HttpServletRequest request) {
-        User user = (User)request.getSession().getAttribute("user");
+    public void insertProductToOrderItem(Integer orderId, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
         List<OrderItem> oItems = new ArrayList<>();
         List<CheckOutItem> checkOutItems = user.getCheckOutContent().getItems();
-        for(CheckOutItem item:checkOutItems){
+        for (CheckOutItem item : checkOutItems) {
             OrderItem oItem = new OrderItem();
             oItem.setOID(orderId);
             oItem.setPID(item.getpId());
             oItem.setProduct_attr("");
+            oItems.add(oItem);
         }
-        if(orderItemMapper.insertItemBatch(oItems)>0){
-            return true;
-        }else
-            return false;
+        orderItemMapper.insertItemBatch(oItems);
     }
 }

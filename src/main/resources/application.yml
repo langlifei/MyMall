@@ -4,7 +4,7 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/bromall?serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/bromall?serverTimezone=GMT%2B8&allowMultiQueries=true
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置
     initialSize: 5

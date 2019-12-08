@@ -14,6 +14,11 @@
   <sql id="Base_Column_List" >
     ID, PID, UID, quantity, price, create_time, product_attr, status
   </sql>
+  <update id="removeProduct" parameterType="java.util.List">
+    <foreach collection="list" item="item" separator=";">
+      update cart set status = 2 where ID = #{item}
+    </foreach>
+  </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

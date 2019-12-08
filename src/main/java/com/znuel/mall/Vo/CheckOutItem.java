@@ -4,6 +4,7 @@ import io.swagger.models.auth.In;
 
 public class CheckOutItem {
     private Integer pId;
+    //购物车中商品编号
     private Integer id;
     private String productName;
     private double price;

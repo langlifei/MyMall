@@ -10,5 +10,5 @@ public interface OrderService {
 
     public int getOrderId(String sn);
 
-    public boolean insertProductToOrderItem(Integer orderId,HttpServletRequest request);
+    public void insertProductToOrderItem(Integer orderId,HttpServletRequest request);
 }
