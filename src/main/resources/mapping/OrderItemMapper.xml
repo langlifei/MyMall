@@ -10,6 +10,15 @@
   <sql id="Base_Column_List" >
     ID, OID, PID, product_attr
   </sql>
+
+  <select id="insertItemBatch">
+    insert into order_item(OID,PID,product_attr)
+    values
+    <foreach collection="orderItems" item="item" index="index" separator=",">
+      (#{item.OID},#{item.PID},#{item.product_attr})
+    </foreach>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

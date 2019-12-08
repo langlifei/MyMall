@@ -1,5 +1,7 @@
 package com.znuel.mall.Entities;
 
+import com.znuel.mall.Vo.CheckOutContent;
+
 import java.util.Date;
 
 public class User {
@@ -26,6 +28,16 @@ public class User {
     private String city;
 
     private String job;
+
+    private CheckOutContent checkOutContent;
+
+    public CheckOutContent getCheckOutContent() {
+        return checkOutContent;
+    }
+
+    public void setCheckOutContent(CheckOutContent checkOutContent) {
+        this.checkOutContent = checkOutContent;
+    }
 
     public Integer getID() {
         return ID;

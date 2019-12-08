@@ -192,26 +192,6 @@
     <script src="js/main.js"></script>
 </body>
     <script>
-        <!-- 先检查telephone是否满足正确格式 -->
-        function checkTel(){
-            var tel = document.getElementById("number").value;
-            var flag = /^1[3456789]\d{9}$/.test(tel);
-            if(!flag){
-                document.getElementById("s_tel").innerHTML="Please input correct format";
-            }
-            else{
-                document.getElementById("s_tel").innerHTML="";
-            }
-
-            return flag;
-        }
-
-        <!-- 当输入错误格式之后再次输入时,错误提示应该消失 -->
-        function noError(){
-            document.getElementById("s_tel").innerHTML="";
-        }
-
-
         <!-- 验证两次密码是否输入一致 -->
         function checkPwd() {
             var pwd = document.getElementById("pwd").value;

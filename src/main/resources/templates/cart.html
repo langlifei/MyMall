@@ -202,31 +202,28 @@
             if(amount <= 0.00001){
                 alert("您没有选中任何商品,无需结账...")
             }else{
-                debugger;
-                var checkOutContent = new Object();
-                checkOutContent.amount = amount;
-                checkOutContent.items = new Object();
+                var checkOutContent = [];
+                //checkOutContent.amount = amount;
+                //checkOutContent.items = new Object();
                 //获取所有被选中的商品信息
                 $("#checkOut").find("input[type='checkbox']:checked").each(function(index,element){
-                    var item = new Object();
-                    debugger;
+                    var item = {};
                     item.pId = parseInt($(element).parent().next().next().find("a").eq(0).attr("value"));
                     item.id = parseInt($(element).parent().parent().find("a").eq(2).attr("value"));
                     item.productName = $(element).parent().next().next().find("a").eq(0).text();
                     item.price = $(element).parent().parent().find("span").eq(0).text().substring(1);
                     item.quantity = parseInt($(element).parent().parent().find("input").eq(1).val());
                     item.totalAmount = item.price*item.quantity;
-                    checkOutContent.items[index] = item;
+                    checkOutContent.push(item);
                 });
                 $.ajax({
                     type:"POST",
                     url:"/checkOut.do",
                     dataType:"json",
-                    contentType: "application/json",
-                    data:JSON.stringify(checkOutContent),
+                    data:"params="+JSON.stringify(checkOutContent),
                     success:function(data){
-                    debugger;
-                        alert(data.info);
+                        debugger;
+                        window.location.href="/checkout.html";
                     },
                     error:function(){
                        alert("错误!!!");

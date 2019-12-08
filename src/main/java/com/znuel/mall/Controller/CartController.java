@@ -27,7 +27,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-
     @RequestMapping(value = "/addProduct.do",method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> addProduct(@RequestBody Cart cart, HttpServletRequest request){
@@ -71,7 +70,14 @@ public class CartController {
 
     //提交购物车商品去结账
     @RequestMapping(value = "/checkOut.do",method = RequestMethod.POST)
-    public String toCheckOut(@RequestBody CheckOutContent checkOutContent, HttpServletRequest request){
-        return "checkOut";
+    @ResponseBody
+    public Map<String,String> toCheckOut(String params,HttpServletRequest request){
+        CheckOutContent checkOutContent = cartService.toCheckOut(params);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        user.setCheckOutContent(checkOutContent);
+        Map<String,String > map = new HashMap<>();
+        map.put("info","添加结账信息成功!");
+        return map;
     }
 }

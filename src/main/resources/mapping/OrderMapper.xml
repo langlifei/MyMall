@@ -13,6 +13,7 @@
     <result column="receiver_name" property="receiver_name" jdbcType="VARCHAR" />
     <result column="receiver_phone" property="receiver_phone" jdbcType="VARCHAR" />
     <result column="receiver_address" property="receiver_address" jdbcType="VARCHAR" />
+    <result column="notes" property="notes" jdbcType="VARCHAR"/>
   </resultMap>
   <sql id="Base_Column_List" >
     OID, create_time, username, total_amount, promotion_amount, status, delivery_company, 
@@ -74,6 +75,9 @@
       <if test="receiver_address != null" >
         receiver_address,
       </if>
+      <if test="notes != null" >
+        notes,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="OID != null" >
@@ -108,6 +112,9 @@
       </if>
       <if test="receiver_address != null" >
         #{receiver_address,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null" >
+        #{notes,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

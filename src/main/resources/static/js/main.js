@@ -596,3 +596,23 @@ function sendAjaxRequest(url,obj) {
         }
     });
 }
+
+//检查电话号码
+<!-- 先检查telephone是否满足正确格式 -->
+function checkTel(){
+    debugger;
+    var tel = document.getElementById("number").value;
+    var flag = /^1[3456789]\d{9}$/.test(tel);
+    if(!flag){
+        document.getElementById("s_tel").innerHTML="Please input correct format";
+    }
+    else{
+        document.getElementById("s_tel").innerHTML="";
+    }
+    return flag;
+}
+
+<!-- 当输入错误格式之后再次输入时,错误提示应该消失 -->
+function noError(){
+    document.getElementById("s_tel").innerHTML="";
+}

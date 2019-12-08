@@ -1,6 +1,9 @@
 package com.znuel.mall.Dao;
 
 import com.znuel.mall.Entities.OrderItem;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface OrderItemMapper {
     int deleteByPrimaryKey(Integer ID);
@@ -14,4 +17,6 @@ public interface OrderItemMapper {
     int updateByPrimaryKeySelective(OrderItem record);
 
     int updateByPrimaryKey(OrderItem record);
+
+    int insertItemBatch(@Param("orderItems")List<OrderItem> orderItems);
 }

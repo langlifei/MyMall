@@ -1,9 +1,14 @@
 package com.znuel.mall.Services.Imp;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.znuel.mall.Dao.CartMapper;
 import com.znuel.mall.Entities.Cart;
 import com.znuel.mall.Services.CartService;
 import com.znuel.mall.Vo.CartContent;
+import com.znuel.mall.Vo.CheckOutContent;
+import com.znuel.mall.Vo.CheckOutItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -89,5 +94,29 @@ public class CartServiceImp implements CartService {
     @Override
     public int getCount(Integer userId) {
         return cartMapper.getCount(userId);
+    }
+
+    @Override
+    public CheckOutContent toCheckOut(String jsonStr) {
+        List<CheckOutItem> checkOutItems = new ArrayList<>();//存储商品项;
+        JSONArray jsonArray = JSON.parseArray(jsonStr);
+        double amount = 0.0;
+        //解析json数据,将json数据转换为javaBean.
+        for(Object obj:jsonArray){
+            JSONObject jobj = (JSONObject) obj;
+            CheckOutItem item = new CheckOutItem();
+            item.setId(jobj.getInteger("id"));
+            item.setpId(jobj.getInteger("pId"));
+            item.setProductName(jobj.getString("productName"));
+            item.setPrice(jobj.getDouble("price"));
+            item.setQuantity(jobj.getInteger("quantity"));
+            item.setTotalAmount(jobj.getDouble("totalAmount"));
+            amount += item.getTotalAmount();
+            checkOutItems.add(item);
+        }
+        CheckOutContent checkOutContent= new CheckOutContent();
+        checkOutContent.setItems(checkOutItems);
+        checkOutContent.setAmount(amount);
+        return checkOutContent;
     }
 }

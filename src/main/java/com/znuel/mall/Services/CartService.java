@@ -2,6 +2,7 @@ package com.znuel.mall.Services;
 
 import com.znuel.mall.Entities.Cart;
 import com.znuel.mall.Vo.CartContent;
+import com.znuel.mall.Vo.CheckOutContent;
 
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface CartService {
 
     //统计用户购物车中商品个数
     public int getCount(Integer userId);
+
+    //将购物车被选中的商品送去结账...
+    public CheckOutContent toCheckOut(String jsonStr);
 }

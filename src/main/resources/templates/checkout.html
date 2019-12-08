@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -37,6 +37,11 @@
 
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <style type="text/css">
+        .error{
+            color:red;
+        }
+    </style>>
 </head>
 
 <body>
@@ -64,30 +69,36 @@
                         <div class="checkbox-form mb-sm-40">
                             <h3>Billing Details</h3>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="checkout-form-list mb-sm-30">
+                                <form id="checkOut" action="/placeOrder.do" method="post" class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="checkout-form-list mb-30">
                                         <label>Receiver Name<span class="required">*</span></label>
-                                        <input type="text" placeholder="" required/>
+                                        <input type="text" placeholder="" required="required" name="receiver_name"/>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Receiver Phone <span class="required">*</span></label>
-                                        <input type="text" placeholder=""  required/>
+                                        <input type="text" required="required" id="number" name="receiver_phone" onblur="checkTel()" onfocus="noError()"/>
+                                        <span id="s_tel" class="error"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Receiver Address<span class="required">*</span></label>
-                                        <input type="text" placeholder="" required/>
+                                        <input type="text" placeholder="" required name="receiver_address"/>
                                     </div>
                                 </div>
                                 <div class="order-notes col-md-12">
                                     <div class="checkout-form-list">
                                         <label>Order Notes</label>
-                                        <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        <textarea id="checkout-mess" name="notes" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                     </div>
                                 </div>
+                                <div class="wc-proceed-to-checkout col-md-12">
+                                    <button type="submit" class="btn btn-block btn-success" style="margin-top:20px">Place an Order</button>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -103,31 +114,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="cart_item">
+                                        <tr class="cart_item" th:if="${session.user.getCheckOutContent()!=null}" th:each="obj,objStr:${session.user.getCheckOutContent().getItems()}">
                                             <td class="product-name">
-                                                Vestibulum suscipit <span class="product-quantity"> × 1</span>
+                                                <span th:text="${obj.getProductName()}"></span><span class="product-quantity" th:text="${' × '+obj.getQuantity()}"></span>
                                             </td>
                                             <td class="product-total">
-                                                <span class="amount">£165.00</span>
-                                            </td>
-                                        </tr>
-                                        <tr class="cart_item">
-                                            <td class="product-name">
-                                                Vestibulum dictum magna <span class="product-quantity"> × 1</span>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="amount">£50.00</span>
+                                                <span class="amount" th:text="${'¥'+obj.getTotalAmount()}"></span>
                                             </td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
-                                        <tr class="cart-subtotal">
-                                            <th>Cart Subtotal</th>
-                                            <td><span class="amount">£215.00</span></td>
-                                        </tr>
                                         <tr class="order-total">
                                             <th>Order Total</th>
-                                            <td><span class=" total amount">£215.00</span>
+                                            <td><span class=" total amount" th:if="${session.user.getCheckOutContent()!=null}" th:text="${'¥'+session.user.getCheckOutContent().getAmount()}" ></span>
+                                                <span class=" total amount" th:if="${session.user.getCheckOutContent()==null}">'¥' 0.00</span>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -216,5 +216,4 @@
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
 </body>
-
 </html>
