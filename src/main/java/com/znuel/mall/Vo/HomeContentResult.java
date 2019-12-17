@@ -11,7 +11,7 @@ public class HomeContentResult {
 //    //推荐品牌
 //    private List<PmsBrand> brandList;
     //当前秒杀场次
-    private HomeFlashPromotion homeFlashPromotion;
+   // private HomeFlashPromotion homeFlashPromotion;
     //新品推荐
     private List<Product> newProductList;
     //人气推荐
@@ -24,14 +24,14 @@ public class HomeContentResult {
     public void setAdvertiseList(List<Advertise> advertiseList) {
         this.advertiseList = advertiseList;
     }
-
+/*
     public HomeFlashPromotion getHomeFlashPromotion() {
         return homeFlashPromotion;
     }
 
     public void setHomeFlashPromotion(HomeFlashPromotion homeFlashPromotion) {
         this.homeFlashPromotion = homeFlashPromotion;
-    }
+    }*/
 
     public List<Product> getNewProductList() {
         return newProductList;

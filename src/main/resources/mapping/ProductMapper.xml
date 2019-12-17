@@ -12,11 +12,23 @@
     <result column="promotion_end_time" property="promotion_end_time" jdbcType="TIMESTAMP" />
     <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     PID, PName, pic, price, promotion_price, CID, promotion_start_time, promotion_end_time, 
-    create_time, status
+    create_time, status,stock
   </sql>
+
+  <select id="getProducts" resultMap="BaseResultMap">
+    select * from product where 1 = 1
+    <if test="type > 0">
+      and CID = #{type,jdbcType=INTEGER}
+    </if>
+    <if test="keywords != null and keywords != ''">
+      and PName like #{keywords,jdbcType=VARCHAR}
+    </if>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -31,11 +43,11 @@
     insert into product (PID, PName, pic, 
       price, promotion_price, CID, 
       promotion_start_time, promotion_end_time, 
-      create_time, status)
+      create_time, status,stock)
     values (#{PID,jdbcType=INTEGER}, #{PName,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
       #{price,jdbcType=DOUBLE}, #{promotion_price,jdbcType=DOUBLE}, #{CID,jdbcType=INTEGER}, 
       #{promotion_start_time,jdbcType=TIMESTAMP}, #{promotion_end_time,jdbcType=TIMESTAMP}, 
-      #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+      #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER},#{stock,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Product" >
     insert into product
@@ -70,6 +82,9 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="stock != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="PID != null" >
@@ -101,6 +116,9 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>

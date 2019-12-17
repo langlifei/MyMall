@@ -616,3 +616,10 @@ function checkTel(){
 function noError(){
     document.getElementById("s_tel").innerHTML="";
 }
+
+function toSearch() {
+debugger
+    var keywords = $("input[name='search']").val();
+    var type = $("#categoriesList option:selected").val();
+    window.location.href="shop.html?pageNum=1&&type="+type+"&&keywords="+keywords;
+}

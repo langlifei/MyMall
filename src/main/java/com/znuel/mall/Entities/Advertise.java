@@ -17,6 +17,16 @@ public class Advertise {
 
     private String note;
 
+    private Integer pId;
+
+    public Integer getpId() {
+        return pId;
+    }
+
+    public void setpId(Integer pId) {
+        this.pId = pId;
+    }
+
     public Integer getAID() {
         return AID;
     }

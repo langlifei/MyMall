@@ -9,6 +9,10 @@ public class OrderItem {
 
     private String product_attr;
 
+    private Integer productNumber;
+
+    private Double productTotalAmount;
+
     public Integer getID() {
         return ID;
     }
@@ -39,5 +43,21 @@ public class OrderItem {
 
     public void setProduct_attr(String product_attr) {
         this.product_attr = product_attr == null ? null : product_attr.trim();
+    }
+
+    public Integer getProductNumber() {
+        return productNumber;
+    }
+
+    public void setProductNumber(Integer productNumber) {
+        this.productNumber = productNumber;
+    }
+
+    public Double getProductTotalAmount() {
+        return productTotalAmount;
+    }
+
+    public void setProductTotalAmount(Double productTotalAmount) {
+        this.productTotalAmount = productTotalAmount;
     }
 }

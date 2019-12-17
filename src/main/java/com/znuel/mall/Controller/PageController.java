@@ -52,7 +52,7 @@ public class PageController {
     }
     @RequestMapping("/shop.html")
     public String shop(){
-        return "shop";
+        return "forward:/queryAllProducts.do?pageNum=1";
     }
     @RequestMapping("/wishlist.html")
     public String wishlist(){

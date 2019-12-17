@@ -2,7 +2,9 @@ package com.znuel.mall.Entities;
 
 import com.znuel.mall.Vo.CheckOutContent;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private Integer wishCount;
@@ -30,6 +32,8 @@ public class User {
     private String job;
 
     private CheckOutContent checkOutContent;
+
+    private List<Product> compareList;
 
     public CheckOutContent getCheckOutContent() {
         return checkOutContent;
@@ -135,5 +139,20 @@ public class User {
     public void setCartCount(Integer cartCount) {
         if(cartCount >= 0)
             this.cartCount = cartCount;
+    }
+
+    public List<Product> getCompareList() {
+        if (this.compareList==null){
+            //初试化防止页面报错
+            this.compareList = new ArrayList<>();
+            this.compareList.add(null);
+            this.compareList.add(null);
+            this.compareList.add(null);
+        }
+        return compareList;
+    }
+
+    public void setCompareList(List<Product> compareList) {
+        this.compareList = compareList;
     }
 }

@@ -60,6 +60,8 @@ public class OrderServiceImp implements OrderService {
             oItem.setOID(orderId);
             oItem.setPID(item.getpId());
             oItem.setProduct_attr("");
+            oItem.setProductNumber(item.getQuantity());
+            oItem.setProductTotalAmount(item.getTotalAmount());
             oItems.add(oItem);
         }
         orderItemMapper.insertItemBatch(oItems);

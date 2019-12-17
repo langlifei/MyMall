@@ -24,6 +24,8 @@ public class Product {
 
     private Integer status;
 
+    private Integer stock;
+
     DecimalFormat df = new DecimalFormat( "0.00 ");
 
     public Integer getPID() {
@@ -106,5 +108,13 @@ public class Product {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 }

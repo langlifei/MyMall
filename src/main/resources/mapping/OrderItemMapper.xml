@@ -6,16 +6,17 @@
     <result column="OID" property="OID" jdbcType="INTEGER" />
     <result column="PID" property="PID" jdbcType="INTEGER" />
     <result column="product_attr" property="product_attr" jdbcType="VARCHAR" />
+    <result column="productNumber" property="productNumber" jdbcType="INTEGER" />
+    <result column="productTotalAmount" property="productTotalAmount" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, OID, PID, product_attr
+    ID, OID, PID, product_attr,productNumber,productTotalAmount
   </sql>
-
   <select id="insertItemBatch">
-    insert into order_item(OID,PID,product_attr)
+    insert into order_item(OID,PID,product_attr,productNumber,productTotalAmount)
     values
     <foreach collection="orderItems" item="item" index="index" separator=",">
-      (#{item.OID},#{item.PID},#{item.product_attr})
+      (#{item.OID},#{item.PID},#{item.product_attr},#{item.productNumber},#{item.productTotalAmount})
     </foreach>
   </select>
 
@@ -31,9 +32,11 @@
   </delete>
   <insert id="insert" parameterType="com.znuel.mall.Entities.OrderItem" >
     insert into order_item (ID, OID, PID, 
-      product_attr)
+      product_attr,productNumber,productTotalAmount)
     values (#{ID,jdbcType=INTEGER}, #{OID,jdbcType=INTEGER}, #{PID,jdbcType=INTEGER}, 
-      #{product_attr,jdbcType=VARCHAR})
+      #{product_attr,jdbcType=VARCHAR},
+      #{productNumber,jdbcType=INTEGER},
+      #{productTotalAmount,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.znuel.mall.Entities.OrderItem" >
     insert into order_item
@@ -50,6 +53,12 @@
       <if test="product_attr != null" >
         product_attr,
       </if>
+      <if test="productNumber != null" >
+        productNumber,
+      </if>
+      <if test="productTotalAmount != null" >
+        productTotalAmount,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="ID != null" >
@@ -63,6 +72,12 @@
       </if>
       <if test="product_attr != null" >
         #{product_attr,jdbcType=VARCHAR},
+      </if>
+      <if test="productNumber != null" >
+        #{productNumber,jdbcType=INTEGER},
+      </if>
+      <if test="productTotalAmount != null" >
+        #{productTotalAmount,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
