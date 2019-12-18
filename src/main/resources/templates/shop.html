@@ -93,7 +93,7 @@
                                                             <a title="Add to Cart" href="javascript:void(0);" onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To Cart</a>
                                                         </div>
                                                         <div class="actions-secondary">
-                                                            <a href="compare.html" title="Compare" ><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
+                                                            <a href="javascript:void(0);" th:name="${obj.getPID()}" onclick="addToCompare(this)" title="Compare" ><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
                                                             <a onclick="addToWishList(this)" title="WishList" th:name="${obj.getPID()}" href="javascript:void(0);"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
                                                         </div>
                                                     </div>
@@ -106,45 +106,6 @@
                                     </div>
                                     <!-- Row End -->
                                 </div>
-                                <!-- #grid view End -->
-                                <div id="list-view" class="tab-pane fade">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product"> 
-                                        <div class="row">        
-                                            <!-- Product Image Start -->
-                                            <div class="col-lg-4 col-md-5 col-sm-12">
-                                                <div class="pro-img">
-                                                    <a href="product.html">
-                                                        <img class="primary-img" src="img/products/23.jpg" alt="single-product">
-                                                        <img class="secondary-img" src="img/products/24.jpg" alt="single-product">
-                                                    </a>
-                                                    <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                                </div>
-                                            </div>
-                                            <!-- Product Image End -->
-                                            <!-- Product Content Start -->
-                                            <div class="col-lg-8 col-md-7 col-sm-12">
-                                                <div class="pro-content hot-product2">
-                                                    <h4><a href="product.html">Faded Short Sleeves T-shirt</a></h4>
-                                                    <p><span class="price">$15.19</span><del class="prev-price">$16.50</del></p>
-                                                    <p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!Faded short sleeves t-shirt with high neckline. Soft and stretchy material.</p>
-                                                    <div class="pro-actions">
-                                                        <div class="actions-primary">
-                                                            <a href="cart.html" title="" data-original-title="Add to Cart"> + Add To Cart</a>
-                                                        </div>
-                                                        <div class="actions-secondary">
-                                                            <a href="compare.html" title="" data-original-title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                            <a href="wishlist.html" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Product Content End -->
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
-                                </div>
-                                <!-- #list view End -->
                                 <div class="pro-pagination">
                                     <ul class="blog-pagination">
                                         <li th:if="${pageInfo.getPageNum()!=1}"><a th:href="${'/queryAllProducts.do?pageNum='+pageInfo.getPrePage()+'&&type='+type+'&&keywords='+keywords}"><i class="fa fa-angle-left"></i></a></li>
@@ -199,6 +160,7 @@
     <script src="js/plugins.js"></script>
     <!-- Main activaion js -->
     <script src="js/main.js"></script>
+    <script src="js/my.js"></script>
 </body>
     <script th:inline="javascript">
         var keywords = [[${keywords}]];

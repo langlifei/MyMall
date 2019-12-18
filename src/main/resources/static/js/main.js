@@ -623,3 +623,5 @@ debugger
     var type = $("#categoriesList option:selected").val();
     window.location.href="shop.html?pageNum=1&&type="+type+"&&keywords="+keywords;
 }
+//将网页底部的a标签全部失效.
+$("#myFooter").find("a").attr("href","javascript:void(0);");

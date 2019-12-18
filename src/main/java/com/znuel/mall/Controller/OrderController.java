@@ -4,12 +4,16 @@ import com.znuel.mall.Entities.Order;
 import com.znuel.mall.Entities.User;
 import com.znuel.mall.Services.CartService;
 import com.znuel.mall.Services.OrderService;
+import com.znuel.mall.Vo.OrderContent;
+import com.znuel.mall.Vo.OrderContentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class OrderController {
@@ -31,9 +35,19 @@ public class OrderController {
                 cartService.removeProductAfterPO(request);
                 //更新购物车中商品的个数
                 user.setCartCount(cartService.getCount(user.getID()));
-                return "redirect:/cart.html";
+                return "redirect:/getOrders.do";
             }
         }
         return "forward:/content.do";
     }
+
+    @RequestMapping(value = "/getOrders.do",method = RequestMethod.GET)
+    public String getOrders(HttpServletRequest request, Model model){
+        HttpSession session = request.getSession();
+        User user = (User)session.getAttribute("user");
+        OrderContentList orderContentList = orderService.getOrderContent(user.getUsername());
+        model.addAttribute("orderContentList",orderContentList);
+        return "order";
+    }
+
 }

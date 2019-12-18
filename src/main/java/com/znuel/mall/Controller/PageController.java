@@ -62,4 +62,9 @@ public class PageController {
     public String cart(){
         return "forward:/getCart.do";
     }
+
+    @RequestMapping("/order.html")
+    public String order(){
+        return "forward:/getOrders.do";
+    }
 }

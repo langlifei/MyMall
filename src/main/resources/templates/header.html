@@ -88,7 +88,7 @@
                                     <li><a href="/wishlist.html"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (<span th:if="${session.user} eq null">0</span><span id="wishCount" th:text="${session.user.getWishCount()}" th:if="${session.user} ne null"></span>)</span></span></a>
                                     </li>
                                     <li>
-                                        <a href="login.html">
+                                        <a href="javascript:void(0);" id = "loginFlag">
                                             <i class="lnr lnr-user"></i>
                                             <span class="my-cart">
                                                 <span style="font-size:22px;font-family: 'Lato', sans-serif;padding-top: 11px" th:text="${session.user.getUsername()}" th:if="${session.user} ne null">
@@ -121,8 +121,9 @@
                                     </li>
                                     <li><a href="shop.html">shop</a></li>
                                     <li><a href="compare.html">compare</a></li>
+                                    <li><a href="wishlist.html">Wish List</a></li>
+                                    <li><a href="order.html">My Orders</a></li>
                                     <li><a href="about.html">About us</a></li>
-                                    <li><a href="contact.html">contact us</a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-menu d-block d-lg-none">
