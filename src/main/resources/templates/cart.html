@@ -79,7 +79,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id = "checkOut">
-                                        <tr th:each="obj,objStar:${cartContents}" th:if="${objStar.index < 5}">
+                                        <tr th:if="${cartContents.size()!=0}" th:each="obj,objStar:${cartContents}">
                                             <td class="product-remove">
                                                 <input type="checkbox" onclick="isSelected(this)" class="form-check-input" style="margin-top: -20px;margin-left: -26px;"/>
                                             </td>

@@ -57,7 +57,7 @@
         </div>
         <!-- Breadcrumb End -->       
          <!-- Compare Page Start -->
-        <div class="compare-product ptb-100 ptb-sm-60">
+        <div class="compare-product ptb-100 ptb-sm-60" style="padding: 25px 0;">
             <div class="container">
                 <div class="table-responsive-sm">
                     <table class="table text-center compare-content">
@@ -124,9 +124,9 @@
                             </tr>
                             <tr>
                                 <td class="product-title">Delete</td>
-                                <td class="product-description"><a href="/removeFromCompare.do?index=0"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product-description"><a href="/removeFromCompare.do?index=1"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product-description"><a href="/removeFromCompare.do?index=2"><i class="fa fa-trash-o"></i></a></td>
+                                <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(0)"><i class="fa fa-trash-o"></i></a></td>
+                                <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(1)"><i class="fa fa-trash-o"></i></a></td>
+                                <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(2)"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -172,6 +172,15 @@
                 alert("不允许提交空商品去购物车!")
             }else{
                 window.location.href="/addToCartFromC.do?index="+number;
+            }
+        }
+
+        function deleteCompare(number) {
+            var list = [[${session.user.getCompareList()}]];
+            if(list[number] == null){
+                alert("不允许删除空商品!")
+            }else{
+                window.location.href="/removeFromCompare.do?index="+number;
             }
         }
 </script>

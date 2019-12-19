@@ -1,6 +1,9 @@
 package com.znuel.mall.Controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.znuel.mall.Entities.Cart;
+import com.znuel.mall.Entities.Product;
 import com.znuel.mall.Entities.User;
 import com.znuel.mall.Services.CartService;
 import com.znuel.mall.Vo.CartContent;
@@ -9,10 +12,7 @@ import com.znuel.mall.Vo.CheckOutItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.model.IModel;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,10 +1,11 @@
 package com.znuel.mall.Services;
 
+import com.github.pagehelper.PageInfo;
 import com.znuel.mall.Entities.Order;
 import com.znuel.mall.Vo.OrderContent;
-import com.znuel.mall.Vo.OrderContentList;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public interface OrderService {
 
@@ -14,5 +15,5 @@ public interface OrderService {
 
     public void insertProductToOrderItem(Integer orderId,HttpServletRequest request);
 
-    public OrderContentList getOrderContent(String username);
+    public PageInfo<OrderContent> getOrderContent(Integer pageNum , String username);
 }

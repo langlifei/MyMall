@@ -591,8 +591,7 @@ function sendAjaxRequest(url,obj) {
             alert(data.info);
         },
         error:function(){
-            alert("您还没登录,请先登录...");
-            window.location.href="/login.html";
+            window.location.href="/404.html";
         }
     });
 }

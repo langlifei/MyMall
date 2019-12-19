@@ -177,7 +177,7 @@
             var cart  = new Object();
             cart.PID = parseInt(elem.name);
             cart.quantity = parseInt($(elem).parent().parent().prev().find("input").eq(0).val());
-            cart.price = $(elem).parent().parent().parent().prev().prev().prev().prev().find("span").eq(1).text().substring(1);
+            cart.price = $(elem).parent().parent().parent().prev().prev().find("span").eq(1).text().substring(1);
             cart.price = parseFloat(cart.price);
             cart.product_attr=cart.PID+"-";
             debugger

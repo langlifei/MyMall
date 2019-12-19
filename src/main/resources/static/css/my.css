@@ -336,3 +336,14 @@
     color: #E62E04;
     float: none;
 }
+
+.user-info h6 a :hover{
+	color: firebrick;
+	display: block;
+	font-size: 14px;
+	line-height: 20px;
+	overflow: hidden;
+	overflow-wrap: break-word;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

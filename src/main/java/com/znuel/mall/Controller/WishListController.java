@@ -1,5 +1,7 @@
 package com.znuel.mall.Controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.znuel.mall.Entities.Product;
 import com.znuel.mall.Entities.User;
 import com.znuel.mall.Entities.WishList;
@@ -8,10 +10,7 @@ import com.znuel.mall.Vo.WishListContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +23,8 @@ public class WishListController {
 
     @Autowired
     private WishListServer wishListServer;
+
+    private final static int pageSize = 5;
 
     @RequestMapping(value = "/addToWishList.do",method = RequestMethod.POST)
     @ResponseBody
@@ -44,11 +45,13 @@ public class WishListController {
     }
 
     @RequestMapping(value = "/getWishList.do",method = RequestMethod.GET)
-    public String getWishList(HttpServletRequest request,Model model){
+    public String getWishList(@RequestParam(value = "pageNum",defaultValue = "0") Integer pageNum,HttpServletRequest request,Model model){
         HttpSession session =  request.getSession();
         User user = (User) session.getAttribute("user");
+        PageHelper.startPage(pageNum,pageSize);
         List<WishListContent> products =  wishListServer.getWishList(user.getID());
-        model.addAttribute("products",products);
+        PageInfo<WishListContent> pageInfo = new PageInfo<>(products);
+        model.addAttribute("pageInfo",pageInfo);
         return "wishlist";
     }
 

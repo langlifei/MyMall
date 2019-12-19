@@ -26,7 +26,7 @@ public class ShopController {
                                  @RequestParam(name = "type",defaultValue = "0") Integer type ,
                                  @RequestParam(name = "keywords",defaultValue = "")String keywords,
                                  Model model){
-        PageHelper.startPage(pageNum,16);
+        PageHelper.startPage(pageNum,pageSize);
         List<Product> products = shopService.getProducts(type,keywords);
         PageInfo<Product> pageInfo = new PageInfo<>(products);
         model.addAttribute("pageInfo",pageInfo);

@@ -1,5 +1,8 @@
 package com.znuel.mall.Services.Imp;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.znuel.mall.Dao.OrderItemMapper;
 import com.znuel.mall.Dao.OrderMapper;
 import com.znuel.mall.Entities.Order;
@@ -10,7 +13,6 @@ import com.znuel.mall.Services.OrderService;
 import com.znuel.mall.Vo.CheckOutContent;
 import com.znuel.mall.Vo.CheckOutItem;
 import com.znuel.mall.Vo.OrderContent;
-import com.znuel.mall.Vo.OrderContentList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,9 +73,22 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public OrderContentList getOrderContent(String username) {
+    public PageInfo<OrderContent> getOrderContent(Integer pageNum,String username) {
         //按时间倒序获取该用户的所有订单
         List<Order> orders = orderMapper.getOrders(username);
+        PageInfo<Order> pageInfo = new PageInfo<>(orders);
+        PageInfo<OrderContent> pageInfo1 = new PageInfo<>(getOrderContentList(orders));
+        //将订单数目的分页数据传递给综合订单分页对象
+        pageInfo1.setTotal(pageInfo.getTotal());
+        pageInfo1.setPageNum(pageInfo.getPageNum());
+        pageInfo1.setNextPage(pageInfo.getNextPage());
+        pageInfo1.setPrePage(pageInfo.getPrePage());
+        pageInfo1.setPageSize(pageInfo.getPageSize());
+        pageInfo1.setPages(pageInfo.getPages());
+        return pageInfo1;
+    }
+
+    public List<OrderContent> getOrderContentList(List<Order> orders){
         List<OrderContent> orderContentList = new ArrayList<>();
         //根据每个订单的编号搜索所有购买商品
         for(int i = 0 ; i < orders.size();i++){
@@ -83,8 +98,6 @@ public class OrderServiceImp implements OrderService {
             orderContent.setProducts(products);
             orderContentList.add(orderContent);
         }
-        OrderContentList orderContentList1 = new OrderContentList();
-        orderContentList1.setOrderContentList(orderContentList);
-        return orderContentList1;
+        return orderContentList;
     }
 }

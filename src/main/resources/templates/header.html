@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Responsive css -->
     <link rel="stylesheet" href="css/responsive.css">
-
+    <link rel="stylesheet" href="css/my.css">
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
@@ -92,8 +92,17 @@
                                             <i class="lnr lnr-user"></i>
                                             <span class="my-cart">
                                                 <span style="font-size:22px;font-family: 'Lato', sans-serif;padding-top: 11px" th:text="${session.user.getUsername()}" th:if="${session.user} ne null">
+
                                                 </span>
-                                                <span th:if="${session.user} eq null">Sign in Or </br> Join My Site</span>
+                                                <span th:if="${session.user} eq null">Sign in Or </br> Join My Site
+                                                <ul class="ht-dropdown user-info-width">
+                                                        <li>
+                                                            <div class="user-info">
+                                                                <h6><a href="product.html">Sign out</a></h6>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </span>
                                             </span>
                                         </a>
                                     </li>

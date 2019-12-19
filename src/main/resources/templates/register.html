@@ -79,7 +79,7 @@
                 <!-- Row start -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <form class="form-register" action="/register.do" method="post">
+                        <form class="form-register" action="/register.do" method="post" onsubmit="return toValid()">
                             <fieldset>
                                 <legend>Your Personal Details</legend>
                                 <div class="form-group d-md-flex align-items-md-center">
@@ -135,13 +135,13 @@
                                 <div class="form-group d-md-flex align-items-md-center">
                                     <label class="control-label col-md-2" for="pwd"><span class="require">*</span>Password:</label>
                                     <div class="col-md-10">
-                                        <input type="password" name = "password" class="form-control" id="pwd" placeholder="Password">
+                                        <input type="password" name = "password" class="form-control" id="pwd" placeholder="Password" required>
                                     </div>
                                 </div>
                                 <div class="form-group d-md-flex align-items-md-center">
                                     <label class="control-label col-md-2" for="pwd-confirm"><span class="require">*</span>Confirm Password</label>
                                     <div class="col-md-10">
-                                        <input type="password" class="form-control" id="pwd-confirm" placeholder="Confirm password" onblur="checkPwd()" onfocus="noError2()">
+                                        <input type="password" class="form-control" id="pwd-confirm" placeholder="Confirm password" onblur="checkPwd()" onfocus="noError2()" required>
                                         <span id="s_pwd" class="error"></span>
                                     </div>
                                 </div>

@@ -126,7 +126,7 @@
                                     <tfoot>
                                         <tr class="order-total">
                                             <th>Order Total</th>
-                                            <td><span class=" total amount" th:if="${session.user.getCheckOutContent()!=null}" th:text="${'¥'+session.user.getCheckOutContent().getAmount()}" ></span>
+                                            <td><span class=" total amount" th:if="${session.user.getCheckOutContent()!=null}" th:text="${'¥'+#numbers.formatDecimal(session.user.getCheckOutContent().getAmount(),0,2)}" ></span>
                                                 <span class=" total amount" th:if="${session.user.getCheckOutContent()==null}">'¥' 0.00</span>
                                             </td>
                                         </tr>

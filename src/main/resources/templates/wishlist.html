@@ -58,7 +58,7 @@
         </div>
         <!-- Breadcrumb End -->
         <!-- Wish List Start -->
-        <div class="cart-main-area wish-list ptb-100 ptb-sm-60">
+        <div class="cart-main-area wish-list ptb-100 ptb-sm-60" style="padding: 25px 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -78,10 +78,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="obj,objStar:${products}">
+                                        <tr th:each="obj,objStar:${pageInfo.getList()}">
                                             <td class="product-remove"> <a th:href="${'/delProductFromWish.do?id='+obj.getwId()}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                             <td class="product-thumbnail">
-                                                <a href="#"><img th:src="${obj.getPic()}" alt="cart-image" /></a>
+                                                <a th:href="${'product.do?id='+obj.getpId()}"><img th:src="${obj.getPic()}" alt="cart-image" /></a>
                                             </td>
                                             <td class="product-name"><a th:href="${'product.do?id='+obj.getpId()}" th:text="${obj.getProductName()}"></a></td>
                                             <td class="product-price"><span class="amount" th:text="${'¥'+obj.getPrice()}"></span></td>
@@ -94,6 +94,18 @@
                             <!-- Table Content Start -->
                         </form>
                         <!-- Form End -->
+                        <div class="pro-pagination" style="margin-top: 15px;">
+                            <ul class="blog-pagination">
+                                <li th:if="${pageInfo.getPageNum()!=1}"><a th:href="${'/getWishList.do?pageNum='+pageInfo.getPrePage()}"><i class="fa fa-angle-left"></i></a></li>
+                                <li class="active"><a href="#" th:text="${pageInfo.getPageNum()}"></a></li>
+                                <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getWishList.do?pageNum='+pageInfo.getNextPage()}" th:text="${pageInfo.getNextPage()}"></a></li>
+                                <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+2}" th:href="${'/getWishList.do?pageNum='+(pageInfo.getNextPage()+1)}" th:text="${pageInfo.getNextPage()+1}"></a></li>
+                                <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getWishList.do?pageNum='+pageInfo.getNextPage()}"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                            <div class="product-pagination">
+                                <span class="grid-item-list" th:text="${'Showing 1 to '+ pageInfo.getPageSize()+' of '+pageInfo.getTotal() +'  ('+pageInfo.getPages()+' Pages)'}">  </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Row End -->
