@@ -88,23 +88,16 @@
                                     <li><a href="/wishlist.html"><i class="lnr lnr-heart"></i><span class="my-cart"><span>Wish</span><span>list (<span th:if="${session.user} eq null">0</span><span id="wishCount" th:text="${session.user.getWishCount()}" th:if="${session.user} ne null"></span>)</span></span></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0);" id = "loginFlag">
-                                            <i class="lnr lnr-user"></i>
-                                            <span class="my-cart">
-                                                <span style="font-size:22px;font-family: 'Lato', sans-serif;padding-top: 11px" th:text="${session.user.getUsername()}" th:if="${session.user} ne null">
-
-                                                </span>
-                                                <span th:if="${session.user} eq null">Sign in Or </br> Join My Site
-                                                <ul class="ht-dropdown user-info-width">
-                                                        <li>
-                                                            <div class="user-info">
-                                                                <h6><a href="product.html">Sign out</a></h6>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </span>
-                                            </span>
-                                        </a>
+                                        <div class="dropdown">
+                                            <i class="lnr lnr-user" th:if="${session.user} ne null"></i>
+                                                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" style="font-size:22px;font-family: 'Lato', sans-serif;padding-top: 11px" th:text="${session.user.getUsername()}" th:if="${session.user} ne null">
+                                                    </a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="/logout.do">logout</a>
+                                                    </div>
+                                                <a href="login.html" th:if="${session.user} eq null">Sign in Or </br> Join My Site
+                                                </a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>

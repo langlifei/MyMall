@@ -83,4 +83,11 @@ public class UserController {
            map.put("flag","0");
         return map;
     }
+
+    //退出登录
+    @RequestMapping(value = "/logout.do",method = RequestMethod.GET)
+    public String logOut(HttpServletRequest request){
+        request.getSession().removeAttribute("user");
+        return "login";
+    }
 }
