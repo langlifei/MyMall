@@ -106,7 +106,13 @@
 											</td>
 											<td th:attr="data-content=${obj.getOrder().getReceiver_address()+'--'+obj.getOrder().getReceiver_phone()}" class="my-consignee" th:text="${obj.getOrder().getReceiver_name()}">张三</td>
                                             <td><span th:text="'¥'+${obj.getOrder().getPromotion_amount()}">￥200</span></td>
-											<td>已下单</td>
+                                            <!--订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单-->
+                                            <td th:if="${obj.getOrder().getOrder_status() == 0}">待付款</td>
+                                            <td th:if="${obj.getOrder().getOrder_status() == 1}">待发货</td>
+                                            <td th:if="${obj.getOrder().getOrder_status() == 2}">已发货</td>
+                                            <td th:if="${obj.getOrder().getOrder_status() == 3}">已完成</td>
+                                            <td th:if="${obj.getOrder().getOrder_status() == 4}">已关闭</td>
+                                            <td th:if="${obj.getOrder().getOrder_status() == 5}">无效订单</td>
                                         </tr>
                                     </tbody>
                                 </table>
