@@ -99,15 +99,19 @@
                                 <td class="product-description" th:if="${session.user.getCompareList().get(2)!=null}" th:text="${'¥'+session.user.getCompareList().get(2).getPromotion_price()}">$235</td>
                             </tr>
                             <tr>
-                                <td class="product-title">Stock</td>
+                                <!-- 商品状态 0表示下架 , 1 表示正常, 2 表示缺库存-->
+                                <td class="product-title" id="stockStatus">Stock</td>
                                 <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 1}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 0}">Stock Out</td>
+                                <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 0}">Sold Out</td>
+                                <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 2}">Stock Out</td>
                                 <td class="product-description" th:if="${session.user.getCompareList().get(0) ==null}">In Stock</td>
                                 <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 1}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 0}">Stock Out</td>
+                                <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 0}">Sold Out</td>
+                                <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 2}">Stock Out</td>
                                 <td class="product-description" th:if="${session.user.getCompareList().get(1) ==null}">In Stock</td>
                                 <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 1}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 0}">Stock Out</td>
+                                <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 0}">Sold Out</td>
+                                <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 2}">Stock Out</td>
                                 <td class="product-description" th:if="${session.user.getCompareList().get(2) ==null}">In Stock</td>
                             </tr>
                             <tr>
@@ -170,8 +174,13 @@
             var list = [[${session.user.getCompareList()}]];
             if(list[number] == null){
                 alert("不允许提交空商品去购物车!")
-            }else{
-                window.location.href="/addToCartFromC.do?index="+number;
+            } else{
+                var status = list[number].status;
+                if(status == 1){
+                    window.location.href="/addToCartFromC.do?index="+number;
+                }else{
+                    alert("商品缺货或下架,无法加入购物车!");
+                }
             }
         }
 

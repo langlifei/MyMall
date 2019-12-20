@@ -122,7 +122,11 @@
                                     </div>
                                 </div>
                                 <div class="pro-ref mt-20">
-                                    <p><span class="in-stock"><i class="ion-checkmark-round"></i> IN STOCK</span></p>
+                                    <p><span class="in-stock" id="stockStatus"><i class="ion-checkmark-round"></i>
+                                        <b th:text="${productDetail.getStatus() == 0}" th:value="${productDetail.getStatus()}">Sold Out</b>
+                                        <b th:text="${productDetail.getStatus() == 1}" th:value="${productDetail.getStatus()}">In Stock</b>
+                                        <b th:text="${productDetail.getStatus() == 2}" th:value="${productDetail.getStatus()}">Stock Out</b>
+                                    </span></p>
                                 </div>
                                 <div class="socila-sharing mt-25">
                                     <ul class="d-flex">
@@ -181,8 +185,12 @@
             cart.price = parseFloat(cart.price);
             cart.product_attr=cart.PID+"-";
             debugger
-            sendAjaxRequest("/addProduct.do",cart);
-            window.location.href="/getCart.do";
+            if($("#stockStatus").find("b").eq(0).attr("value")==1){
+                sendAjaxRequest("/addProduct.do",cart);
+                window.location.href="/getCart.do";
+            }else{
+                alert("商品缺货或下架,无法加入购物车!")
+            }
         }
 
         function addToWishList(elem) {

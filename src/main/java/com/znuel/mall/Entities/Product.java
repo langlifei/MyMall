@@ -61,8 +61,14 @@ public class Product {
             this.price = new Double(df.format(price));
     }
 
-    public Double getPromotion_price() {
-        return promotion_price;
+    public Double getPromotion_price()
+    {
+        Date date = new Date();
+        if(this.promotion_end_time!=null&&this.promotion_end_time.getTime()>=date.getTime()){
+            return promotion_price;
+        }else{
+            return this.price;
+        }
     }
 
     public void setPromotion_price(Double promotion_price) {

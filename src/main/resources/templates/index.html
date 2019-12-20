@@ -162,8 +162,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Product Content End -->
-                                        <span class="sticker-new">new</span>
+                                        <div th:switch="${obj.getStatus()}" id="stockStatus">
+                                            <span class="sticker-new" th:case="0" th:value="${obj.getStatus()}">Sold Out</span>
+                                            <span class="sticker-new" th:case="1" th:value="${obj.getStatus()}">new</span>
+                                            <span class="sticker-new" th:case="2" th:value="${obj.getStatus()}">Stock Out</span>
+                                        </div>
                                     </div>
                                     <!-- Single Product End -->
                                      <!-- Single Product Start -->
@@ -195,7 +198,11 @@
                                             </div>
                                         </div>
                                         <!-- Product Content End -->
-                                        <span class="sticker-new">new</span>
+                                        <div th:switch="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}" id="stockStatus">
+                                            <span class="sticker-new" th:case="0" th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">Sold Out</span>
+                                            <span class="sticker-new" th:case="1" th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">new</span>
+                                            <span class="sticker-new" th:case="2" th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">Stock Out</span>
+                                        </div>
                                     </div>
                                     <!-- Single Product End -->
                                 </div>

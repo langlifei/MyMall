@@ -85,6 +85,7 @@ public class OrderServiceImp implements OrderService {
         pageInfo1.setPrePage(pageInfo.getPrePage());
         pageInfo1.setPageSize(pageInfo.getPageSize());
         pageInfo1.setPages(pageInfo.getPages());
+        pageInfo1.setEndRow(pageInfo.getEndRow());
         return pageInfo1;
     }
 

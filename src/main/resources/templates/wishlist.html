@@ -85,7 +85,13 @@
                                             </td>
                                             <td class="product-name"><a th:href="${'product.do?id='+obj.getpId()}" th:text="${obj.getProductName()}"></a></td>
                                             <td class="product-price"><span class="amount" th:text="${'¥'+obj.getPrice()}"></span></td>
-                                            <td class="product-stock-status"><span th:if="${obj.getStatus() == 1}">in stock</span><span th:if="${obj.getStatus() == 0}">sold out</span></td>
+                                            <td class="product-stock-status">
+                                                <div th:switch="${obj.getStatus()}">
+                                                    <span th:case="0" th:value="${obj.getStatus()}">Sold Out</span>
+                                                    <span th:case="1" th:value="${obj.getStatus()}">In Stock</span>
+                                                    <span th:case="2" th:value="${obj.getStatus()}">Stock Out</span>
+                                                </div>
+                                            </td>
                                             <td class="product-add-to-cart"><a href="javascript:void(0);" onclick="addToCart(this)" th:name="${obj.getpId()}">add to cart</a></td>
                                         </tr>
                                     </tbody>
@@ -96,11 +102,13 @@
                         <!-- Form End -->
                         <div class="pro-pagination" style="margin-top: 15px;">
                             <ul class="blog-pagination">
+                                <li><a th:if="${pageInfo.getPageNum()>3}" th:href="${'/getWishList.do?pageNum=1'}">首页</a></li>
                                 <li th:if="${pageInfo.getPageNum()!=1}"><a th:href="${'/getWishList.do?pageNum='+pageInfo.getPrePage()}"><i class="fa fa-angle-left"></i></a></li>
                                 <li class="active"><a href="#" th:text="${pageInfo.getPageNum()}"></a></li>
                                 <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getWishList.do?pageNum='+pageInfo.getNextPage()}" th:text="${pageInfo.getNextPage()}"></a></li>
                                 <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+2}" th:href="${'/getWishList.do?pageNum='+(pageInfo.getNextPage()+1)}" th:text="${pageInfo.getNextPage()+1}"></a></li>
                                 <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getWishList.do?pageNum='+pageInfo.getNextPage()}"><i class="fa fa-angle-right"></i></a></li>
+                                <li><a th:if="${pageInfo.getPageNum()>3}" th:href="${'/getWishList.do?pageNum='+pageInfo.getEndRow()}">尾页</a></li>
                             </ul>
                             <div class="product-pagination">
                                 <span class="grid-item-list" th:text="${'Showing 1 to '+ pageInfo.getPageSize()+' of '+pageInfo.getTotal() +'  ('+pageInfo.getPages()+' Pages)'}">  </span>
@@ -150,8 +158,14 @@
             cart.price = $(elem).parent().prev().prev().find("span").eq(0).text().substring(1);
             cart.price = parseFloat(cart.price);
             cart.product_attr=cart.PID+"-";
-            sendAjaxRequest("/addProduct.do",cart);
-            window.location.href="/getCart.do";
+            debugger
+            var status = $(elem).parent().prev().find("span").eq(0).attr("value");
+            if(status == 1){
+                sendAjaxRequest("/addProduct.do",cart);
+                window.location.href="/getCart.do";
+            }else{
+                alert("商品缺货或下架,无法加入购物车!")
+            }
         }
 
     </script>

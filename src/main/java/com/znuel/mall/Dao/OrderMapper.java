@@ -26,6 +26,6 @@ public interface OrderMapper {
     List<Order> getOrders(String username);
 
     //将商品数量存放在stock中,将总价存放在price中
-    @Select("select p.PID,p.PName,p.pic,oi.productTotalAmount as price,p.promotion_price ,oi.productNumber as stock from order_item oi left join product p on oi.PID = p.PID where OID = #{orderId}")
+    @Select("select p.PID,p.PName,p.pic,p.price,p.promotion_price,oi.productNumber as stock,p.promotion_end_time from order_item oi left join product p on oi.PID = p.PID where OID = #{orderId}")
     List<Product> getProducts(Integer orderId);
 }

@@ -121,11 +121,13 @@
                         <!-- Form End -->
                         <div class="pro-pagination" style="margin-top: 15px;">
                             <ul class="blog-pagination">
+                                <li><a th:if="${pageInfo.getPageNum() > 3}" th:href="${'/getOrders.do?pageNum=1'}">首页</a></li>
                                 <li th:if="${pageInfo.getPageNum()!=1}"><a th:href="${'/getOrders.do?pageNum='+pageInfo.getPrePage()}"><i class="fa fa-angle-left"></i></a></li>
                                 <li class="active"><a href="#" th:text="${pageInfo.getPageNum()}"></a></li>
                                 <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getOrders.do?pageNum='+pageInfo.getNextPage()}" th:text="${pageInfo.getNextPage()}"></a></li>
                                 <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+2}" th:href="${'/getOrders.do?pageNum='+(pageInfo.getNextPage()+1)}" th:text="${pageInfo.getNextPage()+1}"></a></li>
                                 <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getOrders.do?pageNum='+pageInfo.getNextPage()}"><i class="fa fa-angle-right"></i></a></li>
+                                <li><a th:if="${pageInfo.getPageNum() > 3}" th:href="${'/getOrders.do?pageNum='+pageInfo.getEndRow()}">尾页</a></li>
                             </ul>
                             <div class="product-pagination">
                                 <span class="grid-item-list" th:text="${'Showing 1 to '+ pageInfo.getPageSize()+' of '+pageInfo.getTotal() +'  ('+pageInfo.getPages()+' Pages)'}">  </span>

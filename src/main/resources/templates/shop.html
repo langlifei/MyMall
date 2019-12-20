@@ -99,7 +99,11 @@
                                                     </div>
                                                 </div>
                                                 <!-- Product Content End -->
-                                                <span class="sticker-new">new</span>
+                                                <div th:switch="${obj.getStatus()}">
+                                                    <span class="sticker-new" th:case="0" th:value="${obj.getStatus()}">Sold Out</span>
+                                                    <span class="sticker-new" th:case="1" th:value="${obj.getStatus()}">new</span>
+                                                    <span class="sticker-new" th:case="2" th:value="${obj.getStatus()}">Stock Out</span>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- Single Product End -->
@@ -108,12 +112,14 @@
                                 </div>
                                 <div class="pro-pagination">
                                     <ul class="blog-pagination">
+                                        <li><a th:if="${pageInfo.getPageNum()>3}" th:href="${'/queryAllProducts.do?pageNum=1&&type='+type+'&&keywords='+keywords}">首页</a></li>
                                         <li th:if="${pageInfo.getPageNum()!=1}"><a th:href="${'/queryAllProducts.do?pageNum='+pageInfo.getPrePage()+'&&type='+type+'&&keywords='+keywords}"><i class="fa fa-angle-left"></i></a></li>
                                         <li class="active"><a href="#" th:text="${pageInfo.getPageNum()}"></a></li>
                                         <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/queryAllProducts.do?pageNum='+pageInfo.getNextPage()+'&&type='+type+'&&keywords='+keywords}" th:text="${pageInfo.getNextPage()}"></a></li>
                                         <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+2}" th:href="${'/queryAllProducts.do?pageNum='+(pageInfo.getNextPage()+1)+'&&type='+type+'&&keywords='+keywords}" th:text="${pageInfo.getNextPage()+1}"></a></li>
                                         <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/queryAllProducts.do?pageNum='+pageInfo.getNextPage()+'&&type='+type+'&&keywords='+keywords}"><i class="fa fa-angle-right"></i></a></li>
-                                    </ul>                                    
+                                        <li><a th:if="${pageInfo.getPageNum()>3}" th:href="${'/queryAllProducts.do?pageNum='+pageInfo.getEndRow()+'&&type='+type+'&&keywords='+keywords}">尾页</a></li>
+                                    </ul>
                                     <div class="product-pagination">
                                         <span class="grid-item-list" th:text="${'Showing 1 to '+ pageInfo.getPageSize()+' of '+pageInfo.getTotal() +'  ('+pageInfo.getPages()+' Pages)'}">  </span>
                                     </div>
