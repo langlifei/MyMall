@@ -27,13 +27,13 @@ public class ProductServiceImp implements ProductService {
     public boolean addToCompare(User user, Cart cart) {
         List<Product> compareProduct = user.getCompareList();
         //最多比较三个
-        for( int i = 0 ; i < compareProduct.size();i++){
-            if(compareProduct.get(i) == null){
+        for (int i = 0; i < compareProduct.size(); i++) {
+            if (compareProduct.get(i) == null) {
                 Product product = new Product();
                 //获取PID
                 String[] str = cart.getProduct_attr().split("-");
                 product = productMapper.selectByPrimaryKey(new Integer(str[0]));
-                compareProduct.set(i,product);
+                compareProduct.set(i, product);
                 return true;
             }
         }
@@ -43,6 +43,6 @@ public class ProductServiceImp implements ProductService {
     @Override
     public void removeFromCompare(User user, Integer index) {
         List<Product> compareProduct = user.getCompareList();
-        compareProduct.set(index,null);
+        compareProduct.set(index, null);
     }
 }

@@ -12,7 +12,6 @@ public class WebConfigurer implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
 
-
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("forward:content.do");
@@ -23,8 +22,8 @@ public class WebConfigurer implements WebMvcConfigurer {
         //拦截除了登录注册,和首页的所有请求
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
-                .excludePathPatterns("/login**","/register**","/content.do")
-                .excludePathPatterns("/css/**","/js/**","/img/**","/index.html","/")
-                .excludePathPatterns("/fonts/**","/plugins/**","/checkUserName.do");
+                .excludePathPatterns("/login**", "/register**", "/content.do")
+                .excludePathPatterns("/css/**", "/js/**", "/img/**", "/index.html", "/")
+                .excludePathPatterns("/fonts/**", "/plugins/**", "/checkUserName.do");
     }
 }

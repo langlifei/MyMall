@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ShopService {
 
-    public List<Product> getProducts(Integer type,String keywords);
+    public List<Product> getProducts(Integer type, String keywords);
 }

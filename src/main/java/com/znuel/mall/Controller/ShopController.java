@@ -21,17 +21,17 @@ public class ShopController {
     @Autowired
     private ShopService shopService;
 
-    @RequestMapping(value = "/queryAllProducts.do",method = RequestMethod.GET)
-    public String getAllProducts(@RequestParam(name = "pageNum",defaultValue = "1")Integer pageNum,
-                                 @RequestParam(name = "type",defaultValue = "0") Integer type ,
-                                 @RequestParam(name = "keywords",defaultValue = "")String keywords,
-                                 Model model){
-        PageHelper.startPage(pageNum,pageSize);
-        List<Product> products = shopService.getProducts(type,keywords);
+    @RequestMapping(value = "/queryAllProducts.do", method = RequestMethod.GET)
+    public String getAllProducts(@RequestParam(name = "pageNum", defaultValue = "1") Integer pageNum,
+                                 @RequestParam(name = "type", defaultValue = "0") Integer type,
+                                 @RequestParam(name = "keywords", defaultValue = "") String keywords,
+                                 Model model) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Product> products = shopService.getProducts(type, keywords);
         PageInfo<Product> pageInfo = new PageInfo<>(products);
-        model.addAttribute("pageInfo",pageInfo);
-        model.addAttribute("type",type);
-        model.addAttribute("keywords",keywords);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("type", type);
+        model.addAttribute("keywords", keywords);
         return "shop";
     }
 }

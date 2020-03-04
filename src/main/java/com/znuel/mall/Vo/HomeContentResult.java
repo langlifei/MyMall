@@ -1,6 +1,5 @@
 package com.znuel.mall.Vo;
 
-
 import com.znuel.mall.Entities.*;
 
 import java.util.List;
@@ -8,10 +7,10 @@ import java.util.List;
 public class HomeContentResult {
     //轮播广告
     private List<Advertise> advertiseList;
-//    //推荐品牌
+    //    //推荐品牌
 //    private List<PmsBrand> brandList;
     //当前秒杀场次
-   // private HomeFlashPromotion homeFlashPromotion;
+    // private HomeFlashPromotion homeFlashPromotion;
     //新品推荐
     private List<Product> newProductList;
     //人气推荐

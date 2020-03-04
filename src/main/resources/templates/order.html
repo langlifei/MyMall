@@ -37,13 +37,29 @@
     <link rel="stylesheet" href="css/my.css">
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
-	
-	<style type="text/css">
-		.wrap{float:left;}
-				.wrap{border:1px solid white;width:250px;height:20px;margin-left:3px;}
-				.wrap:hover span{display:block;margin-right:10px;}
-				.wrap span{display:none;float:left;}
-	</style>
+
+    <style type="text/css">
+        .wrap {
+            float: left;
+        }
+
+        .wrap {
+            border: 1px solid white;
+            width: 250px;
+            height: 20px;
+            margin-left: 3px;
+        }
+
+        .wrap:hover span {
+            display: block;
+            margin-right: 10px;
+        }
+
+        .wrap span {
+            display: none;
+            float: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,123 +67,142 @@
 <div class="wrapper">
     <!-- 引入头部-->
     <div th:replace="header :: header"></div>
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb-area mt-30">
-            <div class="container">
-                <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="order.html">Order</a></li>
-                    </ul>
-                </div>
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-area mt-30">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="d-flex align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="order.html">Order</a></li>
+                </ul>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- Cart Main Area Start -->
-        <div class="cart-main-area ptb-100 ptb-sm-60" style="padding: 20px 0;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <!-- Form Start -->
-                        <form>
-                            <!-- Table Content Start -->
-                            <div class="table-content mb-45">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Deal time</th>
-                                            <th>Order Detail</th>
-                                            <th>Consignee</th>
-                                            <th>Amount</th>
-											<th>Order State</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id = "checkOut">
-                                        <tr th:each="obj,objStar:${pageInfo.getList()}">
-											<td th:text="${obj.getOrder().getCreate_time()}"></td>
-											<td>
-												<ul>
-												    <li>
-														<span class="my-orderid" th:text="${'00000'+obj.getOrder().getOID()}"></span>
-												        <!-- Cart Box Start -->
-												        <div class="single-box" th:each="obj1,objstar:${obj.getProducts()}">
-												            <div class="my-img">
-												                <a th:href="${'product.do?id='+obj1.getPID()}"><img src="img/products/1.jpg" th:src="${obj1.getPic()}" alt="cart-image"></a>
-												            </div>
-												            <div class="my-content">
-                                                                <h6><a th:href="${'product.do?id='+obj1.getPID()}"><span th:text="${obj1.getPName()}">Printed Summer Red</span></a></h6>
-												                <span class="cart-price" th:text="${'¥'+obj1.getPromotion_price()+'X'+obj1.getStock()}">27.45</span>
-												            </div>
-												        </div>
-												        <!-- Cart Box End -->
-												    </li>
-												</ul>
-											</td>
-											<td th:attr="data-content=${obj.getOrder().getReceiver_address()+'--'+obj.getOrder().getReceiver_phone()}" class="my-consignee" th:text="${obj.getOrder().getReceiver_name()}">张三</td>
-                                            <td><span th:text="'¥'+${obj.getOrder().getPromotion_amount()}">￥200</span></td>
-                                            <!--订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单-->
-                                            <td th:if="${obj.getOrder().getOrder_status() == 0}">待付款</td>
-                                            <td th:if="${obj.getOrder().getOrder_status() == 1}">待发货</td>
-                                            <td th:if="${obj.getOrder().getOrder_status() == 2}">已发货</td>
-                                            <td th:if="${obj.getOrder().getOrder_status() == 3}">已完成</td>
-                                            <td th:if="${obj.getOrder().getOrder_status() == 4}">已关闭</td>
-                                            <td th:if="${obj.getOrder().getOrder_status() == 5}">无效订单</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                        <!-- Form End -->
-                        <div class="pro-pagination" style="margin-top: 15px;">
-                            <ul class="blog-pagination">
-                                <li><a th:if="${pageInfo.getPageNum() > 3}" th:href="${'/getOrders.do?pageNum=1'}">首页</a></li>
-                                <li th:if="${pageInfo.getPageNum()!=1}"><a th:href="${'/getOrders.do?pageNum='+pageInfo.getPrePage()}"><i class="fa fa-angle-left"></i></a></li>
-                                <li class="active"><a href="#" th:text="${pageInfo.getPageNum()}"></a></li>
-                                <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getOrders.do?pageNum='+pageInfo.getNextPage()}" th:text="${pageInfo.getNextPage()}"></a></li>
-                                <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+2}" th:href="${'/getOrders.do?pageNum='+(pageInfo.getNextPage()+1)}" th:text="${pageInfo.getNextPage()+1}"></a></li>
-                                <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}" th:href="${'/getOrders.do?pageNum='+pageInfo.getNextPage()}"><i class="fa fa-angle-right"></i></a></li>
-                                <li><a th:if="${pageInfo.getPageNum() > 3}" th:href="${'/getOrders.do?pageNum='+pageInfo.getEndRow()}">尾页</a></li>
-                            </ul>
-                            <div class="product-pagination">
-                                <span class="grid-item-list" th:text="${'Showing 1 to '+ pageInfo.getPageSize()+' of '+pageInfo.getTotal() +'  ('+pageInfo.getPages()+' Pages)'}">  </span>
-                            </div>
+        <!-- Container End -->
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- Cart Main Area Start -->
+    <div class="cart-main-area ptb-100 ptb-sm-60" style="padding: 20px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!-- Form Start -->
+                    <form>
+                        <!-- Table Content Start -->
+                        <div class="table-content mb-45">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Deal time</th>
+                                    <th>Order Detail</th>
+                                    <th>Consignee</th>
+                                    <th>Amount</th>
+                                    <th>Order State</th>
+                                </tr>
+                                </thead>
+                                <tbody id="checkOut">
+                                <tr th:each="obj,objStar:${pageInfo.getList()}">
+                                    <td th:text="${obj.getOrder().getCreate_time()}"></td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <span class="my-orderid"
+                                                      th:text="${'00000'+obj.getOrder().getOID()}"></span>
+                                                <!-- Cart Box Start -->
+                                                <div class="single-box" th:each="obj1,objstar:${obj.getProducts()}">
+                                                    <div class="my-img">
+                                                        <a th:href="${'product.do?id='+obj1.getPID()}"><img
+                                                                src="img/products/1.jpg" th:src="${obj1.getPic()}"
+                                                                alt="cart-image"></a>
+                                                    </div>
+                                                    <div class="my-content">
+                                                        <h6><a th:href="${'product.do?id='+obj1.getPID()}"><span
+                                                                th:text="${obj1.getPName()}">Printed Summer Red</span></a>
+                                                        </h6>
+                                                        <span class="cart-price"
+                                                              th:text="${'¥'+obj1.getPromotion_price()+'X'+obj1.getStock()}">27.45</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Cart Box End -->
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td th:attr="data-content=${obj.getOrder().getReceiver_address()+'--'+obj.getOrder().getReceiver_phone()}"
+                                        class="my-consignee" th:text="${obj.getOrder().getReceiver_name()}">张三
+                                    </td>
+                                    <td><span th:text="'¥'+${obj.getOrder().getPromotion_amount()}">￥200</span></td>
+                                    <!--订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单-->
+                                    <td th:if="${obj.getOrder().getOrder_status() == 0}">待付款</td>
+                                    <td th:if="${obj.getOrder().getOrder_status() == 1}">待发货</td>
+                                    <td th:if="${obj.getOrder().getOrder_status() == 2}">已发货</td>
+                                    <td th:if="${obj.getOrder().getOrder_status() == 3}">已完成</td>
+                                    <td th:if="${obj.getOrder().getOrder_status() == 4}">已关闭</td>
+                                    <td th:if="${obj.getOrder().getOrder_status() == 5}">无效订单</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                    <!-- Form End -->
+                    <div class="pro-pagination" style="margin-top: 15px;">
+                        <ul class="blog-pagination">
+                            <li><a th:if="${pageInfo.getPageNum() > 3}" th:href="${'/getOrders.do?pageNum=1'}">首页</a>
+                            </li>
+                            <li th:if="${pageInfo.getPageNum()!=1}"><a
+                                    th:href="${'/getOrders.do?pageNum='+pageInfo.getPrePage()}"><i
+                                    class="fa fa-angle-left"></i></a></li>
+                            <li class="active"><a href="#" th:text="${pageInfo.getPageNum()}"></a></li>
+                            <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}"
+                                   th:href="${'/getOrders.do?pageNum='+pageInfo.getNextPage()}"
+                                   th:text="${pageInfo.getNextPage()}"></a></li>
+                            <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+2}"
+                                   th:href="${'/getOrders.do?pageNum='+(pageInfo.getNextPage()+1)}"
+                                   th:text="${pageInfo.getNextPage()+1}"></a></li>
+                            <li><a th:if="${pageInfo.getPages() >= pageInfo.getPageNum()+1}"
+                                   th:href="${'/getOrders.do?pageNum='+pageInfo.getNextPage()}"><i
+                                    class="fa fa-angle-right"></i></a></li>
+                            <li><a th:if="${pageInfo.getPageNum() > 3}"
+                                   th:href="${'/getOrders.do?pageNum='+pageInfo.getEndRow()}">尾页</a></li>
+                        </ul>
+                        <div class="product-pagination">
+                            <span class="grid-item-list"
+                                  th:text="${'Showing 1 to '+ pageInfo.getPageSize()+' of '+pageInfo.getTotal() +'  ('+pageInfo.getPages()+' Pages)'}">  </span>
                         </div>
                     </div>
                 </div>
-                 <!-- Row End -->
             </div>
+            <!-- Row End -->
         </div>
-        <!-- Cart Main Area End -->
+    </div>
+    <!-- Cart Main Area End -->
     <!-- 引入尾部-->
     <div th:replace="footer :: footer"></div>
 </div>
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
 </body>
 
 </html>

@@ -6,65 +6,72 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
     @RequestMapping("/login.html")
-    public String login(){
+    public String login() {
         return "login";
     }
 
     @RequestMapping("/register.html")
-    public String register(){
+    public String register() {
         return "register";
     }
 
     @RequestMapping("/index.html")
-    public String index(){
+    public String index() {
         return "forward:/content.do";
     }
+
     @RequestMapping("/error.html")
-    public String error(){
+    public String error() {
         return "error";
     }
 
     @RequestMapping("/about.html")
-    public String about(){
+    public String about() {
         return "about";
     }
 
     @RequestMapping("/checkout.html")
-    public String checkout(){
+    public String checkout() {
         return "checkout";
     }
 
     @RequestMapping("/compare.html")
-    public String compare(){
+    public String compare() {
         return "compare";
     }
+
     @RequestMapping("/contact.html")
-    public String contact(){
+    public String contact() {
         return "contact";
     }
+
     @RequestMapping("/forgot-password.html")
-    public String forgotedPassword(){
+    public String forgotedPassword() {
         return "forgot-password";
     }
+
     @RequestMapping("/product.html")
-    public String product(){
+    public String product() {
         return "product";
     }
+
     @RequestMapping("/shop.html")
-    public String shop(){
+    public String shop() {
         return "forward:/queryAllProducts.do?pageNum=1";
     }
+
     @RequestMapping("/wishlist.html")
-    public String wishlist(){
+    public String wishlist() {
         return "forward:/getWishList.do";
     }
+
     @RequestMapping("/cart.html")
-    public String cart(){
+    public String cart() {
         return "forward:/getCart.do";
     }
 
     @RequestMapping("/order.html")
-    public String order(){
+    public String order() {
         return "forward:/getOrders.do";
     }
 }

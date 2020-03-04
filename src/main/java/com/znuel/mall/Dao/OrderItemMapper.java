@@ -18,5 +18,5 @@ public interface OrderItemMapper {
 
     int updateByPrimaryKey(OrderItem record);
 
-    void insertItemBatch(@Param("orderItems")List<OrderItem> orderItems);
+    void insertItemBatch(@Param("orderItems") List<OrderItem> orderItems);
 }

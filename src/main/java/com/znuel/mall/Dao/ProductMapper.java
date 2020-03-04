@@ -19,5 +19,5 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
 
-    List<Product> getProducts(@Param("type") int type,@Param("keywords") String keywords);
+    List<Product> getProducts(@Param("type") int type, @Param("keywords") String keywords);
 }

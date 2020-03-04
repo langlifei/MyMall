@@ -21,7 +21,7 @@ public class HomeController {
     @RequestMapping(value = "/content.do", method = RequestMethod.GET)
     public String content(Model model) {
         HomeContentResult contentResult = homeService.content();
-        model.addAttribute("homeContent",contentResult);
+        model.addAttribute("homeContent", contentResult);
         return "index";
     }
 }

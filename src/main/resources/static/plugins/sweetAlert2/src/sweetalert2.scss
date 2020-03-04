@@ -137,11 +137,11 @@
 }
 
 .swal2-icon {
-  $red:    #f27474;
+  $red: #f27474;
   $orange: #f8bb86;
-  $cyan:   #3fc3ee;
-  $blue:   #c9dae1;
-  $green:  #a5dc86;
+  $cyan: #3fc3ee;
+  $blue: #c9dae1;
+  $green: #a5dc86;
 
   width: 80px;
   height: 80px;
@@ -262,7 +262,7 @@
       z-index: 2;
     }
 
-    .fix {  // Hide corners left from animation
+    .fix { // Hide corners left from animation
       width: 7px;
       height: 90px;
       background-color: #fff;
@@ -315,32 +315,40 @@
   box-shadow: inset 0px 1px 1px rgba(black, 0.06);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+
   &.error {
     border-color: #f06e57 !important;
   }
+
   &:focus {
     outline: none;
     box-shadow: 0px 0px 3px rgb(196, 230, 245);
     border: 1px solid rgb(180, 219, 237);
+
     &::-moz-placeholder {
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8;
     }
+
     &:-ms-input-placeholder {
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8;
     }
+
     &::-webkit-input-placeholder {
       transition: opacity 0.3s 0.03s ease;
       opacity: 0.8;
     }
   }
+
   &::-moz-placeholder {
     color: lighten(#575757, 40);
   }
+
   &:-ms-input-placeholder {
     color: lighten(#575757, 40);
   }
+
   &::-webkit-input-placeholder {
     color: lighten(#575757, 40);
   }
@@ -391,6 +399,7 @@
 .swal2-checkbox {
   color: #555;
   margin: 20px auto;
+
   input, span {
     vertical-align: middle;
   }
@@ -481,7 +490,6 @@
     @include animation('none');
   }
 }
-
 
 
 // Success icon animation

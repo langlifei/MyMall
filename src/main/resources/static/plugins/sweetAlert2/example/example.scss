@@ -1,10 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300); // Open Sans font
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);   // Condensed
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+// Open Sans font
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700); // Condensed
 
 @mixin retina-background($url, $type:png) {
   background-image: url("#{$url}.#{$type}");
   background-image: -webkit-image-set(url("#{$url}.#{$type}") 1x,
-                            url("#{$url}@2x.#{$type}") 2x);
+          url("#{$url}@2x.#{$type}") 2x);
   background-repeat: no-repeat;
 }
 
@@ -62,10 +63,12 @@ header h2 {
     text-align: center;
     width: 33%;
   }
+
   .swal2-icon, button {
     display: inline-block;
     margin: 0;
   }
+
   .swal2-success {
     &::before, &::after {
       background: transparent !important;
@@ -79,6 +82,7 @@ header h2 {
       padding-top: 45px;
     }
   }
+
   td {
     vertical-align: middle;
     text-align: center;
@@ -435,7 +439,7 @@ table {
     @media all and (max-width: 750px) {
       &:nth-child(2) {
         display: none;
-     }
+      }
     }
   }
 
@@ -454,7 +458,7 @@ table {
     @media all and (max-width: 750px) {
       &:nth-child(2) {
         display: none;
-     }
+      }
     }
     @media all and (max-width: 360px) {
       padding: 10px 4px;

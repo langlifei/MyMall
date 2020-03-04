@@ -26,44 +26,44 @@ public class WishListController {
 
     private final static int pageSize = 5;
 
-    @RequestMapping(value = "/addToWishList.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/addToWishList.do", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,String> addToWishList(Integer id, HttpServletRequest request){
+    public Map<String, String> addToWishList(Integer id, HttpServletRequest request) {
         WishList wishList = new WishList();
         wishList.setPID(id);
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         wishList.setUID(user.getID());
-        Map<String,String> map = new HashMap<>();
-        if(wishListServer.addToWishList(wishList)){
-            map.put("info","添加成功!");
-            user.setWishCount(user.getWishCount()+1);
-            map.put("wishCount",user.getWishCount()+"");
-        }else
-            map.put("info","您已添加过此商品!");
+        Map<String, String> map = new HashMap<>();
+        if (wishListServer.addToWishList(wishList)) {
+            map.put("info", "添加成功!");
+            user.setWishCount(user.getWishCount() + 1);
+            map.put("wishCount", user.getWishCount() + "");
+        } else
+            map.put("info", "您已添加过此商品!");
         return map;
     }
 
-    @RequestMapping(value = "/getWishList.do",method = RequestMethod.GET)
-    public String getWishList(@RequestParam(value = "pageNum",defaultValue = "0") Integer pageNum,HttpServletRequest request,Model model){
-        HttpSession session =  request.getSession();
+    @RequestMapping(value = "/getWishList.do", method = RequestMethod.GET)
+    public String getWishList(@RequestParam(value = "pageNum", defaultValue = "0") Integer pageNum, HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        PageHelper.startPage(pageNum,pageSize);
-        List<WishListContent> products =  wishListServer.getWishList(user.getID());
+        PageHelper.startPage(pageNum, pageSize);
+        List<WishListContent> products = wishListServer.getWishList(user.getID());
         PageInfo<WishListContent> pageInfo = new PageInfo<>(products);
-        model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("pageInfo", pageInfo);
         return "wishlist";
     }
 
-    @RequestMapping(value = "/delProductFromWish.do",method = RequestMethod.GET)
-    public String removeProduct(Integer id,HttpServletRequest request){
-        if(wishListServer.removeProduct(id))
-        {
+    @RequestMapping(value = "/delProductFromWish.do", method = RequestMethod.GET)
+    public String removeProduct(Integer id, HttpServletRequest request) {
+        if (wishListServer.removeProduct(id)) {
             HttpSession session = request.getSession();
-            User user = (User)session.getAttribute("user");
+            User user = (User) session.getAttribute("user");
             //将用户的收藏商品个数减一
-            user.setWishCount(user.getWishCount()-1);
-        };
+            user.setWishCount(user.getWishCount() - 1);
+        }
+        ;
         return "forward:/getWishList.do";
     }
 }

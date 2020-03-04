@@ -38,38 +38,39 @@
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <style type="text/css">
-        .error{
-            color:red;
+        .error {
+            color: red;
         }
-    </style>>
+    </style>
+    >
 </head>
 
 <body>
 <div class="wrapper">
-        <!-- 引入头部-->
-        <div th:replace="header :: header"></div>
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb-area mt-30">
-            <div class="container">
-                <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="checkout.html">Checkout</a></li>
-                    </ul>
-                </div>
+    <!-- 引入头部-->
+    <div th:replace="header :: header"></div>
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-area mt-30">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="d-flex align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="checkout.html">Checkout</a></li>
+                </ul>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- checkout-area start -->
-        <div class="checkout-area pb-100 pt-15 pb-sm-60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="checkbox-form mb-sm-40">
-                            <h3>Billing Details</h3>
-                            <div class="row">
-                                <form id="checkOut" action="/placeOrder.do" method="post" class="col-md-12">
+        <!-- Container End -->
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- checkout-area start -->
+    <div class="checkout-area pb-100 pt-15 pb-sm-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="checkbox-form mb-sm-40">
+                        <h3>Billing Details</h3>
+                        <div class="row">
+                            <form id="checkOut" action="/placeOrder.do" method="post" class="col-md-12">
                                 <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Receiver Name<span class="required">*</span></label>
@@ -79,7 +80,8 @@
                                 <div class="col-md-12">
                                     <div class="checkout-form-list mb-30">
                                         <label>Receiver Phone <span class="required">*</span></label>
-                                        <input type="text" required="required" id="number" name="receiver_phone" onblur="checkTel()" onfocus="noError()"/>
+                                        <input type="text" required="required" id="number" name="receiver_phone"
+                                               onblur="checkTel()" onfocus="noError()"/>
                                         <span id="s_tel" class="error"></span>
                                     </div>
                                 </div>
@@ -92,90 +94,108 @@
                                 <div class="order-notes col-md-12">
                                     <div class="checkout-form-list">
                                         <label>Order Notes</label>
-                                        <textarea id="checkout-mess" name="notes" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        <textarea id="checkout-mess" name="notes" cols="30" rows="10"
+                                                  placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                                     </div>
                                 </div>
                                 <div class="wc-proceed-to-checkout col-md-12">
-                                    <button type="submit" class="btn btn-block btn-success" style="margin-top:20px">Place an Order</button>
+                                    <button type="submit" class="btn btn-block btn-success" style="margin-top:20px">
+                                        Place an Order
+                                    </button>
                                 </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="your-order">
-                            <h3>Your order</h3>
-                            <div class="your-order-table table-responsive">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-total">Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="cart_item" th:if="${session.user.getCheckOutContent()!=null}" th:each="obj,objStr:${session.user.getCheckOutContent().getItems()}">
-                                            <td class="product-name">
-                                                <span th:text="${obj.getProductName()}"></span><span class="product-quantity" th:text="${' × '+obj.getQuantity()}"></span>
-                                            </td>
-                                            <td class="product-total">
-                                                <span class="amount" th:text="${'¥'+obj.getTotalAmount()}"></span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr class="order-total">
-                                            <th>Order Total</th>
-                                            <td><span class=" total amount" th:if="${session.user.getCheckOutContent()!=null}" th:text="${'¥'+#numbers.formatDecimal(session.user.getCheckOutContent().getAmount(),0,2)}" ></span>
-                                                <span class=" total amount" th:if="${session.user.getCheckOutContent()==null}">'¥' 0.00</span>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="payment-method">
-                                <div id="accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="headingone">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                  Direct Bank Transfer
-                                                </button>
-                                            </h5>
-                                        </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="your-order">
+                        <h3>Your order</h3>
+                        <div class="your-order-table table-responsive">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="product-name">Product</th>
+                                    <th class="product-total">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="cart_item" th:if="${session.user.getCheckOutContent()!=null}"
+                                    th:each="obj,objStr:${session.user.getCheckOutContent().getItems()}">
+                                    <td class="product-name">
+                                        <span th:text="${obj.getProductName()}"></span><span class="product-quantity"
+                                                                                             th:text="${' × '+obj.getQuantity()}"></span>
+                                    </td>
+                                    <td class="product-total">
+                                        <span class="amount" th:text="${'¥'+obj.getTotalAmount()}"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr class="order-total">
+                                    <th>Order Total</th>
+                                    <td><span class=" total amount" th:if="${session.user.getCheckOutContent()!=null}"
+                                              th:text="${'¥'+#numbers.formatDecimal(session.user.getCheckOutContent().getAmount(),0,2)}"></span>
+                                        <span class=" total amount" th:if="${session.user.getCheckOutContent()==null}">'¥' 0.00</span>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="payment-method">
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingone">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse"
+                                                    data-target="#collapseOne" aria-expanded="true"
+                                                    aria-controls="collapseOne">
+                                                Direct Bank Transfer
+                                            </button>
+                                        </h5>
+                                    </div>
 
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingone" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                            </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingone"
+                                         data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Make your payment directly into our bank account. Please use your Order
+                                                ID as the payment reference. Your order won’t be shipped until the funds
+                                                have cleared in our account.</p>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingtwo">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                          Cheque Payment
-                                        </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordion">
-                                            <div class="card-body">
-                                                <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                            </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingtwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                    data-target="#collapseTwo" aria-expanded="false"
+                                                    aria-controls="collapseTwo">
+                                                Cheque Payment
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingtwo"
+                                         data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store
+                                                State / County, Store Postcode.</p>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingthree">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                          PayPal
-                                        </button>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
-                                            <div class="card-body">
-                                                 <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
-                                            </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingthree">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse"
+                                                    data-target="#collapseThree" aria-expanded="false"
+                                                    aria-controls="collapseThree">
+                                                PayPal
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingthree"
+                                         data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a
+                                                PayPal account.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -185,35 +205,36 @@
                 </div>
             </div>
         </div>
-        <!-- checkout-area end -->
-        <!-- 引入尾部-->
-        <div th:replace="footer :: footer"></div>
+    </div>
+    <!-- checkout-area end -->
+    <!-- 引入尾部-->
+    <div th:replace="footer :: footer"></div>
 </div>
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
 </body>
 </html>

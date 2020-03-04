@@ -44,192 +44,202 @@
 <div class="wrapper">
     <!-- 引入头部-->
     <div th:replace="header :: header"></div>
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb-area mt-30">
-            <div class="container">
-                <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="cart.html">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Container End -->
-        </div>
-        <!-- Breadcrumb End -->
-        <!-- Cart Main Area Start -->
-        <div class="cart-main-area ptb-100 ptb-sm-60">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <!-- Form Start -->
-                        <form>
-                            <!-- Table Content Start -->
-                            <div class="table-content table-responsive mb-45">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th class="product-remove"></th>
-                                            <th class="product-thumbnail">Image</th>
-                                            <th class="product-name">Product</th>
-                                            <th class="product-price">Price</th>
-                                            <th class="product-quantity">Quantity</th>
-                                            <th class="product-subtotal">Total</th>
-                                            <th class="product-remove">Remove</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id = "checkOut">
-                                        <tr th:if="${cartContents.size()!=0}" th:each="obj,objStar:${cartContents}">
-                                            <td class="product-remove">
-                                                <input type="checkbox" onclick="isSelected(this)" class="form-check-input" style="margin-top: -20px;margin-left: -26px;"/>
-                                            </td>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img th:src="${obj.getPic()}" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a th:href="${'product.do?id='+obj.getpId()}" th:value="${obj.getpId()}" th:text="${obj.getProductName()}"></a></td>
-                                            <td class="product-price"><span class="amount" th:text="${'¥'+obj.getPromotion_price()}"></span></td>
-                                            <td class="product-quantity"><input type="number" onclick="increase(this)" th:value="${obj.getQuantity()}" value="1" min="1"/></td>
-                                            <td class="product-subtotal" th:text="${'¥'+obj.getTotalAmount()}"></td>
-                                            <td class="product-remove"> <a th:href="${'/delProductFromCart.do?id='+obj.getId()}" th:value="${obj.getId()}"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- Table Content Start -->
-                            <div class="row">
-                               <!-- Cart Button Start -->
-                                <div class="col-md-8 col-sm-12">
-                                    <div class="buttons-cart">
-                                        <a href="/index.html">Continue Shopping</a>
-                                    </div>
-                                </div>
-                                <!-- Cart Button Start -->
-                                <!-- Cart Totals Start -->
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="cart_totals float-md-right text-md-right">
-                                        <h2>Cart Totals</h2>
-                                        <br />
-                                        <table class="float-md-right">
-                                            <tbody>
-                                                <tr class="order-total">
-                                                    <th>Total</th>
-                                                    <td>
-                                                        <strong>¥ <span id = "cartAmount" class="amount">0.00</span></strong>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="wc-proceed-to-checkout">
-                                            <a href="javascript:void(0);" onclick="toCheckOut()">Proceed to Checkout</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Cart Totals End -->
-                            </div>
-                            <!-- Row End -->
-                        </form>
-                        <!-- Form End -->
-                    </div>
-                </div>
-                 <!-- Row End -->
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-area mt-30">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="d-flex align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="cart.html">Cart</a></li>
+                </ul>
             </div>
         </div>
-        <!-- Cart Main Area End -->
+        <!-- Container End -->
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- Cart Main Area Start -->
+    <div class="cart-main-area ptb-100 ptb-sm-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!-- Form Start -->
+                    <form>
+                        <!-- Table Content Start -->
+                        <div class="table-content table-responsive mb-45">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="product-remove"></th>
+                                    <th class="product-thumbnail">Image</th>
+                                    <th class="product-name">Product</th>
+                                    <th class="product-price">Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                    <th class="product-remove">Remove</th>
+                                </tr>
+                                </thead>
+                                <tbody id="checkOut">
+                                <tr th:if="${cartContents.size()!=0}" th:each="obj,objStar:${cartContents}">
+                                    <td class="product-remove">
+                                        <input type="checkbox" onclick="isSelected(this)" class="form-check-input"
+                                               style="margin-top: -20px;margin-left: -26px;"/>
+                                    </td>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img th:src="${obj.getPic()}" alt="cart-image"/></a>
+                                    </td>
+                                    <td class="product-name"><a th:href="${'product.do?id='+obj.getpId()}"
+                                                                th:value="${obj.getpId()}"
+                                                                th:text="${obj.getProductName()}"></a></td>
+                                    <td class="product-price"><span class="amount"
+                                                                    th:text="${'¥'+obj.getPromotion_price()}"></span>
+                                    </td>
+                                    <td class="product-quantity"><input type="number" onclick="increase(this)"
+                                                                        th:value="${obj.getQuantity()}" value="1"
+                                                                        min="1"/></td>
+                                    <td class="product-subtotal" th:text="${'¥'+obj.getTotalAmount()}"></td>
+                                    <td class="product-remove"><a th:href="${'/delProductFromCart.do?id='+obj.getId()}"
+                                                                  th:value="${obj.getId()}"><i class="fa fa-times"
+                                                                                               aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Table Content Start -->
+                        <div class="row">
+                            <!-- Cart Button Start -->
+                            <div class="col-md-8 col-sm-12">
+                                <div class="buttons-cart">
+                                    <a href="/index.html">Continue Shopping</a>
+                                </div>
+                            </div>
+                            <!-- Cart Button Start -->
+                            <!-- Cart Totals Start -->
+                            <div class="col-md-4 col-sm-12">
+                                <div class="cart_totals float-md-right text-md-right">
+                                    <h2>Cart Totals</h2>
+                                    <br/>
+                                    <table class="float-md-right">
+                                        <tbody>
+                                        <tr class="order-total">
+                                            <th>Total</th>
+                                            <td>
+                                                <strong>¥ <span id="cartAmount" class="amount">0.00</span></strong>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="wc-proceed-to-checkout">
+                                        <a href="javascript:void(0);" onclick="toCheckOut()">Proceed to Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Cart Totals End -->
+                        </div>
+                        <!-- Row End -->
+                    </form>
+                    <!-- Form End -->
+                </div>
+            </div>
+            <!-- Row End -->
+        </div>
+    </div>
+    <!-- Cart Main Area End -->
     <!-- 引入尾部-->
     <div th:replace="footer :: footer"></div>
 </div>
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
 </body>
-    <script>
-       function isSelected(elem){
-           var price = $(elem).parent().parent().find("span").eq(0).text().substring(1);
-           price = parseFloat(price);
-           var cartAmount = parseFloat($("#cartAmount").text());
-           var quantity = $(elem).parent().parent().find("input").eq(1).val();
-           if($(elem).is(":checked")){
-               $("#cartAmount").text((cartAmount+price*quantity).toFixed(2));
-           }else {
-               $("#cartAmount").text((cartAmount-price*quantity).toFixed(2));
-           }
-           //如果商品小于0.00001则总额为0.00
-           if(parseFloat($("#cartAmount").text()) < 0.0001){
-               $("#cartAmount").text((0.00).toFixed(2));
-           }
-       }
+<script>
+    function isSelected(elem) {
+        var price = $(elem).parent().parent().find("span").eq(0).text().substring(1);
+        price = parseFloat(price);
+        var cartAmount = parseFloat($("#cartAmount").text());
+        var quantity = $(elem).parent().parent().find("input").eq(1).val();
+        if ($(elem).is(":checked")) {
+            $("#cartAmount").text((cartAmount + price * quantity).toFixed(2));
+        } else {
+            $("#cartAmount").text((cartAmount - price * quantity).toFixed(2));
+        }
+        //如果商品小于0.00001则总额为0.00
+        if (parseFloat($("#cartAmount").text()) < 0.0001) {
+            $("#cartAmount").text((0.00).toFixed(2));
+        }
+    }
 
-       function increase(elem){
-           var quantity = $(elem).val();
-           var price = parseFloat($(elem).parent().prev().find("span").eq(0).text().substring(1));
-           var odlTotalAmount = parseFloat($(elem).parent().next().text().substring(1));
-           //设置新的商品总金额
-           $(elem).parent().next().text('¥'+(price*quantity).toFixed(2));
-           if($(elem).parent().parent().find("input").eq(0).is(":checked")){
-               debugger
-               var cartAmount = parseFloat($("#cartAmount").text());
-               cartAmount -= odlTotalAmount;
-               cartAmount += quantity * price;
-               $("#cartAmount").text(cartAmount.toFixed(2));
-           }
-       }
+    function increase(elem) {
+        var quantity = $(elem).val();
+        var price = parseFloat($(elem).parent().prev().find("span").eq(0).text().substring(1));
+        var odlTotalAmount = parseFloat($(elem).parent().next().text().substring(1));
+        //设置新的商品总金额
+        $(elem).parent().next().text('¥' + (price * quantity).toFixed(2));
+        if ($(elem).parent().parent().find("input").eq(0).is(":checked")) {
+        debugger
+            var cartAmount = parseFloat($("#cartAmount").text());
+            cartAmount -= odlTotalAmount;
+            cartAmount += quantity * price;
+            $("#cartAmount").text(cartAmount.toFixed(2));
+        }
+    }
 
-       function toCheckOut(){
-           var amount = parseFloat($("#cartAmount").text());
-            if(amount <= 0.00001){
-                alert("您没有选中任何商品,无需结账...")
-            }else{
-                var checkOutContent = [];
-                //checkOutContent.amount = amount;
-                //checkOutContent.items = new Object();
-                //获取所有被选中的商品信息
-                $("#checkOut").find("input[type='checkbox']:checked").each(function(index,element){
-                    var item = {};
-                    item.pId = parseInt($(element).parent().next().next().find("a").eq(0).attr("value"));
-                    item.id = parseInt($(element).parent().parent().find("a").eq(2).attr("value"));
-                    item.productName = $(element).parent().next().next().find("a").eq(0).text();
-                    item.price = $(element).parent().parent().find("span").eq(0).text().substring(1);
-                    item.quantity = parseInt($(element).parent().parent().find("input").eq(1).val());
-                    item.totalAmount = item.price*item.quantity;
-                    checkOutContent.push(item);
-                });
-                $.ajax({
-                    type:"POST",
-                    url:"/checkOut.do",
-                    dataType:"json",
-                    data:"params="+JSON.stringify(checkOutContent),
-                    success:function(data){
-                        debugger;
-                        window.location.href="/checkout.html";
-                    },
-                    error:function(){
-                       alert("错误!!!");
-                    }
-                });
-            }
-       }
-    </script>
+    function toCheckOut() {
+        var amount = parseFloat($("#cartAmount").text());
+        if (amount <= 0.00001) {
+            alert("您没有选中任何商品,无需结账...")
+        } else {
+            var checkOutContent = [];
+            //checkOutContent.amount = amount;
+            //checkOutContent.items = new Object();
+            //获取所有被选中的商品信息
+            $("#checkOut").find("input[type='checkbox']:checked").each(function (index, element) {
+                var item = {};
+                item.pId = parseInt($(element).parent().next().next().find("a").eq(0).attr("value"));
+                item.id = parseInt($(element).parent().parent().find("a").eq(2).attr("value"));
+                item.productName = $(element).parent().next().next().find("a").eq(0).text();
+                item.price = $(element).parent().parent().find("span").eq(0).text().substring(1);
+                item.quantity = parseInt($(element).parent().parent().find("input").eq(1).val());
+                item.totalAmount = item.price * item.quantity;
+                checkOutContent.push(item);
+            });
+            $.ajax({
+                type: "POST",
+                url: "/checkOut.do",
+                dataType: "json",
+                data: "params=" + JSON.stringify(checkOutContent),
+                success: function (data) {
+                debugger;
+                    window.location.href = "/checkout.html";
+                },
+                error: function () {
+                    alert("错误!!!");
+                }
+            });
+        }
+    }
+</script>
 </html>

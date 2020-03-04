@@ -42,8 +42,8 @@ public class OrderServiceImp implements OrderService {
         order.setOrder_status(1);
         order.setDelivery_company("顺丰快递");
         //生成唯一标识符
-        String id= UUID.randomUUID().toString();
-        id=id.replace("-", "");//替换掉中间的那个斜杠
+        String id = UUID.randomUUID().toString();
+        id = id.replace("-", "");//替换掉中间的那个斜杠
         order.setDelivery_sn(id);
         CheckOutContent checkOutContent = user.getCheckOutContent();
         order.setPromotion_amount(checkOutContent.getAmount());
@@ -73,7 +73,7 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public PageInfo<OrderContent> getOrderContent(Integer pageNum,String username) {
+    public PageInfo<OrderContent> getOrderContent(Integer pageNum, String username) {
         //按时间倒序获取该用户的所有订单
         List<Order> orders = orderMapper.getOrders(username);
         PageInfo<Order> pageInfo = new PageInfo<>(orders);
@@ -89,10 +89,10 @@ public class OrderServiceImp implements OrderService {
         return pageInfo1;
     }
 
-    public List<OrderContent> getOrderContentList(List<Order> orders){
+    public List<OrderContent> getOrderContentList(List<Order> orders) {
         List<OrderContent> orderContentList = new ArrayList<>();
         //根据每个订单的编号搜索所有购买商品
-        for(int i = 0 ; i < orders.size();i++){
+        for (int i = 0; i < orders.size(); i++) {
             OrderContent orderContent = new OrderContent();
             orderContent.setOrder(orders.get(i));
             List<Product> products = orderMapper.getProducts(orders.get(i).getOID());

@@ -24,11 +24,11 @@ public class WishListServiceImp implements WishListServer {
     @Override
     public boolean addToWishList(WishList wishList) {
         //判断商品在用户收藏中是否存在
-        if(wishListMapper.selectByUIdAndPID(wishList.getUID(),wishList.getPID()) == null){
+        if (wishListMapper.selectByUIdAndPID(wishList.getUID(), wishList.getPID()) == null) {
             wishListMapper.insertSelective(wishList);
             return true;
-        }else
-            return  false;
+        } else
+            return false;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class WishListServiceImp implements WishListServer {
 
     @Override
     public boolean removeProduct(Integer id) {
-        if(wishListMapper.deleteByPrimaryKey(id)>0)
+        if (wishListMapper.deleteByPrimaryKey(id) > 0)
             return true;
         else
             return false;
@@ -46,7 +46,7 @@ public class WishListServiceImp implements WishListServer {
 
     @Override
     public int getCount(Integer userId) {
-       return wishListMapper.getCount(userId);
+        return wishListMapper.getCount(userId);
     }
 
 }
