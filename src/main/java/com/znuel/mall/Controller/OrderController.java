@@ -26,14 +26,14 @@ public class OrderController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping(value = "/placeOrder.do",method = RequestMethod.POST)
-    public String checkOut(Order order, HttpServletRequest request){
+    @RequestMapping(value = "/placeOrder.do", method = RequestMethod.POST)
+    public String checkOut(Order order, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        if(orderService.increaseOrder(order,request) > 0){
+        if (orderService.increaseOrder(order, request) > 0) {
             Integer oId = orderService.getOrderId(order.getDelivery_sn());
-            if(oId != 0 && oId != null){
+            if (oId != 0 && oId != null) {
                 //添加商品详细订单项
-                orderService.insertProductToOrderItem(oId,request);
+                orderService.insertProductToOrderItem(oId, request);
                 //购买商品后移除购物车中购买的商品
                 cartService.removeProductAfterPO(request);
                 //更新购物车中商品的个数
@@ -44,13 +44,13 @@ public class OrderController {
         return "forward:/content.do";
     }
 
-    @RequestMapping(value = "/getOrders.do",method = RequestMethod.GET)
-    public String getOrders(@RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum, HttpServletRequest request, Model model){
+    @RequestMapping(value = "/getOrders.do", method = RequestMethod.GET)
+    public String getOrders(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum, HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
-        PageHelper.startPage(pageNum,3,true);
-        PageInfo<OrderContent> pageInfo = orderService.getOrderContent(pageNum,user.getUsername());
-        model.addAttribute("pageInfo",pageInfo);
+        User user = (User) session.getAttribute("user");
+        PageHelper.startPage(pageNum, 3, true);
+        PageInfo<OrderContent> pageInfo = orderService.getOrderContent(pageNum, user.getUsername());
+        model.addAttribute("pageInfo", pageInfo);
         return "order";
     }
 

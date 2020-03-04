@@ -40,7 +40,6 @@ public interface UserService {
      */
     User getCurrentMember();
 
-
     /**
      * 获取用户信息
      */

@@ -26,7 +26,7 @@ public class Product {
 
     private Integer stock;
 
-    DecimalFormat df = new DecimalFormat( "0.00 ");
+    DecimalFormat df = new DecimalFormat("0.00 ");
 
     public Integer getPID() {
         return PID;
@@ -57,22 +57,21 @@ public class Product {
     }
 
     public void setPrice(Double price) {
-        if(price >=0)
+        if (price >= 0)
             this.price = new Double(df.format(price));
     }
 
-    public Double getPromotion_price()
-    {
+    public Double getPromotion_price() {
         Date date = new Date();
-        if(this.promotion_end_time!=null&&this.promotion_end_time.getTime()>=date.getTime()){
+        if (this.promotion_end_time != null && this.promotion_end_time.getTime() >= date.getTime()) {
             return promotion_price;
-        }else{
+        } else {
             return this.price;
         }
     }
 
     public void setPromotion_price(Double promotion_price) {
-        if(promotion_price >=0)
+        if (promotion_price >= 0)
             this.promotion_price = new Double(df.format(promotion_price));
     }
 

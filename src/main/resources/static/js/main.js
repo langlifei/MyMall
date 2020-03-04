@@ -47,7 +47,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
         $('.popup_off').on('click', function () {
             $(".popup_wrapper").fadeOut(500);
         })
-    },700000);
+    }, 700000);
 
     /*----------------------------
     2. Mobile Menu Activation
@@ -236,7 +236,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-    
+
     /*----------------------------------------------------
     8. Electronics Product Activation
     -----------------------------------------------------*/
@@ -246,29 +246,29 @@ NOTE: main.js, All custom script and plugin activation script in this file.
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
         }).owlCarousel({
-            loop: false,
-            nav: true,
-            dots: false,
-            smartSpeed: 1000,
-            navText: ["<i class='lnr lnr-arrow-left'></i>", "<i class='lnr lnr-arrow-right'></i>"],
-            margin: 10,
-            responsive: {
-                0: {
-                    items: 1,
-                    autoplay: true,
-                    smartSpeed: 500
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 3
-                },
-                1200: {
-                    items: 3
-                }
+        loop: false,
+        nav: true,
+        dots: false,
+        smartSpeed: 1000,
+        navText: ["<i class='lnr lnr-arrow-left'></i>", "<i class='lnr lnr-arrow-right'></i>"],
+        margin: 10,
+        responsive: {
+            0: {
+                items: 1,
+                autoplay: true,
+                smartSpeed: 500
+            },
+            768: {
+                items: 2
+            },
+            992: {
+                items: 3
+            },
+            1200: {
+                items: 3
             }
-        })
+        }
+    })
 
     $('.electronics-pro-active2')
         .on('changed.owl.carousel initialized.owl.carousel', function (event) {
@@ -276,30 +276,30 @@ NOTE: main.js, All custom script and plugin activation script in this file.
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
         }).owlCarousel({
-            loop: false,
-            nav: true,
-            dots: false,
-            smartSpeed: 1000,
-            navText: ["<i class='lnr lnr-arrow-left'></i>", "<i class='lnr lnr-arrow-right'></i>"],
-            margin: 10,
-            responsive: {
-                0: {
-                    items: 1,
-                    autoplay: true,
-                    smartSpeed: 500
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 2
-                },
-                1200: {
-                    items: 3
-                }
+        loop: false,
+        nav: true,
+        dots: false,
+        smartSpeed: 1000,
+        navText: ["<i class='lnr lnr-arrow-left'></i>", "<i class='lnr lnr-arrow-right'></i>"],
+        margin: 10,
+        responsive: {
+            0: {
+                items: 1,
+                autoplay: true,
+                smartSpeed: 500
+            },
+            768: {
+                items: 2
+            },
+            992: {
+                items: 2
+            },
+            1200: {
+                items: 3
             }
-        })
-    
+        }
+    })
+
     /*----------------------------------------------------
     9. Best Seller Product Activation
     -----------------------------------------------------*/
@@ -357,7 +357,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-    
+
     /*----------------------------------------------------
     10. Like Product Activation
     -----------------------------------------------------*/
@@ -448,7 +448,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             }
         }
     })
-        
+
     /*----------------------------------------------------
     12. New Product Tow For Home-2 Activation
     -----------------------------------------------------*/
@@ -507,7 +507,7 @@ NOTE: main.js, All custom script and plugin activation script in this file.
     $('.thumb-menu a').on('click', function () {
         $('.thumb-menu a').removeClass('active');
     })
-    
+
     /*----------------------------
     14. Countdown Js Activation
     -----------------------------*/
@@ -544,12 +544,12 @@ NOTE: main.js, All custom script and plugin activation script in this file.
             $('.header-sticky').removeClass("sticky");
         }
     });
-    
+
     /*----------------------------
     17. Nice Select Activation
     ------------------------------ */
     $('select').niceSelect();
-    
+
     /*----------------------------
     18. Price Slider Activation
     -----------------------------*/
@@ -558,69 +558,68 @@ NOTE: main.js, All custom script and plugin activation script in this file.
         min: 0,
         max: 100,
         values: [0, 85],
-    slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
+        slide: function (event, ui) {
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        }
     });
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        " - $" + $("#slider-range").slider("values", 1));
 
 
     /*--------------------------
          banner colse Popup
     ---------------------------*/
-        $('.popup_off_banner').on('click', function () {
-            $(".popup_banner").fadeOut(500);
-        })
+    $('.popup_off_banner').on('click', function () {
+        $(".popup_banner").fadeOut(500);
+    })
 
 })(jQuery);
 
 /*----------------发送通用ajax请求------------*/
-function sendAjaxRequest(url,obj) {
+function sendAjaxRequest(url, obj) {
     $.ajax({
-        type:"POST",
-        url:url,
-        dataType:"json",
+        type: "POST",
+        url: url,
+        dataType: "json",
         contentType: "application/json",
-        data:JSON.stringify(obj),
-        success:function(data){
-            debugger;
+        data: JSON.stringify(obj),
+        success: function (data) {
+        debugger;
             $("#cartCount").text(data.cartCount);
             $("#wishCount").text(data.wishCount);
             alert(data.info);
         },
-        error:function(){
-            window.location.href="/404.html";
+        error: function () {
+            window.location.href = "/404.html";
         }
     });
 }
 
 //检查电话号码
 <!-- 先检查telephone是否满足正确格式 -->
-function checkTel(){
-    debugger;
+function checkTel() {
+debugger;
     var tel = document.getElementById("number").value;
     var flag = /^1[3456789]\d{9}$/.test(tel);
-    if(!flag){
-        document.getElementById("s_tel").innerHTML="Please input correct format";
-    }
-    else{
-        document.getElementById("s_tel").innerHTML="";
+    if (!flag) {
+        document.getElementById("s_tel").innerHTML = "Please input correct format";
+    } else {
+        document.getElementById("s_tel").innerHTML = "";
     }
     return flag;
 }
 
 <!-- 当输入错误格式之后再次输入时,错误提示应该消失 -->
-function noError(){
-    document.getElementById("s_tel").innerHTML="";
+function noError() {
+    document.getElementById("s_tel").innerHTML = "";
 }
 
 function toSearch() {
 debugger
     var keywords = $("input[name='search']").val();
     var type = $("#categoriesList option:selected").val();
-    window.location.href="shop.html?pageNum=1&&type="+type+"&&keywords="+keywords;
+    window.location.href = "shop.html?pageNum=1&&type=" + type + "&&keywords=" + keywords;
 }
+
 //将网页底部的a标签全部失效.
-$("#myFooter").find("a").attr("href","javascript:void(0);");
+$("#myFooter").find("a").attr("href", "javascript:void(0);");

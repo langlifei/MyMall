@@ -151,7 +151,7 @@
         if ($.fn.jquery.split('.')[1] >= 7) {
             $(window).off('scroll', scrollEvent);
 
-        // Else use the old .unbind()
+            // Else use the old .unbind()
         } else {
             $(window).unbind('scroll', scrollEvent);
         }

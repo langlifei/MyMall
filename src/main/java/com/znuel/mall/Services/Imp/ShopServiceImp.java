@@ -15,10 +15,10 @@ public class ShopServiceImp implements ShopService {
     private ProductMapper productMapper;
 
     @Override
-    public List<Product> getProducts(Integer type,String keywords) {
-        if(keywords != null && !"".equals(keywords)){
-            keywords = "%"+keywords+"%";
+    public List<Product> getProducts(Integer type, String keywords) {
+        if (keywords != null && !"".equals(keywords)) {
+            keywords = "%" + keywords + "%";
         }
-        return productMapper.getProducts(type,keywords);
+        return productMapper.getProducts(type, keywords);
     }
 }

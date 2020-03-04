@@ -45,119 +45,122 @@
 <div class="wrapper">
     <!-- 引入头部-->
     <div th:replace="header :: header"></div>
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb-area mt-30">
-            <div class="container">
-                <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="register.html">account</a></li>
-                        <li class="active"><a href="contact.html">contact us</a></li>
-                    </ul>
-                </div>
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-area mt-30">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="d-flex align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="register.html">account</a></li>
+                    <li class="active"><a href="contact.html">contact us</a></li>
+                </ul>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- LogIn Page Start -->
-        <div class="log-in ptb-100 ptb-sm-60">
-            <div class="container">
-                <div class="row">
-                    <!-- New Customer Start -->
-                    <div class="col-md-6">
-                        <div class="well mb-sm-30">
-                            <div class="new-customer">
-                                <h3 class="custom-title">new customer</h3>
-                                <p class="mtb-10"><strong>Register</strong></p>
-                                <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made</p>
-                                <a class="customer-btn" href="register.html">continue</a>
-                            </div>
+        <!-- Container End -->
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- LogIn Page Start -->
+    <div class="log-in ptb-100 ptb-sm-60">
+        <div class="container">
+            <div class="row">
+                <!-- New Customer Start -->
+                <div class="col-md-6">
+                    <div class="well mb-sm-30">
+                        <div class="new-customer">
+                            <h3 class="custom-title">new customer</h3>
+                            <p class="mtb-10"><strong>Register</strong></p>
+                            <p>By creating an account you will be able to shop faster, be up to date on an order's
+                                status, and keep track of the orders you have previously made</p>
+                            <a class="customer-btn" href="register.html">continue</a>
                         </div>
                     </div>
-                    <!-- New Customer End -->
-                    <!-- Returning Customer Start -->
-                    <div class="col-md-6">
-                        <div class="well">
-                            <div class="return-customer">
-                                <h3 class="mb-10 custom-title">returnng customer</h3>
-                                <p class="mb-10"><strong>I am a returning customer</strong></p>
-                                <form action="#" th:action="@{/login.do}" method="post">
-                                    <div class="form-group">
-                                        <label>username</label>
-                                        <input type="text" name="username" placeholder="Enter your userName..." id="input-email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" placeholder="Password" id="input-password" class="form-control" required>
-                                    </div>
-                                    <p class="lost-password"><a href="forgot-password.html">Forgot password?</a></p>
-                                    <input type="submit" value="Login" class="return-customer-btn">
-                                </form>
-                            </div>
+                </div>
+                <!-- New Customer End -->
+                <!-- Returning Customer Start -->
+                <div class="col-md-6">
+                    <div class="well">
+                        <div class="return-customer">
+                            <h3 class="mb-10 custom-title">returnng customer</h3>
+                            <p class="mb-10"><strong>I am a returning customer</strong></p>
+                            <form action="#" th:action="@{/login.do}" method="post">
+                                <div class="form-group">
+                                    <label>username</label>
+                                    <input type="text" name="username" placeholder="Enter your userName..."
+                                           id="input-email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" placeholder="Password" id="input-password"
+                                           class="form-control" required>
+                                </div>
+                                <!--                                    <p class="lost-password"><a href="forgot-password.html">Forgot password?</a></p>-->
+                                <input type="submit" value="Login" class="return-customer-btn">
+                            </form>
                         </div>
                     </div>
-                    <!-- Returning Customer End -->
                 </div>
-                <!-- Row End -->
+                <!-- Returning Customer End -->
             </div>
-            <!-- Container End -->
+            <!-- Row End -->
         </div>
-        <!-- LogIn Page End -->
-        <!-- 引入尾部-->
-        <div th:replace="footer :: footer"></div>
-        </div>
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
-    <script th:inline="javascript">
-            // function userLogin(url){
-            //     var user = new Object();
-            //     user.username=$("input[name=username]").val();
-            //     user.password=$("input[name=password]").val();
-            //     debugger
-            //     $.ajax({
-            //         type:"POST",
-            //         url:url,
-            //         dataType:"json",
-            //         contentType: "application/json",
-            //         data:JSON.stringify(user),
-            //         success:function(data){
-            //             $.alert(data.info);
-            //         },
-            //         error:function(){
-            //             $.alert("错误!");
-            //         }
-            //     });
-            // }
-        var info = [[${info}]];
-        if( (info != null) && (info != "")){
-            alert(info)
-        }
+        <!-- Container End -->
+    </div>
+    <!-- LogIn Page End -->
+    <!-- 引入尾部-->
+    <div th:replace="footer :: footer"></div>
+</div>
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
+<script th:inline="javascript">
+    // function userLogin(url){
+    //     var user = new Object();
+    //     user.username=$("input[name=username]").val();
+    //     user.password=$("input[name=password]").val();
+    //     debugger
+    //     $.ajax({
+    //         type:"POST",
+    //         url:url,
+    //         dataType:"json",
+    //         contentType: "application/json",
+    //         data:JSON.stringify(user),
+    //         success:function(data){
+    //             $.alert(data.info);
+    //         },
+    //         error:function(){
+    //             $.alert("错误!");
+    //         }
+    //     });
+    // }
+    var info = [[${info}]];
+    if ((info != null) && (info != "")) {
+        alert(info)
+    }
 
-    </script>
+</script>
 </body>
 
 </html>

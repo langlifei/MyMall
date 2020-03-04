@@ -13,5 +13,5 @@ public interface ProductService {
     boolean addToCompare(User user, Cart cart);
 
     //从比较中移除.
-    void removeFromCompare(User user,Integer index);
+    void removeFromCompare(User user, Integer index);
 }

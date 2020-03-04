@@ -128,7 +128,7 @@ public class User {
     }
 
     public void setWishCount(Integer wishCount) {
-        if(wishCount >= 0)
+        if (wishCount >= 0)
             this.wishCount = wishCount;
     }
 
@@ -137,12 +137,12 @@ public class User {
     }
 
     public void setCartCount(Integer cartCount) {
-        if(cartCount >= 0)
+        if (cartCount >= 0)
             this.cartCount = cartCount;
     }
 
     public List<Product> getCompareList() {
-        if (this.compareList==null){
+        if (this.compareList == null) {
             //初试化防止页面报错
             this.compareList = new ArrayList<>();
             this.compareList.add(null);

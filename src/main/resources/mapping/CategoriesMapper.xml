@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.znuel.mall.Dao.CategoriesMapper" >
-  <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Categories" >
-    <id column="CID" property="CID" jdbcType="INTEGER" />
-    <result column="CNAME" property="CNAME" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    CID, CNAME
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from categories
-    where CID = #{CID,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from categories
-    where CID = #{CID,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.znuel.mall.Entities.Categories" >
-    insert into categories (CID, CNAME)
-    values (#{CID,jdbcType=INTEGER}, #{CNAME,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Categories" >
-    insert into categories
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="CID != null" >
-        CID,
-      </if>
-      <if test="CNAME != null" >
-        CNAME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="CID != null" >
-        #{CID,jdbcType=INTEGER},
-      </if>
-      <if test="CNAME != null" >
-        #{CNAME,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Categories" >
-    update categories
-    <set >
-      <if test="CNAME != null" >
-        CNAME = #{CNAME,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where CID = #{CID,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Categories" >
-    update categories
-    set CNAME = #{CNAME,jdbcType=VARCHAR}
-    where CID = #{CID,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.znuel.mall.Dao.CategoriesMapper">
+    <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Categories">
+        <id column="CID" property="CID" jdbcType="INTEGER"/>
+        <result column="CNAME" property="CNAME" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        CID, CNAME
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from categories
+        where CID = #{CID,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from categories
+        where CID = #{CID,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.znuel.mall.Entities.Categories">
+        insert into categories (CID, CNAME)
+        values (#{CID,jdbcType=INTEGER}, #{CNAME,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Categories">
+        insert into categories
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="CID != null">
+                CID,
+            </if>
+            <if test="CNAME != null">
+                CNAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="CID != null">
+                #{CID,jdbcType=INTEGER},
+            </if>
+            <if test="CNAME != null">
+                #{CNAME,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Categories">
+        update categories
+        <set>
+            <if test="CNAME != null">
+                CNAME = #{CNAME,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where CID = #{CID,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Categories">
+        update categories
+        set CNAME = #{CNAME,jdbcType=VARCHAR}
+        where CID = #{CID,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -20,7 +20,7 @@ public class Cart {
 
     private Integer status;
 
-    DecimalFormat df = new DecimalFormat( "0.00 ");
+    DecimalFormat df = new DecimalFormat("0.00 ");
 
     public Integer getID() {
         return ID;
@@ -59,7 +59,7 @@ public class Cart {
     }
 
     public void setPrice(Double price) {
-        if(price >=0)
+        if (price >= 0)
             this.price = new Double(df.format(price));
     }
 

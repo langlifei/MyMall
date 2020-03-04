@@ -29,5 +29,5 @@ public interface WishListMapper {
 
     //判断商品是否已存在收藏中.
     @Select("select * from wishlist where UID = #{userId} and PID = #{PID}")
-    WishList selectByUIdAndPID(Integer userId,Integer PID);
+    WishList selectByUIdAndPID(Integer userId, Integer PID);
 }

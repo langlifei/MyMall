@@ -29,7 +29,7 @@ public class CartServiceImp implements CartService {
         //设置商品ID
         cart.setPID(new Integer(str[0]));
         //设置商品属性
-        if(str.length==2)
+        if (str.length == 2)
             cart.setProduct_attr(str[1]);
         else
             cart.setProduct_attr("");
@@ -38,7 +38,7 @@ public class CartServiceImp implements CartService {
         //设置创建时间
         Date date = new Date();
         cart.setCreate_time(date);
-        if(cartMapper.insert(cart) > 0)
+        if (cartMapper.insert(cart) > 0)
             return true;
         else
             return false;
@@ -46,28 +46,28 @@ public class CartServiceImp implements CartService {
 
     @Override
     public List<CartContent> queryCart(Integer userId) {
-        List<CartContent> cartList =  cartMapper.selectByUserId(userId);
-        Map<Integer,Integer> map= new HashMap<>();
+        List<CartContent> cartList = cartMapper.selectByUserId(userId);
+        Map<Integer, Integer> map = new HashMap<>();
         int PID = -1;
         int quantity = -1;
         List<CartContent> list = new ArrayList<>();
         //将相同商品的数量相加.
-        for(int i = 0 ; i < cartList.size();i++){
+        for (int i = 0; i < cartList.size(); i++) {
             PID = cartList.get(i).getpId();
             quantity = cartList.get(i).getQuantity();
-            if(map.containsKey(PID)){
+            if (map.containsKey(PID)) {
                 //如果商品存在更改其数量
-                map.put(PID,map.get(PID)+quantity);
-            }else{
-                map.put(PID,quantity);
+                map.put(PID, map.get(PID) + quantity);
+            } else {
+                map.put(PID, quantity);
                 //将不同的商品添加到购物车.
                 list.add(cartList.get(i));
             }
         }
         //更新不同商品的数量和价格.
-        for (int i = 0 ; i < list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
             list.get(i).setQuantity(map.get(list.get(i).getpId()));
-            list.get(i).setTotalAmount(list.get(i).getQuantity()*list.get(i).getPromotion_price());
+            list.get(i).setTotalAmount(list.get(i).getQuantity() * list.get(i).getPromotion_price());
         }
         return list;
     }
@@ -78,7 +78,7 @@ public class CartServiceImp implements CartService {
         cart.setID(id);
         //将商品的状态设为0,表示从购物车中移除.
         cart.setStatus(0);
-        if(cartMapper.updateByPrimaryKeySelective(cart) > 0)
+        if (cartMapper.updateByPrimaryKeySelective(cart) > 0)
             return true;
         else
             return false;
@@ -87,7 +87,7 @@ public class CartServiceImp implements CartService {
     @Override
     public double computeAmount(List<CartContent> contents) {
         double amount = 0.0;
-        for (int i = 0 ; i < contents.size();i++){
+        for (int i = 0; i < contents.size(); i++) {
             amount += contents.get(i).getTotalAmount();
         }
         return amount;
@@ -104,7 +104,7 @@ public class CartServiceImp implements CartService {
         JSONArray jsonArray = JSON.parseArray(jsonStr);
         double amount = 0.0;
         //解析json数据,将json数据转换为javaBean.
-        for(Object obj:jsonArray){
+        for (Object obj : jsonArray) {
             JSONObject jobj = (JSONObject) obj;
             CheckOutItem item = new CheckOutItem();
             item.setId(jobj.getInteger("id"));
@@ -116,7 +116,7 @@ public class CartServiceImp implements CartService {
             amount += item.getTotalAmount();
             checkOutItems.add(item);
         }
-        CheckOutContent checkOutContent= new CheckOutContent();
+        CheckOutContent checkOutContent = new CheckOutContent();
         checkOutContent.setItems(checkOutItems);
         checkOutContent.setAmount(amount);
         return checkOutContent;
@@ -124,10 +124,10 @@ public class CartServiceImp implements CartService {
 
     @Override
     public void removeProductAfterPO(HttpServletRequest request) {
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         List<CheckOutItem> checkOutItems = user.getCheckOutContent().getItems();
         List list = new ArrayList();
-        for(CheckOutItem item:checkOutItems){
+        for (CheckOutItem item : checkOutItems) {
             list.add(item.getId());
         }
         cartMapper.removeProduct(list);

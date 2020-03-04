@@ -27,6 +27,7 @@ public interface HomeMapper {
      */
     @Select("select a.* from product a where (select count(*) from product b where a.CID = b.CID and unix_timestamp(b.create_time) > unix_timestamp(a.create_time)) < #{number} order by CID,create_time desc")
     List<Product> getNewProductList(Integer number);
+
     /**
      * 获取人气推荐
      */

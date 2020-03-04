@@ -1,177 +1,177 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.znuel.mall.Dao.OrderMapper" >
-  <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Order" >
-    <id column="OID" property="OID" jdbcType="INTEGER" />
-    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="total_amount" property="total_amount" jdbcType="DOUBLE" />
-    <result column="promotion_amount" property="promotion_amount" jdbcType="DOUBLE" />
-    <result column="order_status" property="order_status" jdbcType="INTEGER" />
-    <result column="delivery_company" property="delivery_company" jdbcType="VARCHAR" />
-    <result column="delivery_sn" property="delivery_sn" jdbcType="VARCHAR" />
-    <result column="receiver_name" property="receiver_name" jdbcType="VARCHAR" />
-    <result column="receiver_phone" property="receiver_phone" jdbcType="VARCHAR" />
-    <result column="receiver_address" property="receiver_address" jdbcType="VARCHAR" />
-    <result column="notes" property="notes" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    OID, create_time, username, total_amount, promotion_amount, order_status, delivery_company, 
-    delivery_sn, receiver_name, receiver_phone, receiver_address, notes
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from mallorder
-    where OID = #{OID,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from mallorder
-    where OID = #{OID,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.znuel.mall.Entities.Order" >
-    insert into mallorder (OID, create_time, username, 
-      total_amount, promotion_amount, order_status, 
-      delivery_company, delivery_sn, receiver_name, 
-      receiver_phone, receiver_address, notes
-      )
-    values (#{OID,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}, 
-      #{total_amount,jdbcType=DOUBLE}, #{promotion_amount,jdbcType=DOUBLE}, #{order_status,jdbcType=INTEGER}, 
-      #{delivery_company,jdbcType=VARCHAR}, #{delivery_sn,jdbcType=VARCHAR}, #{receiver_name,jdbcType=VARCHAR}, 
-      #{receiver_phone,jdbcType=VARCHAR}, #{receiver_address,jdbcType=VARCHAR}, #{notes,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Order" >
-    insert into mallorder
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="OID != null" >
-        OID,
-      </if>
-      <if test="create_time != null" >
-        create_time,
-      </if>
-      <if test="username != null" >
-        username,
-      </if>
-      <if test="total_amount != null" >
-        total_amount,
-      </if>
-      <if test="promotion_amount != null" >
-        promotion_amount,
-      </if>
-      <if test="order_status != null" >
-        order_status,
-      </if>
-      <if test="delivery_company != null" >
-        delivery_company,
-      </if>
-      <if test="delivery_sn != null" >
-        delivery_sn,
-      </if>
-      <if test="receiver_name != null" >
-        receiver_name,
-      </if>
-      <if test="receiver_phone != null" >
-        receiver_phone,
-      </if>
-      <if test="receiver_address != null" >
-        receiver_address,
-      </if>
-      <if test="notes != null" >
-        notes,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="OID != null" >
-        #{OID,jdbcType=INTEGER},
-      </if>
-      <if test="create_time != null" >
-        #{create_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="total_amount != null" >
-        #{total_amount,jdbcType=DOUBLE},
-      </if>
-      <if test="promotion_amount != null" >
-        #{promotion_amount,jdbcType=DOUBLE},
-      </if>
-      <if test="order_status != null" >
-        #{order_status,jdbcType=INTEGER},
-      </if>
-      <if test="delivery_company != null" >
-        #{delivery_company,jdbcType=VARCHAR},
-      </if>
-      <if test="delivery_sn != null" >
-        #{delivery_sn,jdbcType=VARCHAR},
-      </if>
-      <if test="receiver_name != null" >
-        #{receiver_name,jdbcType=VARCHAR},
-      </if>
-      <if test="receiver_phone != null" >
-        #{receiver_phone,jdbcType=VARCHAR},
-      </if>
-      <if test="receiver_address != null" >
-        #{receiver_address,jdbcType=VARCHAR},
-      </if>
-      <if test="notes != null" >
-        #{notes,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Order" >
-    update mallorder
-    <set >
-      <if test="create_time != null" >
-        create_time = #{create_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="username != null" >
+<mapper namespace="com.znuel.mall.Dao.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Order">
+        <id column="OID" property="OID" jdbcType="INTEGER"/>
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="total_amount" property="total_amount" jdbcType="DOUBLE"/>
+        <result column="promotion_amount" property="promotion_amount" jdbcType="DOUBLE"/>
+        <result column="order_status" property="order_status" jdbcType="INTEGER"/>
+        <result column="delivery_company" property="delivery_company" jdbcType="VARCHAR"/>
+        <result column="delivery_sn" property="delivery_sn" jdbcType="VARCHAR"/>
+        <result column="receiver_name" property="receiver_name" jdbcType="VARCHAR"/>
+        <result column="receiver_phone" property="receiver_phone" jdbcType="VARCHAR"/>
+        <result column="receiver_address" property="receiver_address" jdbcType="VARCHAR"/>
+        <result column="notes" property="notes" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        OID, create_time, username, total_amount, promotion_amount, order_status, delivery_company,
+        delivery_sn, receiver_name, receiver_phone, receiver_address, notes
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from mallorder
+        where OID = #{OID,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from mallorder
+        where OID = #{OID,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.znuel.mall.Entities.Order">
+        insert into mallorder (OID, create_time, username,
+        total_amount, promotion_amount, order_status,
+        delivery_company, delivery_sn, receiver_name,
+        receiver_phone, receiver_address, notes
+        )
+        values (#{OID,jdbcType=INTEGER}, #{create_time,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR},
+        #{total_amount,jdbcType=DOUBLE}, #{promotion_amount,jdbcType=DOUBLE}, #{order_status,jdbcType=INTEGER},
+        #{delivery_company,jdbcType=VARCHAR}, #{delivery_sn,jdbcType=VARCHAR}, #{receiver_name,jdbcType=VARCHAR},
+        #{receiver_phone,jdbcType=VARCHAR}, #{receiver_address,jdbcType=VARCHAR}, #{notes,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Order">
+        insert into mallorder
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="OID != null">
+                OID,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="total_amount != null">
+                total_amount,
+            </if>
+            <if test="promotion_amount != null">
+                promotion_amount,
+            </if>
+            <if test="order_status != null">
+                order_status,
+            </if>
+            <if test="delivery_company != null">
+                delivery_company,
+            </if>
+            <if test="delivery_sn != null">
+                delivery_sn,
+            </if>
+            <if test="receiver_name != null">
+                receiver_name,
+            </if>
+            <if test="receiver_phone != null">
+                receiver_phone,
+            </if>
+            <if test="receiver_address != null">
+                receiver_address,
+            </if>
+            <if test="notes != null">
+                notes,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="OID != null">
+                #{OID,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="total_amount != null">
+                #{total_amount,jdbcType=DOUBLE},
+            </if>
+            <if test="promotion_amount != null">
+                #{promotion_amount,jdbcType=DOUBLE},
+            </if>
+            <if test="order_status != null">
+                #{order_status,jdbcType=INTEGER},
+            </if>
+            <if test="delivery_company != null">
+                #{delivery_company,jdbcType=VARCHAR},
+            </if>
+            <if test="delivery_sn != null">
+                #{delivery_sn,jdbcType=VARCHAR},
+            </if>
+            <if test="receiver_name != null">
+                #{receiver_name,jdbcType=VARCHAR},
+            </if>
+            <if test="receiver_phone != null">
+                #{receiver_phone,jdbcType=VARCHAR},
+            </if>
+            <if test="receiver_address != null">
+                #{receiver_address,jdbcType=VARCHAR},
+            </if>
+            <if test="notes != null">
+                #{notes,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Order">
+        update mallorder
+        <set>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="total_amount != null">
+                total_amount = #{total_amount,jdbcType=DOUBLE},
+            </if>
+            <if test="promotion_amount != null">
+                promotion_amount = #{promotion_amount,jdbcType=DOUBLE},
+            </if>
+            <if test="order_status != null">
+                order_status = #{order_status,jdbcType=INTEGER},
+            </if>
+            <if test="delivery_company != null">
+                delivery_company = #{delivery_company,jdbcType=VARCHAR},
+            </if>
+            <if test="delivery_sn != null">
+                delivery_sn = #{delivery_sn,jdbcType=VARCHAR},
+            </if>
+            <if test="receiver_name != null">
+                receiver_name = #{receiver_name,jdbcType=VARCHAR},
+            </if>
+            <if test="receiver_phone != null">
+                receiver_phone = #{receiver_phone,jdbcType=VARCHAR},
+            </if>
+            <if test="receiver_address != null">
+                receiver_address = #{receiver_address,jdbcType=VARCHAR},
+            </if>
+            <if test="notes != null">
+                notes = #{notes,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where OID = #{OID,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Order">
+        update mallorder
+        set create_time = #{create_time,jdbcType=TIMESTAMP},
         username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="total_amount != null" >
         total_amount = #{total_amount,jdbcType=DOUBLE},
-      </if>
-      <if test="promotion_amount != null" >
         promotion_amount = #{promotion_amount,jdbcType=DOUBLE},
-      </if>
-      <if test="order_status != null" >
         order_status = #{order_status,jdbcType=INTEGER},
-      </if>
-      <if test="delivery_company != null" >
         delivery_company = #{delivery_company,jdbcType=VARCHAR},
-      </if>
-      <if test="delivery_sn != null" >
         delivery_sn = #{delivery_sn,jdbcType=VARCHAR},
-      </if>
-      <if test="receiver_name != null" >
         receiver_name = #{receiver_name,jdbcType=VARCHAR},
-      </if>
-      <if test="receiver_phone != null" >
         receiver_phone = #{receiver_phone,jdbcType=VARCHAR},
-      </if>
-      <if test="receiver_address != null" >
         receiver_address = #{receiver_address,jdbcType=VARCHAR},
-      </if>
-      <if test="notes != null" >
-        notes = #{notes,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where OID = #{OID,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Order" >
-    update mallorder
-    set create_time = #{create_time,jdbcType=TIMESTAMP},
-      username = #{username,jdbcType=VARCHAR},
-      total_amount = #{total_amount,jdbcType=DOUBLE},
-      promotion_amount = #{promotion_amount,jdbcType=DOUBLE},
-      order_status = #{order_status,jdbcType=INTEGER},
-      delivery_company = #{delivery_company,jdbcType=VARCHAR},
-      delivery_sn = #{delivery_sn,jdbcType=VARCHAR},
-      receiver_name = #{receiver_name,jdbcType=VARCHAR},
-      receiver_phone = #{receiver_phone,jdbcType=VARCHAR},
-      receiver_address = #{receiver_address,jdbcType=VARCHAR},
-      notes = #{notes,jdbcType=VARCHAR}
-    where OID = #{OID,jdbcType=INTEGER}
-  </update>
+        notes = #{notes,jdbcType=VARCHAR}
+        where OID = #{OID,jdbcType=INTEGER}
+    </update>
 </mapper>

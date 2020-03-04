@@ -40,236 +40,291 @@
 </head>
 
 <body>
-    <!-- Main Wrapper Start Here -->
-    <div class="wrapper">
-        <!-- 引入头部-->
-        <div th:replace="header :: header"></div>
-        <!-- Categorie Menu & Slider Area Start Here -->
-        <div class="main-page-banner pb-50 off-white-bg">
-            <div class="container">
-                <div class="row">
-                    <!-- Vertical Menu Start Here -->
-                    <div class="col-xl-3 col-lg-4 d-none d-lg-block">
-                        <div class="vertical-menu mb-all-30">
-                            <nav>
-                                <ul class="vertical-menu-list">
-                                    <li class=""><a href="shop.html?type=7"><span><img src="img/vertical-menu/1.png" alt="menu-icon"></span>Automotive & Motorcycle</a>
-                                    </li>
-                                    <li><a href="shop.html?type=3"><span><img src="img/vertical-menu/3.png" alt="menu-icon"></span>Sports & Outdoors</a>
-                                    </li>
-                                    <li><a href="shop.html?type=1"><span><img src="img/vertical-menu/6.png" alt="menu-icon"></span>Fashion</a>
-                                    </li>
-                                    <li><a href="shop.html?type=4"><span><img src="img/vertical-menu/7.png" alt="menu-icon"></span>Home & Kitchen</a>
-                                    </li>
-                                    <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/4.png" alt="menu-icon"></span>Phones & Tablets</a>
-                                    </li>
-                                    <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/6.png" alt="menu-icon"></span>TV & Video</a>
-                                    </li>
-                                    <li><a href="shop.html?type=2"><span><img src="img/vertical-menu/5.png" alt="menu-icon"></span>Beauty</a>
-                                    </li>
-                                    <li><a href="shop.html?type=5"><span><img src="img/vertical-menu/8.png" alt="menu-icon"></span>Fruits & Veggies</a></li>
-                                    <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/9.png" alt="menu-icon"></span>Computer & Laptop</a></li>
-                                    <li><a href="shop.html?type=5"><span><img src="img/vertical-menu/10.png" alt="menu-icon"></span>Meat & Seafood</a></li>
-                                    <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/11.png" alt="menu-icon"></span>Accessories</a></li>
-                                </ul>
-                            </nav>
-                        </div>
+<!-- Main Wrapper Start Here -->
+<div class="wrapper">
+    <!-- 引入头部-->
+    <div th:replace="header :: header"></div>
+    <!-- Categorie Menu & Slider Area Start Here -->
+    <div class="main-page-banner pb-50 off-white-bg">
+        <div class="container">
+            <div class="row">
+                <!-- Vertical Menu Start Here -->
+                <div class="col-xl-3 col-lg-4 d-none d-lg-block">
+                    <div class="vertical-menu mb-all-30">
+                        <nav>
+                            <ul class="vertical-menu-list">
+                                <li class=""><a href="shop.html?type=7"><span><img src="img/vertical-menu/1.png"
+                                                                                   alt="menu-icon"></span>Automotive &
+                                    Motorcycle</a>
+                                </li>
+                                <li><a href="shop.html?type=3"><span><img src="img/vertical-menu/3.png" alt="menu-icon"></span>Sports
+                                    & Outdoors</a>
+                                </li>
+                                <li><a href="shop.html?type=1"><span><img src="img/vertical-menu/6.png" alt="menu-icon"></span>Fashion</a>
+                                </li>
+                                <li><a href="shop.html?type=4"><span><img src="img/vertical-menu/7.png" alt="menu-icon"></span>Home
+                                    & Kitchen</a>
+                                </li>
+                                <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/4.png" alt="menu-icon"></span>Phones
+                                    & Tablets</a>
+                                </li>
+                                <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/6.png" alt="menu-icon"></span>TV
+                                    & Video</a>
+                                </li>
+                                <li><a href="shop.html?type=2"><span><img src="img/vertical-menu/5.png" alt="menu-icon"></span>Beauty</a>
+                                </li>
+                                <li><a href="shop.html?type=5"><span><img src="img/vertical-menu/8.png" alt="menu-icon"></span>Fruits
+                                    & Veggies</a></li>
+                                <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/9.png" alt="menu-icon"></span>Computer
+                                    & Laptop</a></li>
+                                <li><a href="shop.html?type=5"><span><img src="img/vertical-menu/10.png"
+                                                                          alt="menu-icon"></span>Meat & Seafood</a></li>
+                                <li><a href="shop.html?type=7"><span><img src="img/vertical-menu/11.png"
+                                                                          alt="menu-icon"></span>Accessories</a></li>
+                            </ul>
+                        </nav>
                     </div>
-                    <!-- Vertical Menu End Here -->
-                    <!-- Slider Area Start Here -->
-                    <div class="col-xl-9 col-lg-8 slider_box">
-                        <div class="slider-wrapper theme-default">
-                            <!-- Slider Background  Image Start-->
-                            <div id="slider" class="nivoSlider" style="width:899px;height:409px">
-                                <a th:each="obj,objstar:${homeContent.getAdvertiseList()}" th:href="${'product.do?id='+obj.getpId()}"><img th:src="${obj.getPic()}" style="width:899px;height:409px" data-thumb="img/slider/1.jpg" alt="" title="#htmlcaption" /></a>
-                            </div>
-                            <!-- Slider Background  Image Start-->
-                        </div>
-                    </div>
-                    <!-- Slider Area End Here -->
                 </div>
-                <!-- Row End -->
+                <!-- Vertical Menu End Here -->
+                <!-- Slider Area Start Here -->
+                <div class="col-xl-9 col-lg-8 slider_box">
+                    <div class="slider-wrapper theme-default">
+                        <!-- Slider Background  Image Start-->
+                        <div id="slider" class="nivoSlider" style="width:899px;height:409px">
+                            <a th:each="obj,objstar:${homeContent.getAdvertiseList()}"
+                               th:href="${'product.do?id='+obj.getpId()}"><img th:src="${obj.getPic()}"
+                                                                               style="width:899px;height:409px"
+                                                                               data-thumb="img/slider/1.jpg" alt=""
+                                                                               title="#htmlcaption"/></a>
+                        </div>
+                        <!-- Slider Background  Image Start-->
+                    </div>
+                </div>
+                <!-- Slider Area End Here -->
             </div>
-            <!-- Container End -->
+            <!-- Row End -->
         </div>
-        <!-- Categorie Menu & Slider Area End Here -->
-        <!-- Arrivals Products Area Start Here -->
-        <div class="arrivals-product pb-85 pb-sm-45">
-            <div class="container">
-                <div class="main-product-tab-area">
-                    <div class="tab-menu mb-25">
-                        <div class="section-ttitle">
-                            <h2>New Arrivals</h2>
-                       </div>
-                        <!-- Nav tabs -->
-                        <ul class="nav tabs-area" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="javascript:void(0);" onclick="changeType(1)">Fashion</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(2)">Beauty</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(3)">Sport/Outdoor</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(4)">Living</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(5)">Food</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(6)">Baby/Kids</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(7)">Electronics </a>
-                            </li>
-                        </ul>                       
+        <!-- Container End -->
+    </div>
+    <!-- Categorie Menu & Slider Area End Here -->
+    <!-- Arrivals Products Area Start Here -->
+    <div class="arrivals-product pb-85 pb-sm-45">
+        <div class="container">
+            <div class="main-product-tab-area">
+                <div class="tab-menu mb-25">
+                    <div class="section-ttitle">
+                        <h2>New Arrivals</h2>
+                    </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav tabs-area" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="javascript:void(0);"
+                               onclick="changeType(1)">Fashion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(2)">Beauty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(3)">Sport/Outdoor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(4)">Living</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(5)">Food</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(6)">Baby/Kids</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="javascript:void(0);" onclick="changeType(7)">Electronics </a>
+                        </li>
+                    </ul>
 
-                    </div> 
-                    <!-- Tab Contetn Start -->
-                    <div class="tab-content">
-                        <div id="kids" class="tab-pane fade show active">
-                            <!-- Arrivals Product Activation Start Here -->
-                            <div class="electronics-pro-active owl-carousel">
-                                <!-- Double Product Start -->
-                                <div class="double-product" th:each="obj,objStar:${homeContent.getNewProductList()}" th:if="${objStar.index+4 < objStar.size}">
-                                    <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a href="product.html" th:href="${'product.do?id='+obj.getPID()}">
-                                                <img class="primary-img" th:src="${obj.getPic()}" alt="single-product">
-                                                <img class="secondary-img" th:src="${obj.getPic()}" alt="single-product">
-                                            </a>
-                                            <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <div class="pro-info">
-                                                <h4><a href="product.html" th:text="${obj.getPName()}"></a></h4>
-                                                <p><span class="price" th:text="'¥'+${obj.getPromotion_price()}"></span><del class="prev-price" th:text="'¥'+${obj.getPrice()}"></del></p>
-                                                <div class="label-product l_sale"><span th:text="${'↓ '+#numbers.formatDecimal((1 - obj.getPromotion_price()/obj.getPrice())*100,0,0)}"></span><span class="symbol-percent">%</span></div>
-                                            </div>
-                                            <div class="pro-actions">
-                                                <div class="actions-primary">
-                                                    <a title="Add to Cart" href="javascript:void(0);" onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To Cart</a>
-                                                </div>
-                                                <div class="actions-secondary">
-                                                    <a href="javascript:void(0);" th:name="${obj.getPID()}" onclick="addToCompare(this)" title="Compare" ><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                    <a onclick="addToWishList(this)" title="WishList" th:name="${obj.getPID()}" href="javascript:void(0);"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div th:switch="${obj.getStatus()}" id="stockStatus">
-                                            <span class="sticker-new" th:case="0" th:value="${obj.getStatus()}">Sold Out</span>
-                                            <span class="sticker-new" th:case="1" th:value="${obj.getStatus()}">new</span>
-                                            <span class="sticker-new" th:case="2" th:value="${obj.getStatus()}">Stock Out</span>
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
-                                     <!-- Single Product Start -->
-                                    <div class="single-product">
-                                        <!-- Product Image Start -->
-                                        <div class="pro-img">
-                                            <a th:href="${'product.do?id='+homeContent.getNewProductList().get(objStar.index + 4).getPID()}">
-                                                <img class="primary-img" th:src="${homeContent.getNewProductList().get(objStar.index + 4).getPic()}" alt="single-product">
-                                                <img class="secondary-img" th:src="${homeContent.getNewProductList().get(objStar.index + 4).getPic()}" alt="single-product">
-                                            </a>
-                                            <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal" title="Quick View"><i class="lnr lnr-magnifier"></i></a>
-                                        </div>
-                                        <!-- Product Image End -->
-                                        <!-- Product Content Start -->
-                                        <div class="pro-content">
-                                            <div class="pro-info">
-                                                <h4><a href="product.html" th:text="${homeContent.getNewProductList().get(objStar.index + 4).getPName()}"></a></h4>
-                                                <p><span class="price" th:text="'¥'+${homeContent.getNewProductList().get(objStar.index + 4).getPromotion_price()}"></span><del class="prev-price" th:text="'¥'+${homeContent.getNewProductList().get(objStar.index + 4).getPrice()}"></del></p>
-                                                <div class="label-product l_sale"><span th:text="${'↓ '+#numbers.formatDecimal((1 - homeContent.getNewProductList().get(objStar.index + 4).getPromotion_price()/homeContent.getNewProductList().get(objStar.index + 4).getPrice())*100,0,0)}"></span><span class="symbol-percent">%</span></div>
-                                            </div>
-                                            <div class="pro-actions">
-                                                <div class="actions-primary">
-                                                    <a href="javascript:void(0);" th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}" title="Add to Cart" onclick="addToCart(this)"> + Add To Cart</a>
-                                                </div>
-                                                <div class="actions-secondary">
-                                                    <a href="javascript:void(0);" th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}" onclick="addToCompare(this)" title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                                    <a title="WishList" href="javascript:void(0);" onclick="addToWishList(this)" th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Product Content End -->
-                                        <div th:switch="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}" id="stockStatus">
-                                            <span class="sticker-new" th:case="0" th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">Sold Out</span>
-                                            <span class="sticker-new" th:case="1" th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">new</span>
-                                            <span class="sticker-new" th:case="2" th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">Stock Out</span>
-                                        </div>
-                                    </div>
-                                    <!-- Single Product End -->
-                                </div>
-                                <!-- Double Product End -->
-                            </div>
-                            <!-- Arrivals Product Activation End Here -->
-                        </div>
-                    </div>
-                    <!-- Tab Content End -->
                 </div>
-                <!-- main-product-tab-area-->
+                <!-- Tab Contetn Start -->
+                <div class="tab-content">
+                    <div id="kids" class="tab-pane fade show active">
+                        <!-- Arrivals Product Activation Start Here -->
+                        <div class="electronics-pro-active owl-carousel">
+                            <!-- Double Product Start -->
+                            <div class="double-product" th:each="obj,objStar:${homeContent.getNewProductList()}"
+                                 th:if="${objStar.index+4 < objStar.size}">
+                                <!-- Single Product Start -->
+                                <div class="single-product">
+                                    <!-- Product Image Start -->
+                                    <div class="pro-img">
+                                        <a href="product.html" th:href="${'product.do?id='+obj.getPID()}">
+                                            <img class="primary-img" th:src="${obj.getPic()}" alt="single-product">
+                                            <img class="secondary-img" th:src="${obj.getPic()}" alt="single-product">
+                                        </a>
+                                        <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal"
+                                           title="Quick View"><i class="lnr lnr-magnifier"></i></a>
+                                    </div>
+                                    <!-- Product Image End -->
+                                    <!-- Product Content Start -->
+                                    <div class="pro-content">
+                                        <div class="pro-info">
+                                            <h4><a href="product.html" th:text="${obj.getPName()}"></a></h4>
+                                            <p><span class="price" th:text="'¥'+${obj.getPromotion_price()}"></span>
+                                                <del class="prev-price" th:text="'¥'+${obj.getPrice()}"></del>
+                                            </p>
+                                            <div class="label-product l_sale"><span
+                                                    th:text="${'↓ '+#numbers.formatDecimal((1 - obj.getPromotion_price()/obj.getPrice())*100,0,0)}"></span><span
+                                                    class="symbol-percent">%</span></div>
+                                        </div>
+                                        <div class="pro-actions">
+                                            <div class="actions-primary">
+                                                <a title="Add to Cart" href="javascript:void(0);"
+                                                   onclick="addToCart(this)" th:name="${obj.getPID()}"> + Add To
+                                                    Cart</a>
+                                            </div>
+                                            <div class="actions-secondary">
+                                                <a href="javascript:void(0);" th:name="${obj.getPID()}"
+                                                   onclick="addToCompare(this)" title="Compare"><i
+                                                        class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
+                                                <a onclick="addToWishList(this)" title="WishList"
+                                                   th:name="${obj.getPID()}" href="javascript:void(0);"><i
+                                                        class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div th:switch="${obj.getStatus()}" id="stockStatus">
+                                        <span class="sticker-new" th:case="0"
+                                              th:value="${obj.getStatus()}">Sold Out</span>
+                                        <span class="sticker-new" th:case="1" th:value="${obj.getStatus()}">new</span>
+                                        <span class="sticker-new" th:case="2"
+                                              th:value="${obj.getStatus()}">Stock Out</span>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+                                <!-- Single Product Start -->
+                                <div class="single-product">
+                                    <!-- Product Image Start -->
+                                    <div class="pro-img">
+                                        <a th:href="${'product.do?id='+homeContent.getNewProductList().get(objStar.index + 4).getPID()}">
+                                            <img class="primary-img"
+                                                 th:src="${homeContent.getNewProductList().get(objStar.index + 4).getPic()}"
+                                                 alt="single-product">
+                                            <img class="secondary-img"
+                                                 th:src="${homeContent.getNewProductList().get(objStar.index + 4).getPic()}"
+                                                 alt="single-product">
+                                        </a>
+                                        <a href="#" class="quick_view" data-toggle="modal" data-target="#myModal"
+                                           title="Quick View"><i class="lnr lnr-magnifier"></i></a>
+                                    </div>
+                                    <!-- Product Image End -->
+                                    <!-- Product Content Start -->
+                                    <div class="pro-content">
+                                        <div class="pro-info">
+                                            <h4><a href="product.html"
+                                                   th:text="${homeContent.getNewProductList().get(objStar.index + 4).getPName()}"></a>
+                                            </h4>
+                                            <p><span class="price"
+                                                     th:text="'¥'+${homeContent.getNewProductList().get(objStar.index + 4).getPromotion_price()}"></span>
+                                                <del class="prev-price"
+                                                     th:text="'¥'+${homeContent.getNewProductList().get(objStar.index + 4).getPrice()}"></del>
+                                            </p>
+                                            <div class="label-product l_sale"><span
+                                                    th:text="${'↓ '+#numbers.formatDecimal((1 - homeContent.getNewProductList().get(objStar.index + 4).getPromotion_price()/homeContent.getNewProductList().get(objStar.index + 4).getPrice())*100,0,0)}"></span><span
+                                                    class="symbol-percent">%</span></div>
+                                        </div>
+                                        <div class="pro-actions">
+                                            <div class="actions-primary">
+                                                <a href="javascript:void(0);"
+                                                   th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}"
+                                                   title="Add to Cart" onclick="addToCart(this)"> + Add To Cart</a>
+                                            </div>
+                                            <div class="actions-secondary">
+                                                <a href="javascript:void(0);"
+                                                   th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}"
+                                                   onclick="addToCompare(this)" title="Compare"><i
+                                                        class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
+                                                <a title="WishList" href="javascript:void(0);"
+                                                   onclick="addToWishList(this)"
+                                                   th:name="${homeContent.getNewProductList().get(objStar.index + 4).getPID()}"><i
+                                                        class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Product Content End -->
+                                    <div th:switch="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}"
+                                         id="stockStatus">
+                                        <span class="sticker-new" th:case="0"
+                                              th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">Sold Out</span>
+                                        <span class="sticker-new" th:case="1"
+                                              th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">new</span>
+                                        <span class="sticker-new" th:case="2"
+                                              th:value="${homeContent.getNewProductList().get(objStar.index + 4).getStatus()}">Stock Out</span>
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+                            </div>
+                            <!-- Double Product End -->
+                        </div>
+                        <!-- Arrivals Product Activation End Here -->
+                    </div>
+                </div>
+                <!-- Tab Content End -->
             </div>
-            <!-- Container End -->
+            <!-- main-product-tab-area-->
         </div>
-        <!-- Arrivals Products Area End Here -->
+        <!-- Container End -->
     </div>
-    <!-- 引入尾部-->
-    <div th:replace="footer :: footer"></div>
-    </div>
-    <!-- Main Wrapper End Here -->
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
-    <script src="js/my.js"></script>
+    <!-- Arrivals Products Area End Here -->
+</div>
+<!-- 引入尾部-->
+<div th:replace="footer :: footer"></div>
+</div>
+<!-- Main Wrapper End Here -->
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
+<script src="js/my.js"></script>
 </body>
-    <script th:inline="javascript">
-        var products = [[${homeContent.newProductList}]];
-        function changeType(Number) {
-            var CID = parseInt(Number);
-            $("#kids").find(".single-product").each(function (index,element) {
-                var obj = new Object();
-                obj = products[(CID-1)*8+index];
-                debugger;
-                $(element).find('a').eq(0).attr("href","/product.do?id="+obj.pid);
-                $(element).find('img').eq(0).attr("src",obj.pic);
-                $(element).find('img').eq(1).attr("src",obj.pic);
-                $(element).find('a').eq(2).text(obj.pname);
-                $(element).find("span").eq(0).text("¥"+obj.promotion_price);
-                $(element).find("del").eq(0).text("¥"+obj.price);
-                $(element).find("span").eq(1).text('↓ '+(1 - obj.promotion_price/obj.price).toFixed(2)*100);
-                $(element).find('a').eq(3).attr("name",obj.pid);
-                $(element).find('a').eq(4).attr("name",obj.pid);
-                $(element).find('a').eq(5).attr("name",obj.pid);
-            })
-        }
-    </script>
+<script th:inline="javascript">
+    var products = [[${homeContent.newProductList}]];
+
+    function changeType(Number) {
+        var CID = parseInt(Number);
+        $("#kids").find(".single-product").each(function (index, element) {
+            var obj = new Object();
+            obj = products[(CID - 1) * 8 + index];
+        debugger;
+            $(element).find('a').eq(0).attr("href", "/product.do?id=" + obj.pid);
+            $(element).find('img').eq(0).attr("src", obj.pic);
+            $(element).find('img').eq(1).attr("src", obj.pic);
+            $(element).find('a').eq(2).text(obj.pname);
+            $(element).find("span").eq(0).text("¥" + obj.promotion_price);
+            $(element).find("del").eq(0).text("¥" + obj.price);
+            $(element).find("span").eq(1).text('↓ ' + (1 - obj.promotion_price / obj.price).toFixed(2) * 100);
+            $(element).find('a').eq(3).attr("name", obj.pid);
+            $(element).find('a').eq(4).attr("name", obj.pid);
+            $(element).find('a').eq(5).attr("name", obj.pid);
+        })
+    }
+</script>
 </html>

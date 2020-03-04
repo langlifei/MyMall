@@ -6,7 +6,6 @@ import java.text.DecimalFormat;
 
 public class CartContent {
 
-
     //购物车中商品的总额
     private double total;
 
@@ -28,7 +27,7 @@ public class CartContent {
 
     private String product_attr;
 
-    DecimalFormat df = new DecimalFormat( "0.00 ");
+    DecimalFormat df = new DecimalFormat("0.00 ");
 
     public String getPic() {
         return pic;
@@ -51,7 +50,7 @@ public class CartContent {
     }
 
     public void setPromotion_price(double promotion_price) {
-        if(promotion_price >=0)
+        if (promotion_price >= 0)
             this.promotion_price = new Double(df.format(promotion_price));
     }
 
@@ -60,7 +59,7 @@ public class CartContent {
     }
 
     public void setQuantity(Integer quantity) {
-        if(quantity >= 0)
+        if (quantity >= 0)
             this.quantity = quantity;
     }
 
@@ -69,7 +68,7 @@ public class CartContent {
     }
 
     public void setTotalAmount(double totalAmount) {
-        if(totalAmount >=0)
+        if (totalAmount >= 0)
             this.totalAmount = new Double(df.format(totalAmount));
     }
 
@@ -102,7 +101,7 @@ public class CartContent {
     }
 
     public void setTotal(double total) {
-        if(total >=0)
+        if (total >= 0)
             this.total = new Double(df.format(total));
     }
 }

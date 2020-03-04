@@ -15,7 +15,7 @@ public class WishListContent {
 
     private Integer status;
 
-    DecimalFormat df = new DecimalFormat( "0.00 ");
+    DecimalFormat df = new DecimalFormat("0.00 ");
 
     public Integer getpId() {
         return pId;
@@ -54,7 +54,7 @@ public class WishListContent {
     }
 
     public void setPrice(double price) {
-        if(price >=0)
+        if (price >= 0)
             this.price = new Double(df.format(price));
     }
 

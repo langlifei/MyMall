@@ -43,154 +43,214 @@
 <div class="wrapper">
     <!-- 引入头部-->
     <div th:replace="header :: header"></div>
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb-area mt-30">
-            <div class="container">
-                <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="compare.html">Compare Product</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Container End -->
-        </div>
-        <!-- Breadcrumb End -->       
-         <!-- Compare Page Start -->
-        <div class="compare-product ptb-100 ptb-sm-60" style="padding: 25px 0;">
-            <div class="container">
-                <div class="table-responsive-sm">
-                    <table class="table text-center compare-content">
-                        <tbody>
-                            <tr>
-                                <td class="product-title">Product</td>
-                                <td class="product-description">
-                                    <div class="compare-details">
-                                        <div class="compare-detail-img">
-                                            <a href="#"><img src="img/products/20.jpg" th:if="${session.user.getCompareList().get(0)!=null}" th:src="${session.user.getCompareList().get(0).getPic()}" alt="compare-product"></a>
-                                            <a href="#"><img src="img/products/20.jpg" th:if="${session.user.getCompareList().get(0)==null}" alt="compare-product"></a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="product-description">
-                                    <div class="compare-details">
-                                        <div class="compare-detail-img">
-                                            <a href="#"><img src="img/products/20.jpg" th:if="${session.user.getCompareList().get(1)!=null}" th:src="${session.user.getCompareList().get(1).getPic()}" alt="compare-product"></a>
-                                            <a href="#"><img src="img/products/20.jpg" th:if="${session.user.getCompareList().get(1)==null}" alt="compare-product"></a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="product-description">
-                                    <div class="compare-details">
-                                        <div class="compare-detail-img">
-                                            <a href="#"><img src="img/products/20.jpg" th:if="${session.user.getCompareList().get(2)!=null}" th:src="${session.user.getCompareList().get(2).getPic()}" alt="compare-product"></a>
-                                            <a href="#"><img src="img/products/20.jpg" th:if="${session.user.getCompareList().get(2)==null}" alt="compare-product"></a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-title">Price</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0)==null}">$235</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0)!=null}" th:text="${'¥'+session.user.getCompareList().get(0).getPromotion_price()}">$235</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1)==null}">$235</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1)!=null}" th:text="${'¥'+session.user.getCompareList().get(1).getPromotion_price()}">$235</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2)==null}">$235</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2)!=null}" th:text="${'¥'+session.user.getCompareList().get(2).getPromotion_price()}">$235</td>
-                            </tr>
-                            <tr>
-                                <!-- 商品状态 0表示下架 , 1 表示正常, 2 表示缺库存-->
-                                <td class="product-title" id="stockStatus">Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 1}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 0}">Sold Out</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 2}">Stock Out</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(0) ==null}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 1}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 0}">Sold Out</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 2}">Stock Out</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(1) ==null}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 1}">In Stock</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 0}">Sold Out</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 2}">Stock Out</td>
-                                <td class="product-description" th:if="${session.user.getCompareList().get(2) ==null}">In Stock</td>
-                            </tr>
-                            <tr>
-                                <td class="product-title">Add to cart</td>
-                                <td class="product-description">
-                                    <a class="compare-cart text-uppercase" href="javascript:void(0);" onclick="addToCart(0)"> + add to cart</a>
-                                </td>
-                                <td class="product-description">
-                                    <a class="compare-cart text-uppercase" href="javascript:void(0);" onclick="addToCart(1)"> + add to cart</a>
-                                </td>
-                                <td class="product-description">
-                                    <a class="compare-cart text-uppercase" href="javascript:void(0);" onclick="addToCart(2)"> + add to cart</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="product-title">Delete</td>
-                                <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(0)"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(1)"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(2)"><i class="fa fa-trash-o"></i></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-area mt-30">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="d-flex align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="compare.html">Compare Product</a></li>
+                </ul>
             </div>
         </div>
-        <!-- Compare Page End -->
-        <!-- 引入尾部-->
-        <div th:replace="footer :: footer"></div>
+        <!-- Container End -->
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- Compare Page Start -->
+    <div class="compare-product ptb-100 ptb-sm-60" style="padding: 25px 0;">
+        <div class="container">
+            <div class="table-responsive-sm">
+                <table class="table text-center compare-content">
+                    <tbody>
+                    <tr>
+                        <td class="product-title">Product</td>
+                        <td class="product-description">
+                            <div class="compare-details">
+                                <div class="compare-detail-img">
+                                    <a href="#"><img src="img/products/20.jpg"
+                                                     th:if="${session.user.getCompareList().get(0)!=null}"
+                                                     th:src="${session.user.getCompareList().get(0).getPic()}"
+                                                     alt="compare-product"></a>
+                                    <a href="#"><img src="img/products/20.jpg"
+                                                     th:if="${session.user.getCompareList().get(0)==null}"
+                                                     alt="compare-product"></a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="product-description">
+                            <div class="compare-details">
+                                <div class="compare-detail-img">
+                                    <a href="#"><img src="img/products/20.jpg"
+                                                     th:if="${session.user.getCompareList().get(1)!=null}"
+                                                     th:src="${session.user.getCompareList().get(1).getPic()}"
+                                                     alt="compare-product"></a>
+                                    <a href="#"><img src="img/products/20.jpg"
+                                                     th:if="${session.user.getCompareList().get(1)==null}"
+                                                     alt="compare-product"></a>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="product-description">
+                            <div class="compare-details">
+                                <div class="compare-detail-img">
+                                    <a href="#"><img src="img/products/20.jpg"
+                                                     th:if="${session.user.getCompareList().get(2)!=null}"
+                                                     th:src="${session.user.getCompareList().get(2).getPic()}"
+                                                     alt="compare-product"></a>
+                                    <a href="#"><img src="img/products/20.jpg"
+                                                     th:if="${session.user.getCompareList().get(2)==null}"
+                                                     alt="compare-product"></a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="product-title">Price</td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(0)==null}">$235</td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(0)!=null}"
+                            th:text="${'¥'+session.user.getCompareList().get(0).getPromotion_price()}">$235
+                        </td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(1)==null}">$235</td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(1)!=null}"
+                            th:text="${'¥'+session.user.getCompareList().get(1).getPromotion_price()}">$235
+                        </td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(2)==null}">$235</td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(2)!=null}"
+                            th:text="${'¥'+session.user.getCompareList().get(2).getPromotion_price()}">$235
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- 商品状态 0表示下架 , 1 表示正常, 2 表示缺库存-->
+                        <td class="product-title" id="stockStatus">Stock</td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 1}">
+                            In Stock
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 0}">
+                            Sold Out
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(0) !=null and session.user.getCompareList().get(0).getStatus() == 2}">
+                            Stock Out
+                        </td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(0) ==null}">In
+                            Stock
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 1}">
+                            In Stock
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 0}">
+                            Sold Out
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(1) !=null and session.user.getCompareList().get(1).getStatus() == 2}">
+                            Stock Out
+                        </td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(1) ==null}">In
+                            Stock
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 1}">
+                            In Stock
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 0}">
+                            Sold Out
+                        </td>
+                        <td class="product-description"
+                            th:if="${session.user.getCompareList().get(2) !=null and session.user.getCompareList().get(2).getStatus() == 2}">
+                            Stock Out
+                        </td>
+                        <td class="product-description" th:if="${session.user.getCompareList().get(2) ==null}">In
+                            Stock
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="product-title">Add to cart</td>
+                        <td class="product-description">
+                            <a class="compare-cart text-uppercase" href="javascript:void(0);" onclick="addToCart(0)"> +
+                                add to cart</a>
+                        </td>
+                        <td class="product-description">
+                            <a class="compare-cart text-uppercase" href="javascript:void(0);" onclick="addToCart(1)"> +
+                                add to cart</a>
+                        </td>
+                        <td class="product-description">
+                            <a class="compare-cart text-uppercase" href="javascript:void(0);" onclick="addToCart(2)"> +
+                                add to cart</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="product-title">Delete</td>
+                        <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(0)"><i
+                                class="fa fa-trash-o"></i></a></td>
+                        <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(1)"><i
+                                class="fa fa-trash-o"></i></a></td>
+                        <td class="product-description"><a href="javascript:void(0);" onclick="deleteCompare(2)"><i
+                                class="fa fa-trash-o"></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
+    </div>
+    <!-- Compare Page End -->
+    <!-- 引入尾部-->
+    <div th:replace="footer :: footer"></div>
+</div>
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
 </body>
 <script th:inline="javascript">
-        function addToCart(number) {
-            debugger;
-            var list = [[${session.user.getCompareList()}]];
-            if(list[number] == null){
-                alert("不允许提交空商品去购物车!")
-            } else{
-                var status = list[number].status;
-                if(status == 1){
-                    window.location.href="/addToCartFromC.do?index="+number;
-                }else{
-                    alert("商品缺货或下架,无法加入购物车!");
-                }
+    function addToCart(number) {
+    debugger;
+        var list = [[${session.user.getCompareList()}]];
+        if (list[number] == null) {
+            alert("不允许提交空商品去购物车!")
+        } else {
+            var status = list[number].status;
+            if (status == 1) {
+                window.location.href = "/addToCartFromC.do?index=" + number;
+            } else {
+                alert("商品缺货或下架,无法加入购物车!");
             }
         }
+    }
 
-        function deleteCompare(number) {
-            var list = [[${session.user.getCompareList()}]];
-            if(list[number] == null){
-                alert("不允许删除空商品!")
-            }else{
-                window.location.href="/removeFromCompare.do?index="+number;
-            }
+    function deleteCompare(number) {
+        var list = [[${session.user.getCompareList()}]];
+        if (list[number] == null) {
+            alert("不允许删除空商品!")
+        } else {
+            window.location.href = "/removeFromCompare.do?index=" + number;
         }
+    }
 </script>
 </html>

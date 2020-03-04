@@ -1,11 +1,11 @@
 .table-content table {
     background: #fff none repeat scroll 0 0;
-	border-color: #e5e5e5;
+    border-color: #e5e5e5;
     border-radius: 0;
     border-style: solid;
-    border-width:1px 0 0 1px;
-	
-	/* border-bottom: 1px solid #e5e5e5; */
+    border-width: 1px 0 0 1px;
+
+    /* border-bottom: 1px solid #e5e5e5; */
     text-align: center;
     width: 100%;
 }
@@ -23,87 +23,86 @@
 }
 
 .table-content table th {
-	 border-bottom: 40px solid #e5e5e5;
-	 /* border-left: 1px solid #e5e5e5; */
-	 border-right: 1px solid #e5e5e5;
-}
-.table-content table td {
-    border-bottom: 5px solid #e5e5e5;
-	/* border-left: 1px solid #e5e5e5; */
+    border-bottom: 40px solid #e5e5e5;
+    /* border-left: 1px solid #e5e5e5; */
     border-right: 1px solid #e5e5e5;
 }
 
 .table-content table td {
-	height: 100px;
+    border-bottom: 5px solid #e5e5e5;
+    /* border-left: 1px solid #e5e5e5; */
+    border-right: 1px solid #e5e5e5;
+}
+
+.table-content table td {
+    height: 100px;
     padding: 40px 10px;
-    vertical-align: middle;	
+    vertical-align: middle;
     font-size: 13px;
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 
 .table-content table td.my-consignee {
-	position: relative;
+    position: relative;
 }
 
 .table-content table td.my-consignee:before, .table-content table td.my-consignee:after {
-	opacity: 0;
-	position: absolute;
-	z-index: 1000;
-	transition: 0.3s ease;
-	-webkit-transition: 0.3s ease;
-	-moz-transition: 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    z-index: 1000;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
 }
 
 .table-content table td.my-consignee:before {
-	content: '';
-	border: 6px solid transparent;
-	 
-	top: 50%;
-	left: 65%;
-	border-right-color: rgba(0, 0, 0, 0.8);
-	margin-left: -9px;
-	margin-top: -3px;
+    content: '';
+    border: 6px solid transparent;
+
+    top: 50%;
+    left: 65%;
+    border-right-color: rgba(0, 0, 0, 0.8);
+    margin-left: -9px;
+    margin-top: -3px;
 }
 
 .table-content table td.my-consignee:after {
-	content: attr(data-content);
-	padding: 5px;
-	white-space: nowrap;
-	background-color: #000000;
-	color: #ffffff;
-	
-	top: 50%;
-	left: 65%;
-	margin-left: 3px;
-	margin-top: -6px;
+    content: attr(data-content);
+    padding: 5px;
+    white-space: nowrap;
+    background-color: #000000;
+    color: #ffffff;
+
+    top: 50%;
+    left: 65%;
+    margin-left: 3px;
+    margin-top: -6px;
 }
 
 .table-content table td.my-consignee:hover:before, .table-content table td.my-consignee:hover:after {
-	opacity: 1;
-	z-index: 1000;
+    opacity: 1;
+    z-index: 1000;
 }
 
 .table-content table td.my-consignee:hover:before {
-	margin-left: -3px;
+    margin-left: -3px;
 }
 
 .table-content table td.my-consignee:hover:after {
-	margin-left: 9px;
+    margin-left: 9px;
 }
-
-
 
 
 /* order.html的table */
 .table-content table {
     background: #fff none repeat scroll 0 0;
-	border-color: #e5e5e5;
+    border-color: #e5e5e5;
     border-radius: 0;
     border-style: solid;
-    border-width:1px 0 0 1px;
-	
-	/* border-bottom: 1px solid #e5e5e5; */
+    border-width: 1px 0 0 1px;
+
+    /* border-bottom: 1px solid #e5e5e5; */
     text-align: center;
     width: 100%;
 }
@@ -121,169 +120,170 @@
 }
 
 .table-content table th {
-	 border-bottom: 10px solid #e5e5e5;
-	 /* border-left: 1px solid #e5e5e5; */
-	 border-right: 1px solid #e5e5e5;
-}
-.table-content table td {
-    border-bottom: 5px solid #e5e5e5;
-	/* border-left: 1px solid #e5e5e5; */
+    border-bottom: 10px solid #e5e5e5;
+    /* border-left: 1px solid #e5e5e5; */
     border-right: 1px solid #e5e5e5;
 }
 
 .table-content table td {
-	height: 100px;
+    border-bottom: 5px solid #e5e5e5;
+    /* border-left: 1px solid #e5e5e5; */
+    border-right: 1px solid #e5e5e5;
+}
+
+.table-content table td {
+    height: 100px;
     padding: 40px 10px;
-    vertical-align: middle;	
+    vertical-align: middle;
     font-size: 13px;
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 
 .table-content table td.my-consignee {
-	position: relative;
+    position: relative;
 }
 
 .table-content table td.my-consignee:before, .table-content table td.my-consignee:after {
-	opacity: 0;
-	position: absolute;
-	z-index: 1000;
-	transition: 0.3s ease;
-	-webkit-transition: 0.3s ease;
-	-moz-transition: 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    z-index: 1000;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
 }
 
 .table-content table td.my-consignee:before {
-	content: '';
-	border: 6px solid transparent;
-	 
-	top: 50%;
-	left: 65%;
-	border-right-color: rgba(0, 0, 0, 0.8);
-	margin-left: -9px;
-	margin-top: -3px;
+    content: '';
+    border: 6px solid transparent;
+
+    top: 50%;
+    left: 65%;
+    border-right-color: rgba(0, 0, 0, 0.8);
+    margin-left: -9px;
+    margin-top: -3px;
 }
 
 .table-content table td.my-consignee:after {
-	content: attr(data-content);
-	padding: 5px;
-	white-space: nowrap;
-	background-color: #000000;
-	color: #ffffff;
-	
-	top: 50%;
-	left: 65%;
-	margin-left: 3px;
-	margin-top: -6px;
+    content: attr(data-content);
+    padding: 5px;
+    white-space: nowrap;
+    background-color: #000000;
+    color: #ffffff;
+
+    top: 50%;
+    left: 65%;
+    margin-left: 3px;
+    margin-top: -6px;
 }
 
 .table-content table td.my-consignee:hover:before, .table-content table td.my-consignee:hover:after {
-	opacity: 1;
-	z-index: 1000;
+    opacity: 1;
+    z-index: 1000;
 }
 
 .table-content table td.my-consignee:hover:before {
-	margin-left: -3px;
+    margin-left: -3px;
 }
 
 .table-content table td.my-consignee:hover:after {
-	margin-left: 9px;
+    margin-left: 9px;
 }
-
-
-
 
 
 .user-info-width > li {
-	padding: 28px;
+    padding: 28px;
 }
 
 .user-info-width {
-	background: white none repeat scroll 0 0;
-	box-shadow: 0 3px 9.3px 0.7px rgba(0, 0, 0, 0.15);
-	left: auto;
-	padding: 0;
-	width: 220px;
+    background: white none repeat scroll 0 0;
+    box-shadow: 0 3px 9.3px 0.7px rgba(0, 0, 0, 0.15);
+    left: auto;
+    padding: 0;
+    width: 220px;
 }
 
 .user-info {
-	float: left;
-	padding: 0 15px 15px 0;
-	width: 90%;
+    float: left;
+    padding: 0 15px 15px 0;
+    width: 90%;
 }
 
 .user-info h6 a {
-	color: #666;
-	display: block;
-	font-size: 14px;
-	line-height: 20px;
-	overflow: hidden;
-	overflow-wrap: break-word;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+    color: #666;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.user-info h6 a:hover{
-	color: firebrick;
+.user-info h6 a:hover {
+    color: firebrick;
 }
-
-
 
 
 /* order.html */
 .my-dropdown {
-	    padding: 16px;
-	    font-size: 16px;
-	    border: none;
-	    cursor: pointer;
-		
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
+
 .dropdown-content a:hover {
-	background-color: #f1f1f1
+    background-color: #f1f1f1
 }
+
 .my-dropdown:hover .dropdown-content {
     display: block;
 }
+
 .my-dropdown:hover .my-dropdown {
     background-color: #3e8e41;
 }
 
 
 .my-orderid {
-	color: #363636;
-	font-size: 16px;
-	left: 0px;
-	line-height: 23px;
-	min-width: 25px;
-	padding: 0px 0 0;
-	position: relative;
-	text-align: center;
-	top: 0px;
+    color: #363636;
+    font-size: 16px;
+    left: 0px;
+    line-height: 23px;
+    min-width: 25px;
+    padding: 0px 0 0;
+    position: relative;
+    text-align: center;
+    top: 0px;
 }
 
 .single-box {
-	top: 50px;
+    top: 50px;
     margin-bottom: 18px;
     overflow: hidden;
     position: relative;
 }
 
 .single-box {
-	border-bottom: 1px solid #ededed;
-	margin-bottom: 20px;
+    border-bottom: 1px solid #ededed;
+    margin-bottom: 20px;
 }
 
 .my-img {
@@ -337,13 +337,13 @@
     float: none;
 }
 
-.user-info h6 a :hover{
-	color: firebrick;
-	display: block;
-	font-size: 14px;
-	line-height: 20px;
-	overflow: hidden;
-	overflow-wrap: break-word;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+.user-info h6 a :hover {
+    color: firebrick;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

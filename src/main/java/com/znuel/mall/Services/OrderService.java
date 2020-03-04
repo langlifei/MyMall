@@ -13,7 +13,7 @@ public interface OrderService {
 
     public int getOrderId(String sn);
 
-    public void insertProductToOrderItem(Integer orderId,HttpServletRequest request);
+    public void insertProductToOrderItem(Integer orderId, HttpServletRequest request);
 
-    public PageInfo<OrderContent> getOrderContent(Integer pageNum , String username);
+    public PageInfo<OrderContent> getOrderContent(Integer pageNum, String username);
 }

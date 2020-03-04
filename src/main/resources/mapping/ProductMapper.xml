@@ -1,171 +1,171 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.znuel.mall.Dao.ProductMapper" >
-  <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Product" >
-    <id column="PID" property="PID" jdbcType="INTEGER" />
-    <result column="PName" property="PName" jdbcType="VARCHAR" />
-    <result column="pic" property="pic" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="DOUBLE" />
-    <result column="promotion_price" property="promotion_price" jdbcType="DOUBLE" />
-    <result column="CID" property="CID" jdbcType="INTEGER" />
-    <result column="promotion_start_time" property="promotion_start_time" jdbcType="TIMESTAMP" />
-    <result column="promotion_end_time" property="promotion_end_time" jdbcType="TIMESTAMP" />
-    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="stock" property="stock" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    PID, PName, pic, price, promotion_price, CID, promotion_start_time, promotion_end_time, 
-    create_time, status,stock
-  </sql>
+<mapper namespace="com.znuel.mall.Dao.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.znuel.mall.Entities.Product">
+        <id column="PID" property="PID" jdbcType="INTEGER"/>
+        <result column="PName" property="PName" jdbcType="VARCHAR"/>
+        <result column="pic" property="pic" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DOUBLE"/>
+        <result column="promotion_price" property="promotion_price" jdbcType="DOUBLE"/>
+        <result column="CID" property="CID" jdbcType="INTEGER"/>
+        <result column="promotion_start_time" property="promotion_start_time" jdbcType="TIMESTAMP"/>
+        <result column="promotion_end_time" property="promotion_end_time" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="create_time" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="stock" property="stock" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        PID, PName, pic, price, promotion_price, CID, promotion_start_time, promotion_end_time,
+        create_time, status,stock
+    </sql>
 
-  <select id="getProducts" resultMap="BaseResultMap">
-    select * from product where 1 = 1
-    <if test="type > 0">
-      and CID = #{type,jdbcType=INTEGER}
-    </if>
-    <if test="keywords != null and keywords != ''">
-      and PName like #{keywords,jdbcType=VARCHAR}
-    </if>
-  </select>
+    <select id="getProducts" resultMap="BaseResultMap">
+        select * from product where 1 = 1
+        <if test="type > 0">
+            and CID = #{type,jdbcType=INTEGER}
+        </if>
+        <if test="keywords != null and keywords != ''">
+            and PName like #{keywords,jdbcType=VARCHAR}
+        </if>
+    </select>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from product
-    where PID = #{PID,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from product
-    where PID = #{PID,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.znuel.mall.Entities.Product" >
-    insert into product (PID, PName, pic, 
-      price, promotion_price, CID, 
-      promotion_start_time, promotion_end_time, 
-      create_time, status,stock)
-    values (#{PID,jdbcType=INTEGER}, #{PName,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DOUBLE}, #{promotion_price,jdbcType=DOUBLE}, #{CID,jdbcType=INTEGER}, 
-      #{promotion_start_time,jdbcType=TIMESTAMP}, #{promotion_end_time,jdbcType=TIMESTAMP}, 
-      #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER},#{stock,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Product" >
-    insert into product
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="PID != null" >
-        PID,
-      </if>
-      <if test="PName != null" >
-        PName,
-      </if>
-      <if test="pic != null" >
-        pic,
-      </if>
-      <if test="price != null" >
-        price,
-      </if>
-      <if test="promotion_price != null" >
-        promotion_price,
-      </if>
-      <if test="CID != null" >
-        CID,
-      </if>
-      <if test="promotion_start_time != null" >
-        promotion_start_time,
-      </if>
-      <if test="promotion_end_time != null" >
-        promotion_end_time,
-      </if>
-      <if test="create_time != null" >
-        create_time,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="stock != null" >
-        status,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="PID != null" >
-        #{PID,jdbcType=INTEGER},
-      </if>
-      <if test="PName != null" >
-        #{PName,jdbcType=VARCHAR},
-      </if>
-      <if test="pic != null" >
-        #{pic,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="promotion_price != null" >
-        #{promotion_price,jdbcType=DOUBLE},
-      </if>
-      <if test="CID != null" >
-        #{CID,jdbcType=INTEGER},
-      </if>
-      <if test="promotion_start_time != null" >
-        #{promotion_start_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="promotion_end_time != null" >
-        #{promotion_end_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="create_time != null" >
-        #{create_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="stock != null" >
-        #{stock,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Product" >
-    update product
-    <set >
-      <if test="PName != null" >
-        PName = #{PName,jdbcType=VARCHAR},
-      </if>
-      <if test="pic != null" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where PID = #{PID,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from product
+        where PID = #{PID,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.znuel.mall.Entities.Product">
+        insert into product (PID, PName, pic,
+        price, promotion_price, CID,
+        promotion_start_time, promotion_end_time,
+        create_time, status,stock)
+        values (#{PID,jdbcType=INTEGER}, #{PName,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR},
+        #{price,jdbcType=DOUBLE}, #{promotion_price,jdbcType=DOUBLE}, #{CID,jdbcType=INTEGER},
+        #{promotion_start_time,jdbcType=TIMESTAMP}, #{promotion_end_time,jdbcType=TIMESTAMP},
+        #{create_time,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER},#{stock,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.znuel.mall.Entities.Product">
+        insert into product
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="PID != null">
+                PID,
+            </if>
+            <if test="PName != null">
+                PName,
+            </if>
+            <if test="pic != null">
+                pic,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="promotion_price != null">
+                promotion_price,
+            </if>
+            <if test="CID != null">
+                CID,
+            </if>
+            <if test="promotion_start_time != null">
+                promotion_start_time,
+            </if>
+            <if test="promotion_end_time != null">
+                promotion_end_time,
+            </if>
+            <if test="create_time != null">
+                create_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="stock != null">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="PID != null">
+                #{PID,jdbcType=INTEGER},
+            </if>
+            <if test="PName != null">
+                #{PName,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DOUBLE},
+            </if>
+            <if test="promotion_price != null">
+                #{promotion_price,jdbcType=DOUBLE},
+            </if>
+            <if test="CID != null">
+                #{CID,jdbcType=INTEGER},
+            </if>
+            <if test="promotion_start_time != null">
+                #{promotion_start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="promotion_end_time != null">
+                #{promotion_end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="create_time != null">
+                #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="stock != null">
+                #{stock,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.znuel.mall.Entities.Product">
+        update product
+        <set>
+            <if test="PName != null">
+                PName = #{PName,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null">
+                pic = #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DOUBLE},
+            </if>
+            <if test="promotion_price != null">
+                promotion_price = #{promotion_price,jdbcType=DOUBLE},
+            </if>
+            <if test="CID != null">
+                CID = #{CID,jdbcType=INTEGER},
+            </if>
+            <if test="promotion_start_time != null">
+                promotion_start_time = #{promotion_start_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="promotion_end_time != null">
+                promotion_end_time = #{promotion_end_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="create_time != null">
+                create_time = #{create_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+        </set>
+        where PID = #{PID,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Product">
+        update product
+        set PName = #{PName,jdbcType=VARCHAR},
         pic = #{pic,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
         price = #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="promotion_price != null" >
         promotion_price = #{promotion_price,jdbcType=DOUBLE},
-      </if>
-      <if test="CID != null" >
         CID = #{CID,jdbcType=INTEGER},
-      </if>
-      <if test="promotion_start_time != null" >
         promotion_start_time = #{promotion_start_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="promotion_end_time != null" >
         promotion_end_time = #{promotion_end_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="create_time != null" >
         create_time = #{create_time,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
-      </if>
-    </set>
-    where PID = #{PID,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.znuel.mall.Entities.Product" >
-    update product
-    set PName = #{PName,jdbcType=VARCHAR},
-      pic = #{pic,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DOUBLE},
-      promotion_price = #{promotion_price,jdbcType=DOUBLE},
-      CID = #{CID,jdbcType=INTEGER},
-      promotion_start_time = #{promotion_start_time,jdbcType=TIMESTAMP},
-      promotion_end_time = #{promotion_end_time,jdbcType=TIMESTAMP},
-      create_time = #{create_time,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER}
-    where PID = #{PID,jdbcType=INTEGER}
-  </update>
+        status = #{status,jdbcType=INTEGER}
+        where PID = #{PID,jdbcType=INTEGER}
+    </update>
 </mapper>

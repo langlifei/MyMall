@@ -5,10 +5,10 @@
     <select id="getHotProductList" resultType="Product">
         SELECT p.*
         FROM
-            product p
-            RIGHT JOIN order_item o ON p.PID = o.PID
+        product p
+        RIGHT JOIN order_item o ON p.PID = o.PID
         ORDER BY
-            hp.sort DESC
+        hp.sort DESC
         LIMIT #{offset}, #{limit};
     </select>
 </mapper>

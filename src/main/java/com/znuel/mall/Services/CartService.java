@@ -9,10 +9,8 @@ import java.util.List;
 
 public interface CartService {
 
-
     //添加商品到购物车
     public boolean addProductToCart(Cart cart);
-
 
     //查询购物车中所有商品信息
     public List<CartContent> queryCart(Integer userId);

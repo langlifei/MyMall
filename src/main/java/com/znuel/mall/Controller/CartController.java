@@ -27,57 +27,56 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @RequestMapping(value = "/addProduct.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/addProduct.do", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> addProduct(@RequestBody Cart cart, HttpServletRequest request){
+    public Map<String, String> addProduct(@RequestBody Cart cart, HttpServletRequest request) {
         //获取用户ID
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         cart.setUID(user.getID());
-        Map<String,String> map = new HashMap<>();
-        if(cartService.addProductToCart(cart)){
-            map.put("info","添加成功!");
-            user.setCartCount(user.getCartCount()+1);
-            map.put("cartCount",user.getCartCount()+"");
-        }else
-            map.put("info","添加失败!");
+        Map<String, String> map = new HashMap<>();
+        if (cartService.addProductToCart(cart)) {
+            map.put("info", "添加成功!");
+            user.setCartCount(user.getCartCount() + 1);
+            map.put("cartCount", user.getCartCount() + "");
+        } else
+            map.put("info", "添加失败!");
         return map;
     }
 
-    @RequestMapping(value = "/getCart.do",method = RequestMethod.GET)
-    public String getCart(HttpServletRequest request, Model model){
+    @RequestMapping(value = "/getCart.do", method = RequestMethod.GET)
+    public String getCart(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         //获取购物车中的商品
-        List<CartContent> cartContents= cartService.queryCart(user.getID());
-        model.addAttribute("cartContents",cartContents);
+        List<CartContent> cartContents = cartService.queryCart(user.getID());
+        model.addAttribute("cartContents", cartContents);
         //计算购物车中的商品总金额
         double amount = cartService.computeAmount(cartContents);
-        model.addAttribute("amount",amount);
+        model.addAttribute("amount", amount);
         return "cart";
     }
 
-    @RequestMapping(value = "/delProductFromCart.do",method = RequestMethod.GET)
-    public String removeProduct(Integer id,HttpServletRequest request){
-        if(cartService.removeProduct(id))
-        {
+    @RequestMapping(value = "/delProductFromCart.do", method = RequestMethod.GET)
+    public String removeProduct(Integer id, HttpServletRequest request) {
+        if (cartService.removeProduct(id)) {
             HttpSession session = request.getSession();
-            User user = (User)session.getAttribute("user");
-            user.setCartCount(user.getCartCount()-1);
+            User user = (User) session.getAttribute("user");
+            user.setCartCount(user.getCartCount() - 1);
         }
         return "forward:/getCart.do";
     }
 
     //提交购物车商品去结账
-    @RequestMapping(value = "/checkOut.do",method = RequestMethod.POST)
+    @RequestMapping(value = "/checkOut.do", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,String> toCheckOut(String params,HttpServletRequest request){
+    public Map<String, String> toCheckOut(String params, HttpServletRequest request) {
         CheckOutContent checkOutContent = cartService.toCheckOut(params);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         user.setCheckOutContent(checkOutContent);
-        Map<String,String > map = new HashMap<>();
-        map.put("info","添加结账信息成功!");
+        Map<String, String> map = new HashMap<>();
+        map.put("info", "添加结账信息成功!");
         return map;
     }
 }

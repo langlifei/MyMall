@@ -44,168 +44,191 @@
 <div class="wrapper">
     <!-- 引入头部-->
     <div th:replace="header :: header"></div>
-        <!-- Breadcrumb Start -->
-        <div class="breadcrumb-area mt-30">
-            <div class="container">
-                <div class="breadcrumb">
-                    <ul class="d-flex align-items-center">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="shop.html">Shop</a></li>
-                        <li class="active"><a href="product.html">Products</a></li>
-                    </ul>
-                </div>
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-area mt-30">
+        <div class="container">
+            <div class="breadcrumb">
+                <ul class="d-flex align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li class="active"><a href="product.html">Products</a></li>
+                </ul>
             </div>
-            <!-- Container End -->
         </div>
-        <!-- Breadcrumb End -->
-        <!-- Product Thumbnail Start -->
-        <div class="main-product-thumbnail ptb-100 ptb-sm-60">
-            <div class="container">
-                <div class="thumb-bg">
-                    <div class="row">
-                        <!-- Main Thumbnail Image Start -->
-                        <div class="col-lg-5 mb-all-40">
-                            <!-- Thumbnail Large Image start -->
-                            <div class="tab-content">
-                                <div id="thumb1" class="tab-pane fade show active">
-                                    <a data-fancybox="images" th:href="${productDetail.getPic()}"><img src="img/products/35.jpg" th:src="${productDetail.getPic()}" alt="product-view"></a>
-                                </div>
-                                <div id="thumb2" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/13.jpg"><img src="img/products/13.jpg" alt="product-view"></a>
-                                </div>
-                                <div id="thumb3" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/15.jpg"><img src="img/products/15.jpg" alt="product-view"></a>
-                                </div>
-                                <div id="thumb4" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/4.jpg"><img src="img/products/4.jpg" alt="product-view"></a>
-                                </div>
-                                <div id="thumb5" class="tab-pane fade">
-                                    <a data-fancybox="images" href="img/products/5.jpg"><img src="img/products/5.jpg" alt="product-view"></a>
-                                </div>
+        <!-- Container End -->
+    </div>
+    <!-- Breadcrumb End -->
+    <!-- Product Thumbnail Start -->
+    <div class="main-product-thumbnail ptb-100 ptb-sm-60">
+        <div class="container">
+            <div class="thumb-bg">
+                <div class="row">
+                    <!-- Main Thumbnail Image Start -->
+                    <div class="col-lg-5 mb-all-40">
+                        <!-- Thumbnail Large Image start -->
+                        <div class="tab-content">
+                            <div id="thumb1" class="tab-pane fade show active">
+                                <a data-fancybox="images" th:href="${productDetail.getPic()}"><img
+                                        src="img/products/35.jpg" th:src="${productDetail.getPic()}" alt="product-view"></a>
                             </div>
-                            <!-- Thumbnail Large Image End -->
-                        </div>
-                        <!-- Main Thumbnail Image End -->
-                        <!-- Thumbnail Description Start -->
-                        <div class="col-lg-7">
-                            <div class="thubnail-desc fix">
-                                <h3 class="product-header" th:text="${productDetail.getPName()}">Faded Short Sleeves T-shirt</h3>
-                                <div class="rating-summary fix mtb-10">
-                                    <div class="rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <div class="rating-feedback">
-                                        <a href="#">(1 review)</a>
-                                        <a href="#">add to your review</a>
-                                    </div>
-                                </div>
-                                <div class="pro-price mtb-30">
-                                    <p class="d-flex align-items-center"><span class="prev-price" th:text="'¥'+${productDetail.getPrice()}"></span><span class="price" th:text="'¥'+${productDetail.getPromotion_price()}"></span><span class="saving-price" th:text="'save '+${#numbers.formatDecimal((1 - productDetail.getPromotion_price()/productDetail.getPrice())*100,0,0)+'%'}"></span></p>
-                                </div>
-                                <p class="mb-20 pro-desc-details">Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready for summer!</p>
-                                <div class="box-quantity d-flex hot-product2">
-                                    <form action="#">
-                                        <input class="quantity mr-15" type="number" min="1" value="1">
-                                    </form>
-                                    <div class="pro-actions">
-                                        <div class="actions-primary">
-                                            <a href="javascript:void(0);" th:name="${productDetail.getPID()}" title="" data-original-title="Add to Cart" onclick="addToCart(this)"> + Add To Cart</a>
-                                        </div>
-                                        <div class="actions-secondary">
-                                            <a href="javascript:void(0);" onclick="addToCompare(this)" th:name="${productDetail.getPID()}" title="" data-original-title="Compare"><i class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
-                                            <a href="javascript:void(0);" onclick="addToWishList(this)" th:name="${productDetail.getPID()}" title="" data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pro-ref mt-20">
-                                    <p><span class="in-stock" id="stockStatus"><i class="ion-checkmark-round"></i>
-                                        <b th:text="${productDetail.getStatus() == 0}" th:value="${productDetail.getStatus()}">Sold Out</b>
-                                        <b th:text="${productDetail.getStatus() == 1}" th:value="${productDetail.getStatus()}">In Stock</b>
-                                        <b th:text="${productDetail.getStatus() == 2}" th:value="${productDetail.getStatus()}">Stock Out</b>
-                                    </span></p>
-                                </div>
-                                <div class="socila-sharing mt-25">
-                                    <ul class="d-flex">
-                                        <li>share</li>
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
+                            <div id="thumb2" class="tab-pane fade">
+                                <a data-fancybox="images" href="img/products/13.jpg"><img src="img/products/13.jpg"
+                                                                                          alt="product-view"></a>
+                            </div>
+                            <div id="thumb3" class="tab-pane fade">
+                                <a data-fancybox="images" href="img/products/15.jpg"><img src="img/products/15.jpg"
+                                                                                          alt="product-view"></a>
+                            </div>
+                            <div id="thumb4" class="tab-pane fade">
+                                <a data-fancybox="images" href="img/products/4.jpg"><img src="img/products/4.jpg"
+                                                                                         alt="product-view"></a>
+                            </div>
+                            <div id="thumb5" class="tab-pane fade">
+                                <a data-fancybox="images" href="img/products/5.jpg"><img src="img/products/5.jpg"
+                                                                                         alt="product-view"></a>
                             </div>
                         </div>
-                        <!-- Thumbnail Description End -->
+                        <!-- Thumbnail Large Image End -->
                     </div>
-                    <!-- Row End -->
+                    <!-- Main Thumbnail Image End -->
+                    <!-- Thumbnail Description Start -->
+                    <div class="col-lg-7">
+                        <div class="thubnail-desc fix">
+                            <h3 class="product-header" th:text="${productDetail.getPName()}">Faded Short Sleeves
+                                T-shirt</h3>
+                            <div class="rating-summary fix mtb-10">
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <div class="rating-feedback">
+                                    <a href="#">(1 review)</a>
+                                    <a href="#">add to your review</a>
+                                </div>
+                            </div>
+                            <div class="pro-price mtb-30">
+                                <p class="d-flex align-items-center"><span class="prev-price"
+                                                                           th:text="'¥'+${productDetail.getPrice()}"></span><span
+                                        class="price" th:text="'¥'+${productDetail.getPromotion_price()}"></span><span
+                                        class="saving-price"
+                                        th:text="'save '+${#numbers.formatDecimal((1 - productDetail.getPromotion_price()/productDetail.getPrice())*100,0,0)+'%'}"></span>
+                                </p>
+                            </div>
+                            <p class="mb-20 pro-desc-details">Faded short sleeves t-shirt with high neckline. Soft and
+                                stretchy material for a comfortable fit. Accessorize with a straw hat and you're ready
+                                for summer!</p>
+                            <div class="box-quantity d-flex hot-product2">
+                                <form action="#">
+                                    <input class="quantity mr-15" type="number" min="1" value="1">
+                                </form>
+                                <div class="pro-actions">
+                                    <div class="actions-primary">
+                                        <a href="javascript:void(0);" th:name="${productDetail.getPID()}" title=""
+                                           data-original-title="Add to Cart" onclick="addToCart(this)"> + Add To
+                                            Cart</a>
+                                    </div>
+                                    <div class="actions-secondary">
+                                        <a href="javascript:void(0);" onclick="addToCompare(this)"
+                                           th:name="${productDetail.getPID()}" title="" data-original-title="Compare"><i
+                                                class="lnr lnr-sync"></i> <span>Add To Compare</span></a>
+                                        <a href="javascript:void(0);" onclick="addToWishList(this)"
+                                           th:name="${productDetail.getPID()}" title=""
+                                           data-original-title="WishList"><i class="lnr lnr-heart"></i> <span>Add to WishList</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pro-ref mt-20">
+                                <p><span class="in-stock" id="stockStatus"><i class="ion-checkmark-round"></i>
+                                        <b th:text="${productDetail.getStatus() == 0}"
+                                           th:value="${productDetail.getStatus()}">Sold Out</b>
+                                        <b th:text="${productDetail.getStatus() == 1}"
+                                           th:value="${productDetail.getStatus()}">In Stock</b>
+                                        <b th:text="${productDetail.getStatus() == 2}"
+                                           th:value="${productDetail.getStatus()}">Stock Out</b>
+                                    </span></p>
+                            </div>
+                            <div class="socila-sharing mt-25">
+                                <ul class="d-flex">
+                                    <li>share</li>
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-official" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Thumbnail Description End -->
                 </div>
+                <!-- Row End -->
             </div>
-            <!-- Container End -->
         </div>
-        <!-- 引入尾部-->
-        <div th:replace="footer :: footer"></div>
-        </div>
-    <!-- jquery 3.2.1 -->
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <!-- Countdown js -->
-    <script src="js/jquery.countdown.min.js"></script>
-    <!-- Mobile menu js -->
-    <script src="js/jquery.meanmenu.min.js"></script>
-    <!-- ScrollUp js -->
-    <script src="js/jquery.scrollUp.js"></script>
-    <!-- Nivo slider js -->
-    <script src="js/jquery.nivo.slider.js"></script>
-    <!-- Fancybox js -->
-    <script src="js/jquery.fancybox.min.js"></script>
-    <!-- Jquery nice select js -->
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- Jquery ui price slider js -->
-    <script src="js/jquery-ui.min.js"></script>
-    <!-- Owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Bootstrap popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Plugin js -->
-    <script src="js/plugins.js"></script>
-    <!-- Main activaion js -->
-    <script src="js/main.js"></script>
+        <!-- Container End -->
+    </div>
+    <!-- 引入尾部-->
+    <div th:replace="footer :: footer"></div>
+</div>
+<!-- jquery 3.2.1 -->
+<script src="js/vendor/jquery-3.2.1.min.js"></script>
+<!-- Countdown js -->
+<script src="js/jquery.countdown.min.js"></script>
+<!-- Mobile menu js -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- ScrollUp js -->
+<script src="js/jquery.scrollUp.js"></script>
+<!-- Nivo slider js -->
+<script src="js/jquery.nivo.slider.js"></script>
+<!-- Fancybox js -->
+<script src="js/jquery.fancybox.min.js"></script>
+<!-- Jquery nice select js -->
+<script src="js/jquery.nice-select.min.js"></script>
+<!-- Jquery ui price slider js -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Bootstrap popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugin js -->
+<script src="js/plugins.js"></script>
+<!-- Main activaion js -->
+<script src="js/main.js"></script>
 </body>
-    <script>
-        function addToCart(elem) {
-            var cart  = new Object();
-            cart.PID = parseInt(elem.name);
-            cart.quantity = parseInt($(elem).parent().parent().prev().find("input").eq(0).val());
-            cart.price = $(elem).parent().parent().parent().prev().prev().find("span").eq(1).text().substring(1);
-            cart.price = parseFloat(cart.price);
-            cart.product_attr=cart.PID+"-";
-            debugger
-            if($("#stockStatus").find("b").eq(0).attr("value")==1){
-                sendAjaxRequest("/addProduct.do",cart);
-                window.location.href="/getCart.do";
-            }else{
-                alert("商品缺货或下架,无法加入购物车!")
-            }
+<script>
+    function addToCart(elem) {
+        var cart = new Object();
+        cart.PID = parseInt(elem.name);
+        cart.quantity = parseInt($(elem).parent().parent().prev().find("input").eq(0).val());
+        cart.price = $(elem).parent().parent().parent().prev().prev().find("span").eq(1).text().substring(1);
+        cart.price = parseFloat(cart.price);
+        cart.product_attr = cart.PID + "-";
+    debugger
+        if ($("#stockStatus").find("b").eq(0).attr("value") == 1) {
+            sendAjaxRequest("/addProduct.do", cart);
+            window.location.href = "/getCart.do";
+        } else {
+            alert("商品缺货或下架,无法加入购物车!")
         }
+    }
 
-        function addToWishList(elem) {
-            var url ='/addToWishList.do?id='+elem.name;
-            sendAjaxRequest(url,null);
-            window.location.href="/getWishList.do";
-        }
+    function addToWishList(elem) {
+        var url = '/addToWishList.do?id=' + elem.name;
+        sendAjaxRequest(url, null);
+        window.location.href = "/getWishList.do";
+    }
 
-        function addToCompare(elem) {
-            var cart  = new Object();
-            cart.PID = parseInt(elem.name);
-            cart.product_attr=cart.PID+"-";
-            sendAjaxRequest("/addCompare.do",cart);
-            window.location.href="compare.html";
-        }
-    </script>
+    function addToCompare(elem) {
+        var cart = new Object();
+        cart.PID = parseInt(elem.name);
+        cart.product_attr = cart.PID + "-";
+        sendAjaxRequest("/addCompare.do", cart);
+        window.location.href = "compare.html";
+    }
+</script>
 
 </html>

@@ -52,13 +52,12 @@ public class HomeServiceImp implements HomeService {
         return null;
     }
 
-
     private List<Advertise> getHomeAdvertiseList() {
         List<Advertise> removedList = new ArrayList<>();
         List<Advertise> list = advertiseMapper.getAllHomeAdvertise();
         //移除所有状态为0的广告
-        for (int i = 0 ; i < list.size();i++){
-            if(list.get(i).getStatus() == 1)
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getStatus() == 1)
                 removedList.add(list.get(i));
         }
         return removedList;
