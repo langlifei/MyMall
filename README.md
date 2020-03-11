@@ -34,30 +34,13 @@
 #### 页面截图
 
 1. **首页**
-
-   ![首页](https://github.com/langlifei/MyMall/raw/master/screenshots/home_1.png)
-
-   
-
+   ![home_1](https://github.com/langlifei/MyMall/raw/master/screenshots/home_1.png)
+   ![home_2](https://github.com/langlifei/MyMall/raw/master/screenshots/home_2.png)
 2. **注册**
-
-   ![1583921317945](C:\Users\allen\AppData\Roaming\Typora\typora-user-images\1583921317945.png)
-
-   
-
+   ![regist](https://github.com/langlifei/MyMall/raw/master/screenshots/regist.png)
 3. **登录**
-
-   ![1583921352498](C:\Users\allen\AppData\Roaming\Typora\typora-user-images\1583921352498.png)
-
-   
-
+   ![login](https://github.com/langlifei/MyMall/raw/master/screenshots/login.png)
 4. **购物车**
-
-   ![1583921462464](C:\Users\allen\AppData\Roaming\Typora\typora-user-images\1583921462464.png)
-
-   
-
+   ![cart](https://github.com/langlifei/MyMall/raw/master/screenshots/cart.png)
 5. **订单**
-
-![1583921552124](C:\Users\allen\AppData\Roaming\Typora\typora-user-images\1583921552124.png)
-
+   ![orders](https://github.com/langlifei/MyMall/raw/master/screenshots/orders.png)
