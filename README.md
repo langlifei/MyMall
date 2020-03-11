@@ -35,9 +35,7 @@
 
 1. **首页**
 
-   ![1583921123450](C:\Users\allen\AppData\Roaming\Typora\typora-user-images\1583921123450.png)
-
-   ![1583921176449](C:\Users\allen\AppData\Roaming\Typora\typora-user-images\1583921176449.png)
+   ![首页](https://github.com/langlifei/)
 
    
 
