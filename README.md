@@ -35,7 +35,7 @@
 
 1. **首页**
 
-   ![首页](https://github.com/langlifei/)
+   ![首页](https://github.com/langlifei/MyMall/raw/master/screenshots/home_1.png)
 
    
 
